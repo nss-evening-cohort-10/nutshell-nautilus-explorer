@@ -1,30 +1,36 @@
 {
   "species1": {
+    "id": "species1",
     "name": "Chambered Nautilus",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/Nautilus_side.jpg",
     "description": "The chambered nautilus, Nautilus pompilius, also called the pearly nautilus, is the best-known species of nautilus. The shell, when cut away,reveals a lining of lustrous nacre and displays a nearly perfect equiangular spiral, although it is not a golden spiral."
   },
   "species2": {
+    "id": "species2",
     "name": "Giant Squid",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/Giant%20squid.jpg",
     "description": "The giant squid is a deep-ocean dwelling squid in the family Architeuthidae. Giant squid can grow to a tremendous size due to deep-sea gigantism: recent estimates put the maximum size at 13 m for females and 10 m for males from the posterior fins to the tip of the two long tentacles."
   },
   "species3": {
+    "id": "species3",
     "name": "Megalodon",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/Meg.jpg",
     "description": "Megalodon, meaning 'big tooth', is an extinct species of shark that lived approximately 23 to 3.6 million years ago, during the Early Miocene to the Pliocene. It was formerly thought to be a member of the family Lamnidae, and a close relative of the great white shark."
   },
   "species4": {
+    "id": "species4",
     "name": "Plesiosauria",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/Plesiosauria.jpg",
     "description": "The Plesiosauria or plesiosaurs are an order or clade of extinct Mesozoic marine reptiles, belonging to the Sauropterygia. Plesiosaurs first appeared in the latest Triassic Period, possibly in the Rhaetian stage, about 203 million years ago."
   },
   "species5": {
+    "id": "species5",
     "name": "Mahi Mahi Fish",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/NOAA%20Mahi.jpg",
     "description": "The mahi-mahi or common dolphinfish is a surface-dwelling ray-finned fish found in off-shore temperate, tropical, and subtropical waters worldwide. Also widely called dorado and dolphin, it is one of two members of the family Coryphaenidae, the other being the pompano dolphinfish."
   },
   "species6": {
+    "id": "species6",
     "name": "Angler Fish",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/29SCI-ANGLERFISH1-articleLarge.jpg",
     "description": "The anglerfish is a fish of the teleost order Lophiiformes. It is a bony fish named for its characteristic mode of predation, in which, a fleshy growth from the fish's head acts as a lure towards other fish."
