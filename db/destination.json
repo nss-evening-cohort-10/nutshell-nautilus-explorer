@@ -1,0 +1,37 @@
+{
+  "destination1" :{
+    "environmentId": "environment1",
+    "name": "Hawaii",
+    "port": "Kahului Harbor Maui",
+    "description": "Hawaii, a U.S. state, is an isolated volcanic archipelago in the Central Pacific. Its islands are renowned for their rugged landscapes of cliffs, waterfalls, tropical foliage and beaches with gold, red, black and even green sands.",
+    "destinationLink": "https://www.classicvacations.com/hotels/hawaii"
+  },
+  "destination2" :{
+    "environmentId": "environment2",
+    "name": "Saint Croix",
+    "port": "Ann E. Abramson Pier",
+    "description": "Saint Croixs an island in the Caribbean Sea, and a county and constituent district of the United States Virgin Islands (USVI), an unincorporated territory of the United States.",
+    "destinationLink": "https://en.wikipedia.org/wiki/Saint_Croix#"
+  },
+  "destination3" :{
+    "environmentId": "environment3",
+    "name": "Alaska",
+    "port": "Glacier Bay",
+    "description": "Alaska is a state in the United States. It is in the Northwest corner of the continent of the United States West Coast. Alaska does not touch any other US state. It has borders with Canada, the Arctic Ocean, the Pacific Ocean, and the Bering Strait.",
+    "destinationLink": "https://simple.wikipedia.org/wiki/Alaska"
+  },
+  "destination4" :{
+    "environmentId": "environment4",
+    "name": "Spain",
+    "port": "Cartagena",
+    "description": "Spain is a country in Southern Europe. It is in the Iberian Peninsula. Spain is bordered by France, Portugal and Andorra. In Spain's northeast side are the Pyrenees mountains.",
+    "destinationLink": "https://simple.wikipedia.org/wiki/Spain"
+  },
+  "destination5" :{
+    "environmentId": "environment5",
+    "name": "Italy",
+    "port": "Venezia",
+    "description": "Italy is a country in south Europe and a member of the European Union. Its official name is Repubblica Italiana. The Italian flag is green, white and red. Italy is a democratic republic and is a founding member of the European Union. ",
+    "destinationLink": "https://simple.wikipedia.org/wiki/Italy"
+  }
+}
