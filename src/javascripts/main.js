@@ -1,7 +1,8 @@
+import 'bootstrap';
 import '../styles/main.scss';
 
 const init = () => {
-  console.log('Welcom Aboard!!');
+  console.log('Welcome Aboard!!');
 };
 
 init();
