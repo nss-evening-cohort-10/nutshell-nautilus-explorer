@@ -4,16 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Nautilus</title>
+  <title>Nautilus Dashboard</title>
 </head>
 <body>
-
-
-
+  <div id="navBarBrand">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-container">
+      <div class="align-left">
+        <a class="navbar-brand" href="#"></a>
+        <a class="Nautilus-logo">
+          <img src="assets//images/BrandLogo.png" class="img-fluid">
+        </a>
+      </div>
+      <div class="align-right">
+        <button class="btn btn-primary" id="navbar-button-login">Login</button>
+        <button class="btn btn-danger hide" id="navbar-button-logout">Logout</button>
+      </div>
+    </nav>
+  </div>
+<div id="auth"></div>
 <div id="home" class="d-flex flex-wrap container">
   <div id="crewHome" class="card"></div>
   <div id="speciesHome" class="card"></div>
   <div id="logHome" class="card"></div>
   <div id="destinationHome" class="w-100"></div>
 </div>
+<div id="environments"></div>
+<div id="crew"></div>
+</body>
 </html>
