@@ -1,12 +1,13 @@
-import 'bootstrap';
-import '../styles/main.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'bootstrap';
+import '../styles/main.scss';
 import authData from './helpers/data/authData';
 import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
 import crewNavbar from './components/navBar/navBar';
 import homeCard from './components/homeCard/homeCard';
+import speciesBoard from './components/speciesBoard/speciesBoard';
 
 
 const init = () => {
@@ -15,6 +16,7 @@ const init = () => {
   authData.checkLoginStatus();
   crewNavbar.logoutEvent();
   homeCard.makeABoard();
+  speciesBoard.makeSpeciesBoard();
 };
 
 init();
