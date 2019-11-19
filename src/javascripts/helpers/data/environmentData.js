@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getEnvironments = () => new Promise((resolve, reject) => {
+const getEnvis = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/environments.json`)
     .then((response) => {
       const demEnvis = response.data;
@@ -17,4 +17,6 @@ const getEnvironments = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getEnvironments };
+const deleteEnvis = (id) => axios.delete(`${baseUrl}/environments/${id}.json`);
+
+export default { getEnvis, deleteEnvis };
