@@ -1,8 +1,8 @@
 {
-  "crewMembers": "blah",
+  "crew": "blah",
   "species": "blah2",
   "logs": "blah3",
   "destinations": "blah4",
   "environments": "blah5",
-  "species_enviroments": "blah6"
+  "species_environments": "blah6"
 }
