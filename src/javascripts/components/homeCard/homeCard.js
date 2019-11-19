@@ -4,8 +4,8 @@ import crewData from '../../helpers/data/crewData';
 import crewCard from '../crewCard/crewCard';
 
 
-const buildCrew = (uid) => {
-  crewData.getCrew(uid)
+const buildCrew = () => {
+  crewData.getCrew()
     .then((crew) => {
       console.log('the boards', crew);
       let domString = '<div id="boardSection" class="d-flex flex-wrap">';

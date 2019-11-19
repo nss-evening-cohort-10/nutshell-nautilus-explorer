@@ -4,8 +4,8 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 // got this from apiKeys and stuck it in axios.get below
 
-const getCrew = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/crew.json?orderBy="uid"&equalTo="${uid}"`)
+const getCrew = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/crew.json`)
     .then((response) => {
       const theCrew = response.data;
       console.log(theCrew);
