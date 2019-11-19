@@ -20,6 +20,7 @@ const buildCrew = (uid) => {
     .catch((error) => console.error(error));
 };
 
+
 const makeABoard = () => {
   const domString = `
     <div class="card" style="width: 18rem;">
