@@ -14,7 +14,7 @@ const init = () => {
   auth.signMeIn();
   authData.checkLoginStatus();
   crewNavbar.logoutEvent();
-  speciesBoard.buildSpecies();
+  speciesBoard.makeSpeciesBoard();
 };
 
 init();

@@ -4,8 +4,8 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 
-const getSpecies = (speciesId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/species.json?orderBy="speciesId"&equalTo="${speciesId}"`)
+const getAllSpecies = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/species.json`)
     .then((response) => {
       const demSpecies = response.data;
       const species = [];
@@ -18,4 +18,6 @@ const getSpecies = (speciesId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getSpecies };
+// const buildSpecies = ()
+
+export default { getAllSpecies };
