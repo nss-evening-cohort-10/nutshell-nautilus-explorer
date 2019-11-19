@@ -13,6 +13,7 @@ const init = () => {
   auth.signMeIn();
   authData.checkLoginStatus();
   crewNavbar.logoutEvent();
+  console.log('Welcome Aboard!!');
 };
 
 init();
