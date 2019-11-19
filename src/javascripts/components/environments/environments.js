@@ -1,7 +1,8 @@
 import $ from 'jquery';
-import utilities from '../../helpers/utilities';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import enviData from '../../helpers/data/environmentData';
-import 'bootstrap';
+import utilities from '../../helpers/utilities';
 import './environments.scss';
 
 const deleteEnvironment = (e) => {
@@ -16,6 +17,7 @@ const deleteEnvironment = (e) => {
 };
 
 const printEnvironments = () => {
+  const uid = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
       let domString = `<h1 class="text-center">Environments</h1>
@@ -27,9 +29,11 @@ const printEnvironments = () => {
       <th scope="col">Temperature</th>
       <th scope="col">Depth</th>
       <th scope="col">Current</th>
-      <th scope="col">Pressure</th>
-      <th scope="col">Edit | Delete</th>
-    </tr>
+      <th scope="col">Pressure</th>`;
+      if (uid) {
+        domString += '<th scope="col">Edit | Delete</th>';
+      }
+      domString += `</tr>
   </thead>
   <tbody>`;
       environments.forEach((envi) => {
@@ -39,10 +43,12 @@ const printEnvironments = () => {
       <td>${envi.temperature}</td>
       <td>${envi.depth}</td>
       <td>${envi.current}</td>
-      <td>${envi.pressure}</td>
-      <td><button type="link" class="btn btn-link edit-environments" id="edit-${envi.id}">EDIT</button> |
-        <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>
-    </tr>`;
+      <td>${envi.pressure}</td>`;
+        if (uid) {
+          domString += `<td><button type="link" class="btn btn-link edit-environments" id="edit-${envi.id}">EDIT</button> |
+        <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
+        }
+        domString += '</tr>';
       });
       domString += '</tbody></table>';
       utilities.printToDom('environments', domString);
