@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'bootstrap';
 import '../styles/main.scss';
 import firebase from 'firebase/app';
@@ -11,9 +10,8 @@ import crewNavbar from './components/navBar/navBar';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
-  $('body').on('click', '#navbar-button-login', auth.signMeIn);
-  authData.checkLoginStatus();
   auth.signMeIn();
+  authData.checkLoginStatus();
   crewNavbar.logoutEvent();
 };
 
