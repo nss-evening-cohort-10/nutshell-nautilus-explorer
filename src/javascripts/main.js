@@ -6,6 +6,7 @@ import authData from './helpers/data/authData';
 import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
 import crewNavbar from './components/navBar/navBar';
+import getDestinations from './components/destination/destination';
 
 
 const init = () => {
@@ -13,6 +14,8 @@ const init = () => {
   auth.signMeIn();
   authData.checkLoginStatus();
   crewNavbar.logoutEvent();
+  getDestinations.destinationBuilderAll();
+  getDestinations.destinationLoginStatus();
 };
 
 init();
