@@ -9,13 +9,12 @@ import utilities from '../../helpers/utilities';
 const deleteDestinationbyId = (e) => {
   e.preventDefault();
   const id = e.target.id.split('delete-')[1];
-  console.log(e.target.id);
   destinationdata.deleteDestination(id)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       destinationBuilderAll();
       // eslint-disable-next-line no-use-before-define
-      destinationLoginStatus();
+      // destinationLoginStatus();
     })
     .catch((error) => console.error(error));
 };
@@ -41,8 +40,8 @@ const destinationBuilderAll = () => {
       <td>${destination.port}</td>
       <td>${destination.description}</td>
       <td><a href=${destination.destinationLink}">${destination.name} Links</a></td>
-      <td><button type="link" class="btn btn-ink hide edit-destination" id="edit-${destination.id}">EDIT</button> 
-        <button type="link" class="btn btn-link hide deletes-destination" id="delete-${destination.id}">DELETE</button></td>
+      <td><button type="link" class="btn btn-ink  edit-destination" id="edit-${destination.id}">EDIT</button> 
+        <button type="link" class="btn btn-link  deletes-destination" id="delete-${destination.id}">DELETE</button></td>
     </tr>`;
       });
       domString += '</tbody></table>';
