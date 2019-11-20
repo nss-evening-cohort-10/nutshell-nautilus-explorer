@@ -83,6 +83,41 @@
 </div>
 <div id="environments"></div>
 <div id="destinations" class="w-100"></div>
+  <div class="modal fade" id="destinationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Destination</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="crew-name">Name</label>
+              <input type="text" class="form-control" id="destinationName" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="profile-img">Entry Port</label>
+              <input type="text" class="form-control" id="destinationPort" placeholder="Enter Entry Port">
+            </div>
+            <div class="form-group">
+              <label for="profile-img">Description</label>
+              <input type="text" class="form-control" id="destinationDescription" placeholder="Enter Description">
+            </div>
+            <div class="form-group">
+              <label for="profile-img">Additional Information</label>
+              <input type="text" class="form-control" id="destinationAddInfo" placeholder="Enter Link to Additional Info">
+            <div class="form-group">
+                <label for="profile-img">EnvironmentId</label>
+                <input type="text" class="form-control" id="destinationEnviroId" placeholder="Enter Enviroment id">
+            </div>
+          </form>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addNewDestination">Save changes</button>
 <div id="crew"></div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

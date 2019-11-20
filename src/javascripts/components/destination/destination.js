@@ -18,12 +18,32 @@ const deleteDestinationbyId = (e) => {
     .catch((error) => console.error(error));
 };
 
+const addDestination = (e) => {
+  e.stopImmediatePropagation();
+  const newDestination = {
+    description: $('#destinationDescription').val(),
+    addtionalInfo: $('#destinationDescription').val(),
+    environment: $('#destinationAddInfo').val(),
+    name: $('#destinationName').val(),
+    port: $('#destinationPort').val(),
+  };
+  destinationdata.addDestination(newDestination)
+    .then(() => {
+      $('#destinationModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      destinationBuilderAll();
+    })
+    .catch((error) => console.error(error));
+};
 
 const destinationBuilderAll = () => {
   destinationdata.getDestinations()
     .then((destinations) => {
-      let domString = `<h1 class="text-center">Destinations</h1>
-        <table class="table table-striped">
+      let domString = '<h1 class="text-center">Destinations</h1>';
+      domString = `<div class="text-center" style="padding:50px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#destinationModal">
+      Add Destination
+    </button>  
+      <table class="table table-striped">
         <thead class="header">
           <tr>
             <th scope="col">Location Name</th>
@@ -47,6 +67,7 @@ const destinationBuilderAll = () => {
       utilities.printToDom('destinations', domString);
       $('#destinations').on('click', '.deletes-destination', deleteDestinationbyId);
       $('#destinationHome').addClass('hide');
+      $('#addNewDestination').click(addDestination);
     })
     .catch((error) => console.error(error));
 };

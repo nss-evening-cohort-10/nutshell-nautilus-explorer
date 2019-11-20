@@ -21,5 +21,11 @@ const deleteDestination = (destinationId) => axios.delete(`${baseUrl}/destinatio
 
 const updateDestination = (destinationId, updatedDestination) => axios.put(`${baseUrl}/destinations/${destinationId}.json`, updatedDestination);
 
+const addDestination = (newDestination) => axios.post(`${baseUrl}/destinations.json`, newDestination);
 
-export default { getDestinations, deleteDestination, updateDestination };
+export default {
+  getDestinations,
+  deleteDestination,
+  updateDestination,
+  addDestination,
+};
