@@ -18,6 +18,6 @@ const getAllSpecies = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const buildSpecies = ()
+const deleteSpecies = (speciesId) => axios.delete(`${baseUrl}/species/${speciesId}.json`);
 
-export default { getAllSpecies };
+export default { getAllSpecies, deleteSpecies };
