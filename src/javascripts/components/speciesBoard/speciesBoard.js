@@ -3,6 +3,19 @@ import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
 import makeSpecies from '../species/species';
 
+const deleteFromBoard = (e) => {
+  e.preventDefault();
+  const boardId = $('.board-header')[0].id;
+  const speciesId = e.target.id;
+  speciesData.deleteSpecies(speciesId)
+    .then(() => {
+      console.error(boardId);
+      // eslint-disable-next-line no-use-before-define
+      buildSpecies(boardId);
+    })
+    .catch((error) => console.error(error));
+};
+
 
 const buildSpecies = (speciesId) => {
   speciesData.getAllSpecies(speciesId)
@@ -16,6 +29,7 @@ const buildSpecies = (speciesId) => {
           });
           domString += '</div>';
           util.printToDom('speciesHome', domString);
+          $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
         });
     })
     .catch((error) => console.error(error));
@@ -30,7 +44,7 @@ const buildSpecies = (speciesId) => {
 
 const makeSpeciesBoard = () => {
   const domString = `<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">SPECIES</h5>
     <button type="button" class="btn btn-primary view-species">View Species</button>
