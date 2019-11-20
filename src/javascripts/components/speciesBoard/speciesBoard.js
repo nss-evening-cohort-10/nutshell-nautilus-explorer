@@ -36,11 +36,15 @@ const addNewSpecies = (e) => {
 
 
 const buildSpecies = (speciesId) => {
+  $('#crewHome').addClass('hide');
+  $('#logHome').addClass('hide');
+  $('#destinationHome').addClass('hide');
+  $('#environments').addClass('hide');
+  $('#crew').addClass('hide');
+  $('#log').addClass('hide');
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
-      let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">SPECIES</h1>`;
-      domString += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Add Species</button>`;
+      let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
       domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       speciesData.getAllSpecies(speciesId)
         .then((species) => {
@@ -48,9 +52,8 @@ const buildSpecies = (speciesId) => {
             domString += makeSpecies.makeASpecies(s);
           });
           domString += '</div>';
-          util.printToDom('species', domString);
-          $('#speciesHome').addClass('hide');
-          $('#species').on('click', '.delete-species', deleteFromBoard);
+          util.printToDom('speciesHome', domString);
+          $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
           $(document.body).on('click', '#add-new-species', addNewSpecies);
         });
     })
@@ -65,11 +68,11 @@ const buildSpecies = (speciesId) => {
 
 
 const makeSpeciesBoard = () => {
-  const domString = `<div class="card" style="width: 18rem;">
-  <img src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">SPECIES</h5>
-    <button type="button" class="btn btn-primary view-species">View Species</button>
+  const domString = `<div class="card">
+  <h5 class="card-title text-center card-title">Review Species</h5>
+  <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
+  <div class="card-body text-center">
+    <button type="button" class="btn btn-danger btn-lg view-species">View</button>
   </div>
   </div>
   `;

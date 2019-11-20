@@ -7,6 +7,8 @@
   <title>Nautilus Dashboard</title>
 </head>
 <body>
+
+  <!-- Nav Bar ------------------------>
   <div id="navBarBrand">
     <nav class="navbar navbar-expand-lg navbar-light navbar-container">
       <div class="align-left">
@@ -41,13 +43,9 @@
     </nav>
   </div>
 <div class="modal fade show" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true"></div>
-<div id="auth"></div>
-<div id="home" class="d-flex flex-wrap container">
-  <div id="crewHome" class="card"></div>
-  <div id="speciesHome" class="card"></div>
-  <div id="logHome" class="card"></div>
-  <div id="destinationHome" class="w-100"></div>
 
+
+<!-- Species Modal ------------------------------->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -82,11 +80,11 @@
   </div>
 </div>
 
-<!-- CREW MODAL -->
+<!-- CREW MODAL ---------------------------------->
 <div id="environments"></div>
 <div id="destinations" class="w-100"></div>
 <div id="crew"></div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -123,8 +121,19 @@
       </div>
     </div>
 
-<div id="environments" class="hide"></div>
-<div id="crew" class="hide"></div>
-<div id="species" class="hide"></div>
+<h1 id="welcome">Welcome Capt. Nemo!</h1>
+  <div id="auth"></div>
+  <div id="home" class="d-flex flex-wrap container-fluid justify-content-between">
+    <div id="crewHome" class="card"></div>
+    <div id="speciesHome" class="card"></div>
+    <div id="logHome" class="card"></div>
+    <div id="destinationHome" class="w-100">
+
+  </div>
+  <div id="destinations"></div>
+  <div id="environments" class=""></div>
+  <div id="crew" class=""></div>
+  <div id="species" class=""></div>
+  <div id="log" class=""></div>
 </body>
 </html>

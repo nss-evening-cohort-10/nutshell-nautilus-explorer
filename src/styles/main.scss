@@ -2,8 +2,9 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-image: url(https://www.audreydaybook.com/wp-content/uploads/2018/10/shutterstock_1044142510-e1540169947667.jpg);
-    background-position: center top;
+    background-image: url(https://images.unsplash.com/photo-1510297895683-0f27794412d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
+    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -34,3 +35,23 @@ align-right{
     justify-content: end;
 }
 
+#speciesImg{
+    width: 450px;
+    height: 288px;
+}
+
+#welcome{
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 50px 0px;
+    font-size: 50px;
+}
+
+.card-title{
+    margin: 10px 0px;
+    // font-weight: bold;
+    // font-size: 20px;
+}
+#destinationHome {
+    margin-top: 50px;
+}
