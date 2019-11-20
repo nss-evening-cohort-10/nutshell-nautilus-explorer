@@ -10,7 +10,6 @@ const deleteFromBoard = (e) => {
   const speciesId = e.target.id;
   speciesData.deleteSpecies(speciesId)
     .then(() => {
-      console.error(boardId);
       // eslint-disable-next-line no-use-before-define
       buildSpecies(boardId);
     })
@@ -21,7 +20,7 @@ const addNewSpecies = (e) => {
   e.stopImmediatePropagation();
   const assignToBoard = $('.add-a-species')[0].id;
   const newSpecies = {
-    speciesId: `${assignToBoard}`,
+    id: `${assignToBoard}`,
     name: $('#species-name').val(),
     image: $('#species-image').val(),
     description: $('#species-description').val(),
@@ -39,7 +38,7 @@ const editedSpecies = (e) => {
   e.stopImmediatePropagation();
   const editedSpeciesId = e.target.parentNode.id;
   const updatedSpecies = {
-    speciesId: `${editedSpeciesId}`,
+    id: `${editedSpeciesId}`,
     name: $('#name').val(),
     image: $('#image').val(),
     description: $('#description').val(),
@@ -66,6 +65,7 @@ const buildSpecies = (speciesId) => {
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
       let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
+      domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Species</button>';
       domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       speciesData.getAllSpecies(speciesId)
         .then((species) => {
