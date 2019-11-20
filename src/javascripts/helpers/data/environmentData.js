@@ -21,4 +21,21 @@ const deleteEnvis = (id) => axios.delete(`${baseUrl}/environments/${id}.json`);
 
 const addEnvi = (newEnvironment) => axios.post(`${baseUrl}/environments.json`, newEnvironment);
 
-export default { getEnvis, deleteEnvis, addEnvi };
+const updateEnvi = (enviId, updatedEnvironment) => axios.put(`${baseUrl}/environments/${enviId}.json`, updatedEnvironment);
+
+const editEnvi = (enviId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/environments/${enviId}.json`)
+    .then((result) => {
+      const environment = result.data;
+      resolve(environment);
+    })
+    .catch((error) => reject(error));
+});
+
+export default {
+  getEnvis,
+  deleteEnvis,
+  addEnvi,
+  editEnvi,
+  updateEnvi,
+};
