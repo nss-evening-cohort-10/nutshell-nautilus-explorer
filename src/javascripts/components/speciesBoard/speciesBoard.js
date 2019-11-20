@@ -36,9 +36,16 @@ const addNewSpecies = (e) => {
 
 
 const buildSpecies = (speciesId) => {
+  $('#welcome').addClass('hide');
+  $('#crewHome').addClass('hide');
+  $('#logHome').addClass('hide');
+  $('#destinationHome').addClass('hide');
+  $('#environments').addClass('hide');
+  $('#crew').addClass('hide');
+  $('#log').addClass('hide');
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
-      let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">SPECIES</h1>`;
+      let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
       domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       speciesData.getAllSpecies(speciesId)
         .then((species) => {
@@ -62,11 +69,11 @@ const buildSpecies = (speciesId) => {
 
 
 const makeSpeciesBoard = () => {
-  const domString = `<div class="card" style="width: 18rem;">
-  <img src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">SPECIES</h5>
-    <button type="button" class="btn btn-primary view-species">View Species</button>
+  const domString = `<div class="card">
+  <h5 class="card-title text-center card-title">Review Species</h5>
+  <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
+  <div class="card-body text-center">
+    <button type="button" class="btn btn-danger btn-lg view-species">View</button>
   </div>
   </div>
   `;

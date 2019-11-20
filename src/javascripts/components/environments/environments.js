@@ -75,6 +75,10 @@ const addEnvironmentModal = () => {
 };
 
 const printEnvironments = () => {
+  $('#home').addClass('hide');
+  $('#crew').addClass('hide');
+  $('#species').addClass('hide');
+  $('#log').addClass('hide');
   const uid = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {

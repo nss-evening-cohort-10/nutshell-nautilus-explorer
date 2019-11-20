@@ -1,4 +1,5 @@
 import $ from 'jquery';
+// import { userInfo } from 'os';
 
 const printToDom = (divId, toPrint) => {
   $(`#${divId}`).html(toPrint);
@@ -21,5 +22,14 @@ const printModal = (title, body) => {
 
   printToDom('uniModal', domString);
 };
+
+
+// const hide = (e) => {
+//   if (user) {
+
+//   } else{
+
+//   }
+// };
 
 export default { printToDom, printModal };

@@ -53,7 +53,7 @@ const destinationBuilderAll = () => {
 const destinationBuilderHome = () => {
   destinationdata.getDestinations()
     .then((destinations) => {
-      let domString = `<h1 class="text-center">Destinations</h1>
+      let domString = `<h1 class="text-center" id="welcome">Destinations</h1>
       <td><button type="link" class="btn btn-ink  viewAll-destination" id="viewAll">View All</button> 
         <table class="table table-striped">
         <thead class="header">
