@@ -16,6 +16,24 @@ const deleteFromBoard = (e) => {
     .catch((error) => console.error(error));
 };
 
+const addNewSpecies = (e) => {
+  e.stopImmediatePropagation();
+  const assignToBoard = $('.add-a-species')[0].id;
+  const newSpecies = {
+    speciesId: `${assignToBoard}`,
+    name: $('#species-name').val(),
+    image: $('#species-image').val(),
+    description: $('#species-description').val(),
+  };
+  speciesData.addNewSpecies(newSpecies)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildSpecies(assignToBoard);
+    })
+    .catch((error) => console.error(error));
+};
+
 
 const buildSpecies = (speciesId) => {
   speciesData.getAllSpecies(speciesId)
@@ -30,6 +48,7 @@ const buildSpecies = (speciesId) => {
           domString += '</div>';
           util.printToDom('speciesHome', domString);
           $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
+          $(document.body).on('click', '#add-new-species', addNewSpecies);
         });
     })
     .catch((error) => console.error(error));
