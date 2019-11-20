@@ -7,13 +7,9 @@ const checkLoginStatus = () => {
     if (user) {
       $('#navbar-button-login').addClass('hide');
       $('#navbar-button-logout').removeClass('hide');
-      $('.edit-destination').removeClass('hide');
-      $('.delete-destination').removeClass('hide');
     } else {
       $('#navbar-button-logout').addClass('hide');
       $('#navbar-button-login').removeClass('hide');
-      $('.edit-destination').removeClass('hide');
-      $('.delete-destination').removeClass('hide');
     }
   });
 };

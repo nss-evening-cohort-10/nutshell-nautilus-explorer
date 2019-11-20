@@ -41,8 +41,8 @@ const destinationLoginStatus = () => {
       $('.edit-destination').removeClass('hide');
       $('.delete-destination').removeClass('hide');
     } else {
-      $('.edit-destination').removeClass('hide');
-      $('.delete-destination').removeClass('hide');
+      $('.edit-destination').addClass('hide');
+      $('.delete-destination').addClass('hide');
     }
   });
   destinationBuilderAll();
