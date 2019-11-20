@@ -11,7 +11,6 @@ const addCrew = (e) => {
     profileImg: $('#crewPosition').val(),
     quote: $('#crewQuote').val(),
   };
-  console.log(newCrewMember);
   crewData.addCrew(newCrewMember)
     .then(() => {
       $('#exampleModal').modal('hide');
@@ -23,14 +22,11 @@ const addCrew = (e) => {
 
 const deleteCrewBoard = (e) => {
   e.preventDefault();
-  const boardId = $('.crewBoard')[0].id;
   const crewId = e.target.id;
-  console.log(crewId);
   crewData.deleteCrew(crewId)
     .then(() => {
-      console.error(boardId);
       // eslint-disable-next-line no-use-before-define
-      buildCrew(boardId);
+      buildCrew();
     })
     .catch((error) => console.error(error));
 };
