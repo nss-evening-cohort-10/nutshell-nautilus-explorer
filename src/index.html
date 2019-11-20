@@ -7,6 +7,8 @@
   <title>Nautilus Dashboard</title>
 </head>
 <body>
+
+  <!-- Nav Bar ------------------------>
   <div id="navBarBrand">
     <nav class="navbar navbar-expand-lg navbar-light navbar-container">
       <div class="align-left">
@@ -24,7 +26,7 @@
             <a class="nav-link species" href="#">Species</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link desitnations" href="#">Destinations</a>
+            <a class="nav-link destinations" href="#">Destinations</a>
           </li>
           <li class="nav-item">
             <a class="nav-link logs" href="#">Logs</a>
@@ -41,14 +43,139 @@
     </nav>
   </div>
 <div class="modal fade show" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true"></div>
-<div id="auth"></div>
-<div id="home" class="d-flex flex-wrap container">
-  <div id="crewHome" class="card"></div>
-  <div id="speciesHome" class="card"></div>
-  <div id="logHome" class="card"></div>
-  <div id="destinationHome" class="w-100"></div>
+
+
+<!-- Species Modal ------------------------------->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Species</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="species-name">Species</label>
+              <input type="text" class="form-control" id="species-name" placeholder="Enter Species">
+            </div>
+            <div class="form-group">
+              <label for="species-description">Species Description</label>
+              <input type="text" class="form-control" id="species-description" placeholder="Enter Species Description">
+            </div>
+            <div class="form-group">
+              <label for="species-image">Species Image</label>
+              <input type="text" class="form-control" id="species-image" placeholder="Enter Species Image">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="add-new-species">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- CREW MODAL ---------------------------------->
 <div id="environments"></div>
+<div id="destinations" class="w-100"></div>
 <div id="crew"></div>
+  <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Crew Member</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="crew-name">Name</label>
+                <input type="text" class="form-control" id="crewName" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label for="profile-img">Image Url</label>
+                <input type="text" class="form-control" id="boardImg" placeholder="Enter image Url">
+              </div>
+              <div class="form-group">
+                <label for="profile-img">Position</label>
+                <input type="text" class="form-control" id="crewPosition" placeholder="Enter position">
+              </div>
+              <div class="form-group">
+                <label for="profile-img">Favorite Quote</label>
+                <input type="text" class="form-control" id="crewQuote" placeholder="Enter favorite quote">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="addNewBoardBtn">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Crew Update Modal --------------------->
+
+    <div class="modal fade" id="crewUpdateModal" tabindex="-1" role="dialog" aria-labelledby="crewUpdateModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Crew</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="updateCrewName">Name</label>
+                  <input type="text" class="form-control" id="updateCrewName" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                  <label for="updateCrewImg">Image URL</label>
+                  <input type="text" class="form-control" id="updateCrewImg" placeholder="Enter Image URL">
+                </div>
+                <div class="form-group">
+                    <label for="updateCrewPosition">Position</label>
+                    <input type="text" class="form-control" id="updateCrewPosition" placeholder="Enter Age">
+                  </div>
+                  <div class="form-group">
+                    <label for="updateQuote">Quote</label>
+                    <input type="text" class="form-control" id="updateQuote" placeholder="Enter Role">
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary updateCrew">Update Crew</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Other Divs ---------------------------->
+
+<h1 id="welcome">Welcome Capt. Nemo!</h1>
+  <div id="auth"></div>
+  <div id="home" class="d-flex flex-wrap container-fluid justify-content-between">
+    <div id="crewHome" class="card"></div>
+    <div id="speciesHome" class="card"></div>
+    <div id="logHome" class="card"></div>
+    <div id="destinationHome" class="w-100">
+
+  </div>
+  <div id="destinations"></div>
+  <div id="environments" class=""></div>
+  <div id="crew" class=""></div>
+  <div id="species" class=""></div>
+  <div id="log" class=""></div>
 </body>
 </html>
