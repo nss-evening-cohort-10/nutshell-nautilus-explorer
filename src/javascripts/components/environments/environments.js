@@ -35,13 +35,13 @@ const addNewEnvironment = (e) => {
     .catch((error) => console.error(error));
 };
 
-const addEnvironmentModal = () => {
+const addEnvironmentModal = (x) => {
   const title = 'Add Environment';
   const body = `<form>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="envi-latitude">Latitude</label>
-        <input type="text" class="form-control" id="envi-latitude" placeholder="Enter Latitude">
+        <input value="${x.latitude ? x.latitude : ''}" type="text" class="form-control" id="envi-latitude" placeholder="Enter Latitude">
       </div>
       <div class="form-group col-md-6">
         <label for="envi-longitude">Longitude</label>
@@ -80,7 +80,7 @@ const printEnvironments = () => {
     .then((environments) => {
       let domString = `<div class="container py-5">
       <h1 class="text-center  my-2">Environments</h1>
-      <center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
+      <center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>
 
 <table class="table table-striped rounded-lg">
   <thead class="header">
@@ -115,7 +115,7 @@ const printEnvironments = () => {
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
       // $('#environments').on('click', 'edit-environments', editEnvironment);
-      $('#environments').on('click', '.add-envi-modal', addEnvironmentModal);
+      $('#addEnvi').click(addEnvironmentModal);
     })
     .catch((error) => console.error(error));
 };
