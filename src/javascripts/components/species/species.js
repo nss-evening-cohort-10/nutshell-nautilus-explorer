@@ -8,9 +8,6 @@ const makeASpecies = (species) => {
     <p class="card-text">${species.description}</p>
     <button class="btn btn-danger delete-species" id="${species.id}">Delete Species</button>
     <button type="button" class="btn btn-info edit-species" data-toggle="modal" data-target="#edSpecies" id="${species.id}">Edit Species</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Add Species
-    </button>
     </div>
     <div class="card-body">
     </div>
