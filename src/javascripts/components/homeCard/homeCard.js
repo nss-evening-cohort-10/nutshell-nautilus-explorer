@@ -21,6 +21,7 @@ const addCrew = (e) => {
     .catch((error) => console.error(error));
 };
 
+
 const deleteCrewBoard = (e) => {
   e.preventDefault();
   const crewId = e.target.id;
@@ -32,18 +33,19 @@ const deleteCrewBoard = (e) => {
     .catch((error) => console.error(error));
 };
 
-
 const buildCrew = () => {
+  $('#welcome').addClass('hide');
   $('#home').addClass('hide');
   $('#environments').addClass('hide');
   $('#species').addClass('hide');
   $('#log').addClass('hide');
   crewData.getCrew()
     .then((crew) => {
-      let domString = `<div class="container text-center" style="padding:50px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#crewModal">
+      let domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
+      domString += `<div class="text-center" style="padding:50px"><button id="crewSpace" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#crewModal">
       Add Crew
     </button>`;
-      domString += '<div id="species-section" class="d-flex container flex-wrap justify-content-center crewBoard">';
+      domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
       crew.forEach((board) => {
         domString += crewCard.makeCrewBoards(board);
       });
@@ -52,8 +54,46 @@ const buildCrew = () => {
       $('#crewHome').addClass('hide');
       $('body').on('click', '.deleteCrew', deleteCrewBoard);
       $('#addNewBoardBtn').click(addCrew);
+      // eslint-disable-next-line no-use-before-define
+      $('#planes').on('click', '.edit', updateACrewMember);
     })
     .catch((error) => console.error(error));
+};
+
+
+const newCrewInfo = (crew) => {
+  let domString = '';
+  domString += buildCrew.makeCrewBoards(crew);
+  utilities.printToDom('exampleModal', domString);
+  $('#save').click(addCrew);
+};
+
+const editCrewInfo = (e) => {
+  e.stopImmediatePropagation();
+  const crewId = e.target.parentNode.id;
+  const updatedCrew = {
+    name: $('#updateCrewName').val(),
+    profile: $('#updateCreImg').val(),
+    position: $('#updateCrewPosition').val(),
+    quote: $('#updateQuote').val(),
+  };
+  crewData.updateCrew(crewId, updatedCrew)
+    .then(() => {
+      $('#crewUpdateModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildCrew();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateACrewMember = (e) => {
+  crewData.getPlaneById(e.target.id)
+    .then((response) => {
+      $('#crewUpdateModal').modal('show');
+      response.id = e.target.id;
+      newCrewInfo(response);
+      $('#editCrew').click(editCrewInfo);
+    });
 };
 
 

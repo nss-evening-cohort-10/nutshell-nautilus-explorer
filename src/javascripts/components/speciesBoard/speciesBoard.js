@@ -36,6 +36,7 @@ const addNewSpecies = (e) => {
 
 
 const buildSpecies = (speciesId) => {
+  $('#welcome').addClass('hide');
   $('#crewHome').addClass('hide');
   $('#logHome').addClass('hide');
   $('#destinationHome').addClass('hide');
