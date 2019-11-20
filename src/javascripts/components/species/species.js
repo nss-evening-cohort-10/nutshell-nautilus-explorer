@@ -6,6 +6,7 @@ const makeASpecies = (species) => {
     <div class="card-body">
     <h5 class="card-title">${species.name}</h5>
     <p class="card-text">${species.description}</p>
+    <button class="btn btn-danger delete-species" id="${species.id}">Delete Species</button>
     </div>
     <div class="card-body">
     </div>
