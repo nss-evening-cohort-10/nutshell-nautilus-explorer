@@ -36,7 +36,7 @@ const addNewEnvironment = (e) => {
 };
 
 const updateEnvironment = (e) => {
-  e.stopImmediatePropagation();
+  const id = e.target.id.split('update-')[1];
   const updatedEnvironment = {
     latitude: $('#envi-latitude').val(),
     longitude: $('#envi-longitude').val(),
@@ -45,7 +45,7 @@ const updateEnvironment = (e) => {
     current: $('#envi-current').val(),
     pressure: $('#envi-pressure').val(),
   };
-  enviData.updateEnvi(updatedEnvironment)
+  enviData.updateEnvi(id, updatedEnvironment)
     .then(() => {
       $('#uniModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
@@ -54,7 +54,7 @@ const updateEnvironment = (e) => {
     .catch((error) => console.error(error));
 };
 
-const environmentModal = (x) => {
+const environmentModal = (x, id) => {
   const title = `${x ? 'Update' : 'Add'} Environment`;
   const body = `<form>
     <div class="form-row">
@@ -87,23 +87,23 @@ const environmentModal = (x) => {
         <input value="${x.pressure ? x.pressure : ''}" type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
       </div>
     </div>
-    <button type="button" class="btn btn-danger btn-block save-envi" id="${x ? 'update' : 'add'}-environment">SAVE</button>
+    <button type="button" class="btn btn-danger btn-block save-envi" id="${x ? 'update' : 'add'}-${id}">SAVE</button>
   </form>`;
   utilities.printModal(title, body);
-  $('#add-environment').click('.sav-envi', addNewEnvironment);
-  $('#update-environment').click('.save-envi', updateEnvironment);
+  $('#add-environment').click('.save-envi', addNewEnvironment);
+  $(`#update-${id}`).click('.save-envi', updateEnvironment);
 };
 
 const checkAction = (e) => {
-  const x = e.target.id.split('edit-')[1];
-  if (x) {
-    enviData.editEnvi(x)
-      .then((w) => {
-        environmentModal(w);
+  const id = e.target.id.split('edit-')[1];
+  if (id) {
+    enviData.editEnvi(id)
+      .then((x) => {
+        environmentModal(x, id);
       })
       .catch((error) => console.error(error));
   } else {
-    environmentModal(0);
+    environmentModal();
   }
 };
 
