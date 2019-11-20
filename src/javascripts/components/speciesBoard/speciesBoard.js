@@ -43,6 +43,7 @@ const buildSpecies = (speciesId) => {
   $('#environments').addClass('hide');
   $('#crew').addClass('hide');
   $('#log').addClass('hide');
+  $('#speciesHome').addClass('hide');
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
       let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
@@ -53,8 +54,8 @@ const buildSpecies = (speciesId) => {
             domString += makeSpecies.makeASpecies(s);
           });
           domString += '</div>';
-          util.printToDom('speciesHome', domString);
-          $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
+          util.printToDom('species', domString);
+          $('#species').on('click', '.delete-species', deleteFromBoard);
           $(document.body).on('click', '#add-new-species', addNewSpecies);
         });
     })
