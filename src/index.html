@@ -47,6 +47,39 @@
   <div id="speciesHome" class="card"></div>
   <div id="logHome" class="card"></div>
   <div id="destinationHome" class="w-100"></div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Species</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="species-name">Species</label>
+              <input type="text" class="form-control" id="species-name" placeholder="Enter Species">
+            </div>
+            <div class="form-group">
+              <label for="species-description">Species Description</label>
+              <input type="text" class="form-control" id="species-description" placeholder="Enter Species Description">
+            </div>
+            <div class="form-group">
+              <label for="species-image">Species Image</label>
+              <input type="text" class="form-control" id="species-image" placeholder="Enter Species Image">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="add-new-species">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div id="environments"></div>
 <div id="crew"></div>

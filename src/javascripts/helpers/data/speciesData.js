@@ -20,4 +20,6 @@ const getAllSpecies = () => new Promise((resolve, reject) => {
 
 const deleteSpecies = (speciesId) => axios.delete(`${baseUrl}/species/${speciesId}.json`);
 
-export default { getAllSpecies, deleteSpecies };
+const addNewSpecies = (newSpecies) => axios.post(`${baseUrl}/species.json`, newSpecies);
+
+export default { getAllSpecies, deleteSpecies, addNewSpecies };
