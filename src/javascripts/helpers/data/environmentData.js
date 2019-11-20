@@ -19,4 +19,6 @@ const getEnvis = () => new Promise((resolve, reject) => {
 
 const deleteEnvis = (id) => axios.delete(`${baseUrl}/environments/${id}.json`);
 
-export default { getEnvis, deleteEnvis };
+const addEnvi = (newEnvironment) => axios.post(`${baseUrl}/environments.json`, newEnvironment);
+
+export default { getEnvis, deleteEnvis, addEnvi };
