@@ -30,11 +30,16 @@ const addEnvironmentModal = () => {
 };
 
 const printEnvironments = () => {
+  $('#crew').addClass('hide');
+  $('#log').addClass('hide');
+  $('#species').addClass('hide');
+  $('#home').addClass('hide');
+  $('#environments').removeClass('hide');
   const uid = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
       let domString = `<h1 class="text-center">Environments</h1>
-      <center><button type="link" class="btn btn-link add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
+      <center><button type="button" class="btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
 <table class="table table-striped">
   <thead class="header">
     <tr>
