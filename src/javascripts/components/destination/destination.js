@@ -18,6 +18,7 @@ const deleteDestinationbyId = (e) => {
     .catch((error) => console.error(error));
 };
 
+
 const destinationBuilderAll = () => {
   destinationdata.getDestinations()
     .then((destinations) => {
