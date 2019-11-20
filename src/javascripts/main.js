@@ -9,6 +9,7 @@ import crewNavbar from './components/navBar/navBar';
 import getDestinations from './components/destination/destination';
 import homeCard from './components/homeCard/homeCard';
 import speciesBoard from './components/speciesBoard/speciesBoard';
+import hide from './helpers/utilities';
 
 
 const init = () => {
@@ -20,6 +21,7 @@ const init = () => {
   getDestinations.destinationLoginStatus();
   homeCard.makeABoard();
   speciesBoard.makeSpeciesBoard();
+  hide.hide();
 };
 
 init();

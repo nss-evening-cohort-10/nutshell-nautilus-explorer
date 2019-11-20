@@ -39,6 +39,8 @@ const buildSpecies = (speciesId) => {
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
       let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">SPECIES</h1>`;
+      domString += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Add Species</button>`;
       domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       speciesData.getAllSpecies(speciesId)
         .then((species) => {
@@ -46,8 +48,9 @@ const buildSpecies = (speciesId) => {
             domString += makeSpecies.makeASpecies(s);
           });
           domString += '</div>';
-          util.printToDom('speciesHome', domString);
-          $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
+          util.printToDom('species', domString);
+          $('#speciesHome').addClass('hide');
+          $('#species').on('click', '.delete-species', deleteFromBoard);
           $(document.body).on('click', '#add-new-species', addNewSpecies);
         });
     })
