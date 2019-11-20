@@ -45,33 +45,33 @@ const addEnvironmentModal = (x) => {
       </div>
       <div class="form-group col-md-6">
         <label for="envi-longitude">Longitude</label>
-        <input type="text" class="form-control" id="envi-longitude" placeholder="Enter Longitude">
+        <input value="${x.longitude ? x.longitude : ''}" type="text" class="form-control" id="envi-longitude" placeholder="Enter Longitude">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="envi-temperature">Temperature</label>
-        <input type="text" class="form-control" id="envi-temperature" placeholder="Enter temperature">
+        <input value="${x.temperature ? x.temperature : ''}" type="text" class="form-control" id="envi-temperature" placeholder="Enter temperature">
       </div>
       <div class="form-group col-md-6">
         <label for="envi-depth">Depth</label>
-        <input type="text" class="form-control" id="envi-depth" placeholder="Enter Depth">
+        <input value="${x.depth ? x.depth : ''}" type="text" class="form-control" id="envi-depth" placeholder="Enter Depth">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="envi-current">Current</label>
-        <input type="text" class="form-control" id="envi-current" placeholder="Enter Current">
+        <input value="${x.current ? x.current : ''}" type="text" class="form-control" id="envi-current" placeholder="Enter Current">
       </div>
       <div class="form-group col-md-6">
         <label for="envi-pressure">Pressure</label>
-        <input type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
+        <input value="${x.pressure ? x.pressure : ''}" type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
       </div>
     </div>
-    <button type="button" class="btn btn-danger btn-block add-envi" id="add-environment">ADD</button>
+    <button type="button" class="btn btn-danger btn-block save-envi" id="save-environment">SAVE</button>
   </form>`;
   utilities.printModal(title, body);
-  $('#add-environment').click('.add-envi', addNewEnvironment);
+  $('#save-environment').click('.add-envi', addNewEnvironment);
 };
 
 const printEnvironments = () => {

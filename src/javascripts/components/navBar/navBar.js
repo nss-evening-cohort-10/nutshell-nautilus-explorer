@@ -19,7 +19,7 @@ const logoutEvent = () => {
 
 $('#navBarBrand').on('click', '.crew', homeCard.buildCrew);
 // $('#navBarBrand').on('click', '.species', printSpecies);
-$('#navBarBrand').on('click', '.destinations', destinations.destinationBuilderAll);
+$('#navBarBrand').on('click', '.desitnations', destinations.destinationBuilderAll);
 // $('#navBarBrand').on('click', '.logs', printLogs);
 $('#navBarBrand').on('click', '.environments', envis.printEnvironments);
 
