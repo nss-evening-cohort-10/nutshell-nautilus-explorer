@@ -14,11 +14,9 @@ const deleteDestinationbyId = (e) => {
       // eslint-disable-next-line no-use-before-define
       destinationBuilderAll();
       // eslint-disable-next-line no-use-before-define
-      // destinationLoginStatus();
     })
     .catch((error) => console.error(error));
 };
-
 
 const destinationBuilderAll = () => {
   destinationdata.getDestinations()
@@ -45,12 +43,42 @@ const destinationBuilderAll = () => {
     </tr>`;
       });
       domString += '</tbody></table>';
-      utilities.printToDom('destinationHome', domString);
-      $('#destinationHome').on('click', '.deletes-destination', deleteDestinationbyId);
+      utilities.printToDom('destinations', domString);
+      $('#destinations').on('click', '.deletes-destination', deleteDestinationbyId);
+      $('#destinationHome').addClass('hide');
     })
     .catch((error) => console.error(error));
 };
 
+const destinationBuilderHome = () => {
+  destinationdata.getDestinations()
+    .then((destinations) => {
+      let domString = `<h1 class="text-center">Destinations</h1>
+      <td><button type="link" class="btn btn-ink  viewAll-destination" id="viewAll">View All</button> 
+        <table class="table table-striped">
+        <thead class="header">
+          <tr>
+            <th scope="col">Location Name</th>
+            <th scope="col">Entry Port</th>
+            <th scope="col">Description</th>
+            <th scope="col">Additional Information</th>
+          </tr>
+        </thead>
+        <tbody>`;
+      destinations.forEach((destination) => {
+        domString += `<tr>
+      <th scope="row">${destination.name}</th>
+      <td>${destination.port}</td>
+      <td>${destination.description}</td>
+      <td><a href=${destination.destinationLink}">${destination.name} Links</a></td>
+    </tr>`;
+      });
+      domString += '</tbody></table>';
+      utilities.printToDom('destinationHome', domString);
+      $('#destinationHome').on('click', '.viewAll-destination', destinationBuilderAll);
+    })
+    .catch((error) => console.error(error));
+};
 
 const destinationLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -62,7 +90,7 @@ const destinationLoginStatus = () => {
       $('.deletes-destination').addClass('hide');
     }
   });
-  destinationBuilderAll();
+  // destinationBuilderAll();
 };
 
-export default { destinationBuilderAll, destinationLoginStatus };
+export default { destinationBuilderAll, destinationLoginStatus, destinationBuilderHome };
