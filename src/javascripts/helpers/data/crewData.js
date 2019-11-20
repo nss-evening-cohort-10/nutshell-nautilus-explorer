@@ -19,5 +19,6 @@ const getCrew = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const deleteCrew = (crewId) => axios.delete(`${baseUrl}/crew/${crewId}.json`);
 
-export default { getCrew };
+export default { getCrew, deleteCrew };

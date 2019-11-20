@@ -4,18 +4,31 @@ import crewData from '../../helpers/data/crewData';
 import crewCard from '../crewCard/crewCard';
 
 
+const deleteCrewBoard = (e) => {
+  e.preventDefault();
+  const boardId = $('.crewBoard')[0].id;
+  const crewId = e.target.id;
+  crewData.deleteCrew(crewId)
+    .then(() => {
+      console.error(boardId);
+      // eslint-disable-next-line no-use-before-define
+      buildCrew(boardId);
+    })
+    .catch((error) => console.error(error));
+};
+
+
 const buildCrew = () => {
   crewData.getCrew()
     .then((crew) => {
-      console.log('the boards', crew);
-      let domString = '<div id="boardSection" class="d-flex flex-wrap">';
+      let domString = '<div id="boardSection" class="d-flex flex-wrap crewBoard">';
       crew.forEach((board) => {
-        console.log('the boards', board);
         domString += crewCard.makeCrewBoards(board);
       });
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#crewHome').addClass('hide');
+      $('#crewHome').on('click', '.deleteBoard', deleteCrewBoard);
     })
     .catch((error) => console.error(error));
 };
