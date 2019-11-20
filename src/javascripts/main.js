@@ -17,8 +17,8 @@ const init = () => {
   auth.signMeIn();
   authData.checkLoginStatus();
   crewNavbar.logoutEvent();
-  getDestinations.destinationBuilderAll();
   getDestinations.destinationLoginStatus();
+  getDestinations.destinationBuilderHome();
   homeCard.makeABoard();
   speciesBoard.makeSpeciesBoard();
   hide.hide();
