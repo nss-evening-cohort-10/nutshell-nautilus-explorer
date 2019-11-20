@@ -6,7 +6,10 @@ import authData from './helpers/data/authData';
 import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
 import crewNavbar from './components/navBar/navBar';
+<<<<<<< HEAD
 import homeCard from './components/homeCard/homeCard';
+=======
+>>>>>>> master
 import speciesBoard from './components/speciesBoard/speciesBoard';
 
 
