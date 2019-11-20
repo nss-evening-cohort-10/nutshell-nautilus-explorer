@@ -16,11 +16,25 @@ const deleteEnvironment = (e) => {
     .catch((error) => console.error(error));
 };
 
+const addEnvironmentModal = () => {
+  const title = 'Add Environment';
+  const body = `<form>
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <input type="text" class="form-control" id="userName" placeholder="Enter User Name">
+    </div>
+    <button type="button" class="btn btn-danger add-envi" id="add-environment">ADD</button>
+  </form>`;
+  utilities.printModal(title, body);
+  $('#uniModal').click(enviData.addEnvironment);
+};
+
 const printEnvironments = () => {
   const uid = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
       let domString = `<h1 class="text-center">Environments</h1>
+      <center><button type="link" class="btn btn-link add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
 <table class="table table-striped">
   <thead class="header">
     <tr>
@@ -54,6 +68,7 @@ const printEnvironments = () => {
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
       // $('#environments').on('click', 'edit-environments', editEnvironment);
+      $('#environments').on('click', '.add-envi-modal', addEnvironmentModal);
     })
     .catch((error) => console.error(error));
 };
