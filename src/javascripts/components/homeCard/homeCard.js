@@ -3,11 +3,29 @@ import utilities from '../../helpers/utilities';
 import crewData from '../../helpers/data/crewData';
 import crewCard from '../crewCard/crewCard';
 
+const addCrew = (e) => {
+  e.stopImmediatePropagation();
+  const newCrewMember = {
+    name: $('#crewName').val(),
+    boardImg: $('#boardImg').val(),
+    profileImg: $('#crewPosition').val(),
+    quote: $('#crewQuote').val(),
+  };
+  console.log(newCrewMember);
+  crewData.addCrew(newCrewMember)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildCrew();
+    })
+    .catch((error) => console.log(error));
+};
 
 const deleteCrewBoard = (e) => {
   e.preventDefault();
   const boardId = $('.crewBoard')[0].id;
   const crewId = e.target.id;
+  console.log(crewId);
   crewData.deleteCrew(crewId)
     .then(() => {
       console.error(boardId);
@@ -22,13 +40,17 @@ const buildCrew = () => {
   crewData.getCrew()
     .then((crew) => {
       let domString = '<div id="boardSection" class="d-flex flex-wrap crewBoard">';
+      domString = `<div class="container text-center" style="padding:50px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+      Add Crew
+    </button>`;
       crew.forEach((board) => {
         domString += crewCard.makeCrewBoards(board);
       });
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#crewHome').addClass('hide');
-      $('#crewHome').on('click', '.deleteBoard', deleteCrewBoard);
+      $('body').on('click', '.deleteCrew', deleteCrewBoard);
+      $('#addNewBoardBtn').click(addCrew);
     })
     .catch((error) => console.error(error));
 };
