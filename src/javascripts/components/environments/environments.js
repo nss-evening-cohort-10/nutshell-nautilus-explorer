@@ -16,31 +16,73 @@ const deleteEnvironment = (e) => {
     .catch((error) => console.error(error));
 };
 
+const addNewEnvironment = (e) => {
+  e.stopImmediatePropagation();
+  const newEnvironment = {
+    latitude: $('#envi-latitude').val(),
+    longitude: $('#envi-longitude').val(),
+    temperature: $('#envi-temperature').val(),
+    depth: $('#envi-depth').val(),
+    current: $('#envi-current').val(),
+    pressure: $('#envi-pressure').val(),
+  };
+  enviData.addEnvi(newEnvironment)
+    .then(() => {
+      $('#uniModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      printEnvironments();
+    })
+    .catch((error) => console.error(error));
+};
+
 const addEnvironmentModal = () => {
   const title = 'Add Environment';
   const body = `<form>
-    <div class="form-group">
-      <label for="userName">User Name</label>
-      <input type="text" class="form-control" id="userName" placeholder="Enter User Name">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="envi-latitude">Latitude</label>
+        <input type="text" class="form-control" id="envi-latitude" placeholder="Enter Latitude">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="envi-longitude">Longitude</label>
+        <input type="text" class="form-control" id="envi-longitude" placeholder="Enter Longitude">
+      </div>
     </div>
-    <button type="button" class="btn btn-danger add-envi" id="add-environment">ADD</button>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="envi-temperature">Temperature</label>
+        <input type="text" class="form-control" id="envi-temperature" placeholder="Enter temperature">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="envi-depth">Depth</label>
+        <input type="text" class="form-control" id="envi-depth" placeholder="Enter Depth">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="envi-current">Current</label>
+        <input type="text" class="form-control" id="envi-current" placeholder="Enter Current">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="envi-pressure">Pressure</label>
+        <input type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
+      </div>
+    </div>
+    <button type="button" class="btn btn-danger btn-block add-envi" id="add-environment">ADD</button>
   </form>`;
   utilities.printModal(title, body);
-  $('#uniModal').click(enviData.addEnvironment);
+  $('#add-environment').click('.add-envi', addNewEnvironment);
 };
 
 const printEnvironments = () => {
-  $('#crew').addClass('hide');
-  $('#log').addClass('hide');
-  $('#species').addClass('hide');
-  $('#home').addClass('hide');
-  $('#environments').removeClass('hide');
   const uid = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
-      let domString = `<h1 class="text-center">Environments</h1>
-      <center><button type="button" class="btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
-<table class="table table-striped">
+      let domString = `<div class="container py-5">
+      <h1 class="text-center  my-2">Environments</h1>
+      <center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="userName">ADD ENVIRONMENT</button></center>
+
+<table class="table table-striped rounded-lg">
   <thead class="header">
     <tr>
       <th scope="col">Latitude</th>
@@ -69,7 +111,7 @@ const printEnvironments = () => {
         }
         domString += '</tr>';
       });
-      domString += '</tbody></table>';
+      domString += '</tbody></table></div>';
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
       // $('#environments').on('click', 'edit-environments', editEnvironment);
