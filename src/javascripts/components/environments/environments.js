@@ -116,34 +116,35 @@ const printEnvironments = () => {
   enviData.getEnvis()
     .then((environments) => {
       let domString = `<div class="container py-5">
-      <h1 class="text-center  my-2">Environments</h1>
-      <center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>
-
-<table class="table table-striped rounded-lg">
-  <thead class="header">
-    <tr>
-      <th scope="col">Latitude</th>
-      <th scope="col">Longitude</th>
-      <th scope="col">Temperature</th>
-      <th scope="col">Depth</th>
-      <th scope="col">Current</th>
-      <th scope="col">Pressure</th>`;
+                        <h1 class="text-center  my-2">Environments</h1>`;
+      if (uid) {
+        domString += '<center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>';
+      }
+      domString += `<table class="table table-striped rounded-lg">
+                      <thead class="header">
+                        <tr>
+                          <th scope="col">Latitude</th>
+                          <th scope="col">Longitude</th>
+                          <th scope="col">Temperature</th>
+                          <th scope="col">Depth</th>
+                          <th scope="col">Current</th>
+                          <th scope="col">Pressure</th>`;
       if (uid) {
         domString += '<th scope="col">Edit | Delete</th>';
       }
       domString += `</tr>
-  </thead>
-  <tbody>`;
+                  </thead>
+                <tbody>`;
       environments.forEach((envi) => {
         domString += `<tr>
-      <td>${envi.latitude}</td>
-      <td>${envi.longitude}</td>
-      <td>${envi.temperature}</td>
-      <td>${envi.depth}</td>
-      <td>${envi.current}</td>
-      <td>${envi.pressure}</td>`;
+                        <td>${envi.latitude}</td>
+                        <td>${envi.longitude}</td>
+                        <td>${envi.temperature}</td>
+                        <td>${envi.depth}</td>
+                        <td>${envi.current}</td>
+                        <td>${envi.pressure}</td>`;
         if (uid) {
-          domString += `<td><button type="link" class="btn btn-link edit-environment" id="edit-${envi.id}">EDIT</button> |
+          domString += `<td><button class="btn btn-link edit-environment" id="edit-${envi.id}">EDIT</button> |
         <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
         }
         domString += '</tr>';
@@ -151,7 +152,7 @@ const printEnvironments = () => {
       domString += '</tbody></table></div>';
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
-      $('#environments').click(checkAction);
+      $('.edit-environment').click(checkAction);
       $('#addEnvi').click(checkAction);
     })
     .catch((error) => console.error(error));
