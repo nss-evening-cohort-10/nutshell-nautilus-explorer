@@ -3,19 +3,50 @@ import utilities from '../../helpers/utilities';
 import crewData from '../../helpers/data/crewData';
 import crewCard from '../crewCard/crewCard';
 
+const addCrew = (e) => {
+  e.stopImmediatePropagation();
+  const newCrewMember = {
+    name: $('#crewName').val(),
+    boardImg: $('#boardImg').val(),
+    profileImg: $('#crewPosition').val(),
+    quote: $('#crewQuote').val(),
+  };
+  crewData.addCrew(newCrewMember)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildCrew();
+    })
+    .catch((error) => console.log(error));
+};
+
+const deleteCrewBoard = (e) => {
+  e.preventDefault();
+  const crewId = e.target.id;
+  crewData.deleteCrew(crewId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildCrew();
+    })
+    .catch((error) => console.error(error));
+};
+
 
 const buildCrew = () => {
   crewData.getCrew()
     .then((crew) => {
-      console.log('the boards', crew);
-      let domString = '<div id="boardSection" class="d-flex flex-wrap">';
+      let domString = '<div id="boardSection" class="d-flex flex-wrap crewBoard">';
+      domString = `<div class="container text-center" style="padding:50px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+      Add Crew
+    </button>`;
       crew.forEach((board) => {
-        console.log('the boards', board);
         domString += crewCard.makeCrewBoards(board);
       });
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#crewHome').addClass('hide');
+      $('body').on('click', '.deleteCrew', deleteCrewBoard);
+      $('#addNewBoardBtn').click(addCrew);
     })
     .catch((error) => console.error(error));
 };
