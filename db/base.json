@@ -4,5 +4,5 @@
   "logs": "blah3",
   "destinations": "blah4",
   "environments": "blah5",
-  "species_environments": "blah6"
+  "speciesEnvironments": "blah6"
 }
