@@ -3,6 +3,7 @@ import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
 import makeSpecies from '../species/species';
 
+
 const deleteFromBoard = (e) => {
   e.preventDefault();
   const boardId = $('.board-header')[0].id;
@@ -34,6 +35,24 @@ const addNewSpecies = (e) => {
     .catch((error) => console.error(error));
 };
 
+const editedSpecies = (e) => {
+  e.stopImmediatePropagation();
+  const editedSpeciesId = e.target.parentNode.id;
+  const updatedSpecies = {
+    speciesId: `${editedSpeciesId}`,
+    name: $('#name').val(),
+    image: $('#image').val(),
+    description: $('#description').val(),
+  };
+  speciesData.updateSpecies(editedSpeciesId, updatedSpecies)
+    .then(() => {
+      $('#edSpecies').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildSpecies();
+    })
+    .catch((error) => console.error(error));
+};
+
 
 const buildSpecies = (speciesId) => {
   $('#welcome').addClass('hide');
@@ -43,6 +62,7 @@ const buildSpecies = (speciesId) => {
   $('#environments').addClass('hide');
   $('#crew').addClass('hide');
   $('#log').addClass('hide');
+  $('#speciesHome').addClass('hide');
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
       let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
@@ -53,9 +73,10 @@ const buildSpecies = (speciesId) => {
             domString += makeSpecies.makeASpecies(s);
           });
           domString += '</div>';
-          util.printToDom('speciesHome', domString);
-          $('#speciesHome').on('click', '.delete-species', deleteFromBoard);
+          util.printToDom('species', domString);
+          $('#species').on('click', '.delete-species', deleteFromBoard);
           $(document.body).on('click', '#add-new-species', addNewSpecies);
+          $(document.body).on('click', '#update-species', editedSpecies);
         });
     })
     .catch((error) => console.error(error));
@@ -70,7 +91,7 @@ const buildSpecies = (speciesId) => {
 
 const makeSpeciesBoard = () => {
   const domString = `<div class="card">
-  <h5 class="card-title text-center card-title">Review Species</h5>
+  <h5 class="card-title text-center card-title">View Species</h5>
   <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
   <div class="card-body text-center">
     <button type="button" class="btn btn-danger btn-lg view-species">View</button>
