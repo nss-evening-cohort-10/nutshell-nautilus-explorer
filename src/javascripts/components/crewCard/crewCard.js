@@ -8,8 +8,8 @@ const makeCrewBoards = (crew) => {
         <div class="card-body">
           <p class="deleteCrew">${crew.position}</p>
           <p class="deleteCrew">Favorite Quote: ${crew.quote}</p>
-          <button type="button" class="btn btn-link deleteCrew" id="${crew.id}">Delete</button>
-          <button type="button" class="btn btn-link editCrew" id="${crew.id}">Edit</button>
+          <button type="button" class="btn btn-link deleteCrew" id="delete-${crew.id}">Delete</button>
+          <button type="button" class="btn btn-link editCrew" id="edit-${crew.id}" data-toggle="modal" data-target="#crewUpdateModal">Edit</button>
         </div>
     </div>
     `;

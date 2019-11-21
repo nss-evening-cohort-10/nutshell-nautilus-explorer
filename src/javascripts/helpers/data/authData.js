@@ -10,7 +10,6 @@ const checkLoginStatus = () => {
     } else {
       $('#navbar-button-logout').addClass('hide');
       $('#navbar-button-login').removeClass('hide');
-      $('.crewHomeBtn').removeClass('crewHomeBtn');
     }
   });
 };

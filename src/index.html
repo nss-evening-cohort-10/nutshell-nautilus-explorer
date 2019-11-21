@@ -83,19 +83,20 @@
 </div>
 
 
-<!-- CREW MODAL ---------------------------------->
 <div id="environments"></div>
 <div id="destinations" class="w-100"></div>
+
 <div id="crew"></div>
-  <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New Crew Member</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+  <!-- Crew Add Modal -------------------------->
+  <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="crewModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="crewModalLabel">Add New Crew Member</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
@@ -118,20 +119,18 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="addNewBoardBtn">Save changes</button>
+            <button type="button" class="btn btn-primary" id="addNewBoardBtn">Add Crew Member</button>
           </div>
         </div>
       </div>
     </div>
 
-
     <!-- Crew Update Modal --------------------->
-
-    <div class="modal fade" id="crewUpdateModal" tabindex="-1" role="dialog" aria-labelledby="crewUpdateModal" aria-hidden="true">
+    <div class="modal fade" id="crewUpdateModal" tabindex="-1" role="dialog" aria-labelledby="crewUpdateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Update Crew</h5>
+              <h5 class="modal-title" id="crewUpdateModalLabel">Update Crew</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -158,15 +157,14 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary updateCrew">Update Crew</button>
+              <button id="updateCrew" type="button" class="btn btn-primary">Update Crew</button>
             </div>
           </div>
         </div>
       </div>
+  <!-- Other Divs ---------------------------->
 
-    <!-- Other Divs ---------------------------->
-
-<h1 id="welcome">Welcome Capt. Nemo!</h1>
+  <h1 id="welcome">Welcome Capt. Nemo!</h1>
   <div id="auth"></div>
   <div id="home" class="d-flex flex-wrap container-fluid justify-content-between">
     <div id="crewHome" class="card"></div>
@@ -177,7 +175,7 @@
   </div>
   <div id="destinations"></div>
   <div id="environments" class=""></div>
-  <div id="crew" class=""></div>
+  <!-- <div id="crew" class=""></div> -->
   <div id="species" class=""></div>
   <div id="log" class=""></div>
 </body>
