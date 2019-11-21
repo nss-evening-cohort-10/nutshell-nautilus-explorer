@@ -8,7 +8,6 @@ const getCrew = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/crew.json`)
     .then((response) => {
       const theCrew = response.data;
-      console.log(theCrew);
       const crew = [];
       Object.keys(theCrew).forEach((fbId) => {
         theCrew[fbId].id = fbId;
@@ -19,13 +18,30 @@ const getCrew = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getCrewById = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/crew/${id}.json`)
+    .then((response) => {
+      const crewMember = response.data;
+      resolve(crewMember);
+    })
+    .catch((error) => reject(error));
+});
+
 const addCrew = (newCrew) => axios.post(`${baseUrl}/crew.json`, newCrew);
+
 const deleteCrew = (crewId) => axios.delete(`${baseUrl}/crew/${crewId}.json`);
 
-const updateCrew = (crewId, updatedCrew) => axios.put(`${baseUrl}/planes/${crewId}.json`, updatedCrew);
+const updateCrew = (crewId, updatedCrew) => new Promise((resolve, reject) => {
+  axios.put(`${baseUrl}/crew/${crewId}.json`, updatedCrew)
+    .then(() => {
+      resolve();
+    })
+    .catch((error) => reject(error));
+});
 
 export default {
   getCrew,
+  getCrewById,
   deleteCrew,
   addCrew,
   updateCrew,
