@@ -29,7 +29,7 @@
   <div id="environments"></div>
   <div id="destinations" class="w-100"></div>
 
-<!--Enviroments Modal -->
+<!--Start Add Enviroments Modal -->
 <div class="modal fade" id="addEnvironmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -75,6 +75,57 @@
   </div>
 </div>
 </div>
+<!--End add environment modal-->
+
+<!--Start update environment modal-->
+
+<div class="modal fade" id="updateEnvironmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Environment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="update-environment-latitude">Latitude</label>
+            <input type="text" class="form-control" id="update-environment-latitude" placeholder="Enter Latitude">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-longitude">Longitude</label>
+            <input type="text" class="form-control" id="update-environment-longitude" placeholder="Enter Longitude">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-temperature">Temperature</label>
+            <input type="text" class="form-control" id="update-environment-temperature" placeholder="Enter Temperature">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-depth">Depth</label>
+            <input type="text" class="form-control" id="update-environment-depth" placeholder="Enter Depth">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-current">Current</label>
+            <input type="text" class="form-control" id="update-environment-current" placeholder="Enter Current">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-pressure">Pressure</label>
+            <input type="text" class="form-control" id="update-environment-pressure" placeholder="Enter Pressure">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary update-environment">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End update environment modal-->
 
 
 <!-- Species Modal ------------------------------->

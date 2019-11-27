@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -34,6 +35,45 @@ const addNewEnvironment = (e) => {
     })
     .catch((error) => console.error(error));
 };
+const getPreFilledModal = (event) => {
+  const environmentId = event.target.id.split('update-')[1];
+  console.log('environmentIdfilled', environmentId);
+  enviData.getEnvironmentById(environmentId)
+    .then((response) => {
+      console.log('response', response);
+      $('#updateEnvironmentModal').modal('show');
+      const environment = response.data;
+      $('#update-environment-latitude').val(environment.latitude);
+      $('#update-environment-longitude').val(environment.longitude);
+      $('#update-environment-temperature').val(environment.temperature);
+      $('#update-environment-depth').val(environment.depth);
+      $('#update-environment-current').val(environment.current);
+      $('#update-environment-pressure').val(environment.pressure);
+      $('.update-environment').attr('id', environmentId);
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateCurrentEnvironment = (event) => {
+  event.stopImmediatePropagation();
+  const environmentId = event.target.id;
+  console.log('environmentId', environmentId);
+  const updatedEnvironment = {
+    latitude: $('#update-environment-latitude').val(),
+    longitude: $('#update-environment-longitude').val(),
+    temperature: $('#update-environment-temperature').val(),
+    depth: $('#update-environment-depth').val(),
+    current: $('#update-environment-current').val(),
+    pressure: $('#update-environment-pressure').val(),
+  };
+  enviData.updateEnvironment(environmentId, updatedEnvironment)
+    .then(() => {
+      $('#updateEnvironmentModal').modal('hide');
+      printEnvironments();
+    })
+    .catch((error) => console.error(error));
+};
+
 
 const printEnvironments = () => {
   const userSignedIn = firebase.auth().currentUser;
@@ -43,7 +83,7 @@ const printEnvironments = () => {
       if (userSignedIn) {
         domString = `<div class="container py-5">
                         <h1 class="text-center  my-2">Environments</h1>`;
-        domString += `<center><button type="button" id="addEnvironmentButton" class="btn btn-primary" data-toggle="modal" data-target="#addEnvironmentModal">
+        domString += `<center><button type="button" id="addEnvironmentButton" class="btn btn-outline-primary" data-toggle="modal" data-target="#addEnvironmentModal">
         Add Environment
       </button></center>`;
       } else {
@@ -72,8 +112,10 @@ const printEnvironments = () => {
                         <td>${envi.depth}</td>
                         <td>${envi.current}</td>
                         <td>${envi.pressure}</td>`;
-          domString += `<td><button class="btn btn-link edit-environment" id="edit-${envi.id}">EDIT</button> |
-        <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
+          domString += `<td><button type="button" class="btn btn-outline-primary updateEnvironment" id="update-${envi.id}" data-toggle="modal" data-target="#updateEnvironmentModal">
+          Update Environment
+        </button> |
+        <button type="link" class="btn btn-outline-danger delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
           domString += '</tr>';
         } else {
           domString += `<tr>
@@ -90,6 +132,8 @@ const printEnvironments = () => {
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
       $('#add-new-environment').click(addNewEnvironment);
+      $('.updateEnvironment').click(getPreFilledModal);
+      $('.update-environment').click(updateCurrentEnvironment);
     })
     .catch((error) => console.error(error));
 };

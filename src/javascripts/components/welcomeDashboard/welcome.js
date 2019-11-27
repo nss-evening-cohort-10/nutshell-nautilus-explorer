@@ -4,7 +4,7 @@ import crew from '../homeCard/homeCard';
 import './welcome.scss';
 import destination from '../destination/destination';
 import species from '../speciesBoard/speciesBoard';
-import environments from '../environments/environments';
+import envi from '../environments/environments';
 
 const buildTheDashboard = (boardArray) => {
   let domString = '<div class="d-flex flex-wrap justify-content-around">';
@@ -36,7 +36,7 @@ const buildTheDashboard = (boardArray) => {
     $('#species').removeClass('hide');
   });
   $('body').on('click', '#Environments-button', () => {
-    environments.printEnvironments();
+    envi.printEnvironments();
     $('#welcome').addClass('hide');
     $('#environments').removeClass('hide');
   });
