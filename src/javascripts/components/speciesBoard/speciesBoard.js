@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import $ from 'jquery';
 import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
@@ -54,19 +56,18 @@ const editedSpecies = (e) => {
 
 
 const buildSpecies = (speciesId) => {
-  $('#welcome').addClass('hide');
-  $('#crewHome').addClass('hide');
-  $('#logHome').addClass('hide');
-  $('#destinationHome').addClass('hide');
-  $('#environments').addClass('hide');
-  $('#crew').addClass('hide');
-  $('#log').addClass('hide');
-  $('#speciesHome').addClass('hide');
+  const userSignedIn = firebase.auth().currentUser;
   speciesData.getAllSpecies(speciesId)
     .then((speciesBoard) => {
-      let domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
-      domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Species</button>';
-      domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
+      let domString = '';
+      if (userSignedIn) {
+        domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
+        domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Species</button>';
+        domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
+      } else {
+        domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
+        domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
+      }
       speciesData.getAllSpecies(speciesId)
         .then((species) => {
           species.forEach((s) => {
@@ -82,13 +83,6 @@ const buildSpecies = (speciesId) => {
     .catch((error) => console.error(error));
 };
 
-// const goToBoard = (e) => {
-//   e.stopImmediatePropagation();
-//   const boardId = e.target.id.split('view-')[1];
-//   buildSpecies(boardId);
-// };
-
-
 const makeSpeciesBoard = () => {
   const domString = `<div class="card">
   <h5 class="card-title text-center card-title">View Species</h5>
@@ -99,7 +93,6 @@ const makeSpeciesBoard = () => {
   </div>
   `;
   util.printToDom('speciesHome', domString);
-  $('#speciesHome').on('click', '.view-species', buildSpecies);
 };
 
-export default { makeSpeciesBoard };
+export default { makeSpeciesBoard, buildSpecies };

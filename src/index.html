@@ -12,29 +12,7 @@
   <div id="navBarBrand">
     <nav class="navbar navbar-expand-lg navbar-light navbar-container">
       <div class="align-left">
-        <a class="navbar-brand" href="/"><img src="assets//images/BrandLogo.png" height="50" class="d-inline-block align-top"><span class="sr-only">(current)</span></a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link crew" href="#">Crew</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link species" href="#">Species</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link destinations" href="#">Destinations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link logs" href="#">Logs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link environments" href="#">Environments</a>
-          </li>
-        </ul>
+        <a class="navbar-brand" href="index.html"><img src="assets//images/BrandLogo.png" height="50" class="d-inline-block align-top"><span class="sr-only">(current)</span></a>
       </div>
       <div class="mr-lg">
         <button class="btn btn-primary" id="navbar-button-login">Login</button>
@@ -43,8 +21,111 @@
     </nav>
   </div>
 
-<!--Enviroments Modal -->
-<div class="modal fade" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true"></div>
+  <div id="welcome" class="d-flex justify-content-around"></div>
+  <div id="auth"></div>
+  <div id="species"></div>
+  <div id="crew"></div>
+  <div id="log"></div>
+  <div id="environments"></div>
+  <div id="destinations" class="w-100"></div>
+
+<!--Start Add Enviroments Modal -->
+<div class="modal fade" id="addEnvironmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Environment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="environment-latitude">Latitude</label>
+            <input type="text" class="form-control" id="environment-latitude" placeholder="Enter Latitude">
+          </div>
+          <div class="form-group">
+            <label for="environment-longitude">Longitude</label>
+            <input type="text" class="form-control" id="environment-longitude" placeholder="Enter Longitude">
+          </div>
+          <div class="form-group">
+            <label for="environment-temperature">Temperature</label>
+            <input type="text" class="form-control" id="environment-temperature" placeholder="Enter Temperature">
+          </div>
+          <div class="form-group">
+            <label for="environment-depth">Depth</label>
+            <input type="text" class="form-control" id="environment-depth" placeholder="Enter Depth">
+          </div>
+          <div class="form-group">
+            <label for="environment-current">Current</label>
+            <input type="text" class="form-control" id="environment-current" placeholder="Enter Current">
+          </div>
+          <div class="form-group">
+            <label for="environment-pressure">Pressure</label>
+            <input type="text" class="form-control" id="environment-pressure" placeholder="Enter Pressure">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-new-environment">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--End add environment modal-->
+
+<!--Start update environment modal-->
+
+<div class="modal fade" id="updateEnvironmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Environment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="update-environment-latitude">Latitude</label>
+            <input type="text" class="form-control" id="update-environment-latitude" placeholder="Enter Latitude">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-longitude">Longitude</label>
+            <input type="text" class="form-control" id="update-environment-longitude" placeholder="Enter Longitude">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-temperature">Temperature</label>
+            <input type="text" class="form-control" id="update-environment-temperature" placeholder="Enter Temperature">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-depth">Depth</label>
+            <input type="text" class="form-control" id="update-environment-depth" placeholder="Enter Depth">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-current">Current</label>
+            <input type="text" class="form-control" id="update-environment-current" placeholder="Enter Current">
+          </div>
+          <div class="form-group">
+            <label for="update-environment-pressure">Pressure</label>
+            <input type="text" class="form-control" id="update-environment-pressure" placeholder="Enter Pressure">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary update-environment">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End update environment modal-->
 
 
 <!-- Species Modal ------------------------------->
@@ -82,11 +163,6 @@
   </div>
 </div>
 
-
-<div id="environments"></div>
-<div id="destinations" class="w-100"></div>
-
-<div id="crew"></div>
   <!-- Crew Add Modal -------------------------->
   <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="crewModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -164,21 +240,5 @@
       </div>
   <!-- Other Divs ---------------------------->
 
-  <h1 id="welcome">Welcome Capt. Nemo!</h1>
-  <div id="auth"></div>
-  <div id="logHome" class="card"></div>
-  <div id="home" class="d-flex flex-wrap container-fluid justify-content-between">
-    <div id="crewHome" class="card"></div>
-    <div id="speciesHome" class="card"></div>
-    
-    <div id="destinationHome" class="w-100">
-
-  </div>
-  <div id="destinations"></div>
-  <div id="environments" class=""></div>
-  <!-- <div id="crew" class=""></div> -->
-  <div id="species" class=""></div>
-  <div id="log" class=""></div>
-  
 </body>
 </html>

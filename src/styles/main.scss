@@ -1,10 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 body {
-    width: 100vw;
-    height: 100vh;
     background-image: url(https://images.unsplash.com/photo-1510297895683-0f27794412d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
     background-position: center;
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
 }
 
@@ -24,45 +22,14 @@ body {
     margin-top: 1p;
 }
 
-align-right{
-    display: flex;
-    btn{
-        align-content: flex-end;
-    }
+#hello {
+    padding: 30px;
 }
 
-#navbar-button-logout{
-    justify-content: end;
+.mr-lg {
+    margin-left: auto;
 }
 
-#speciesImg{
-    width: 450px;
-    height: 288px;
-}
-
-#welcome{
-    text-align: center;
-    color: rgba(0, 0, 0, 0.7);
-    margin: 50px 0px;
-    font-size: 50px;
-}
-
-.card-title{
-    margin: 10px 0px;
-    // font-weight: bold;
-    // font-size: 20px;
-}
-#destinationHome {
-    margin-top: 50px;
-}
-
-#crew-section{
-    padding-right: 10px;
-}
-
-#crewSpace{
-    margin-bottom: 50px;
-}
 
 .deleteCrew, 
 .editCrew{

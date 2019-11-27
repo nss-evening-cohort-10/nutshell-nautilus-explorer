@@ -19,9 +19,15 @@ const deleteDestinationbyId = (e) => {
 };
 
 const destinationBuilderAll = () => {
+  const userSignedIn = firebase.auth().currentUser;
   destinationdata.getDestinations()
     .then((destinations) => {
-      let domString = `<h1 class="text-center">Destinations</h1>
+      let domString = '';
+      if (userSignedIn) {
+        domString = `<h1 class="text-center">Destinations</h1>
+        <button id="destinationAdd" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#destinationModal">
+        Add Destination
+        </button>
         <table class="table table-striped">
         <thead class="header">
           <tr>
@@ -32,8 +38,22 @@ const destinationBuilderAll = () => {
           </tr>
         </thead>
         <tbody>`;
+      } else {
+        domString = `<h1 class="text-center">Destinations</h1>
+        <table class="table table-striped">
+        <thead class="header">
+          <tr>
+            <th scope="col">Location Name</th>
+            <th scope="col">Entry Port</th>
+            <th scope="col">Description</th>
+            <th scope="col">Additional Information</th>
+          </tr>
+        </thead>
+        <tbody>`;
+      }
       destinations.forEach((destination) => {
-        domString += `<tr>
+        if (userSignedIn) {
+          domString += `<tr>
       <th scope="row">${destination.name}</th>
       <td>${destination.port}</td>
       <td>${destination.description}</td>
@@ -41,6 +61,14 @@ const destinationBuilderAll = () => {
       <td><button type="link" class="btn btn-ink  edit-destination" id="edit-${destination.id}">EDIT</button> 
         <button type="link" class="btn btn-link  deletes-destination" id="delete-${destination.id}">DELETE</button></td>
     </tr>`;
+        } else {
+          domString += `<tr>
+      <th scope="row">${destination.name}</th>
+      <td>${destination.port}</td>
+      <td>${destination.description}</td>
+      <td><a href=${destination.destinationLink}">${destination.name} Links</a></td>
+    </tr>`;
+        }
       });
       domString += '</tbody></table>';
       utilities.printToDom('destinations', domString);
@@ -51,10 +79,16 @@ const destinationBuilderAll = () => {
 };
 
 const destinationBuilderHome = () => {
+  const userSignedIn = firebase.auth().currentUser;
   destinationdata.getDestinations()
     .then((destinations) => {
-      let domString = `<h1 class="text-center" id="welcome">Destinations</h1>
-      <td><button type="link" class="btn btn-ink  viewAll-destination" id="viewAll">View All</button> 
+      let domString = '';
+      if (userSignedIn) {
+        domString = `<h1 class="text-center" id="welcome">Destinations</h1>
+    <button id="destinationAdd" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#destinationModal">
+      Add Destination
+    </button>
+    <td>
         <table class="table table-striped">
         <thead class="header">
           <tr>
@@ -65,6 +99,20 @@ const destinationBuilderHome = () => {
           </tr>
         </thead>
         <tbody>`;
+      } else {
+        domString = `<h1 class="text-center" id="welcome">Destinations</h1>
+        <td>
+          <table class="table table-striped">
+          <thead class="header">
+            <tr>
+              <th scope="col">Location Name</th>
+              <th scope="col">Entry Port</th>
+              <th scope="col">Description</th>
+              <th scope="col">Additional Information</th>
+            </tr>
+          </thead>
+          <tbody>`;
+      }
       destinations.forEach((destination) => {
         domString += `<tr>
       <th scope="row">${destination.name}</th>
@@ -80,17 +128,4 @@ const destinationBuilderHome = () => {
     .catch((error) => console.error(error));
 };
 
-const destinationLoginStatus = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      $('.edit-destination').removeClass('hide');
-      $('.deletes-destination').removeClass('hide');
-    } else {
-      $('.edit-destination').addClass('hide');
-      $('.deletes-destination').addClass('hide');
-    }
-  });
-  // destinationBuilderAll();
-};
-
-export default { destinationBuilderAll, destinationLoginStatus, destinationBuilderHome };
+export default { destinationBuilderAll, destinationBuilderHome };

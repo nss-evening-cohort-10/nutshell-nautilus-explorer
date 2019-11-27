@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -19,108 +20,78 @@ const deleteEnvironment = (e) => {
 const addNewEnvironment = (e) => {
   e.stopImmediatePropagation();
   const newEnvironment = {
-    latitude: $('#envi-latitude').val(),
-    longitude: $('#envi-longitude').val(),
-    temperature: $('#envi-temperature').val(),
-    depth: $('#envi-depth').val(),
-    current: $('#envi-current').val(),
-    pressure: $('#envi-pressure').val(),
+    latitude: $('#environment-latitude').val(),
+    longitude: $('#environment-longitude').val(),
+    temperature: $('#environment-temperature').val(),
+    depth: $('#environment-depth').val(),
+    current: $('#environment-current').val(),
+    pressure: $('#environment-pressure').val(),
   };
   enviData.addEnvi(newEnvironment)
     .then(() => {
-      $('#uniModal').modal('hide');
+      $('#addEnvironmentModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
       printEnvironments();
     })
     .catch((error) => console.error(error));
 };
+const getPreFilledModal = (event) => {
+  const environmentId = event.target.id.split('update-')[1];
+  console.log('environmentIdfilled', environmentId);
+  enviData.getEnvironmentById(environmentId)
+    .then((response) => {
+      console.log('response', response);
+      $('#updateEnvironmentModal').modal('show');
+      const environment = response.data;
+      $('#update-environment-latitude').val(environment.latitude);
+      $('#update-environment-longitude').val(environment.longitude);
+      $('#update-environment-temperature').val(environment.temperature);
+      $('#update-environment-depth').val(environment.depth);
+      $('#update-environment-current').val(environment.current);
+      $('#update-environment-pressure').val(environment.pressure);
+      $('.update-environment').attr('id', environmentId);
+    })
+    .catch((error) => console.error(error));
+};
 
-const updateEnvironment = (e) => {
-  const id = e.target.id.split('update-')[1];
+const updateCurrentEnvironment = (event) => {
+  event.stopImmediatePropagation();
+  const environmentId = event.target.id;
+  console.log('environmentId', environmentId);
   const updatedEnvironment = {
-    latitude: $('#envi-latitude').val(),
-    longitude: $('#envi-longitude').val(),
-    temperature: $('#envi-temperature').val(),
-    depth: $('#envi-depth').val(),
-    current: $('#envi-current').val(),
-    pressure: $('#envi-pressure').val(),
+    latitude: $('#update-environment-latitude').val(),
+    longitude: $('#update-environment-longitude').val(),
+    temperature: $('#update-environment-temperature').val(),
+    depth: $('#update-environment-depth').val(),
+    current: $('#update-environment-current').val(),
+    pressure: $('#update-environment-pressure').val(),
   };
-  enviData.updateEnvi(id, updatedEnvironment)
+  enviData.updateEnvironment(environmentId, updatedEnvironment)
     .then(() => {
-      $('#uniModal').modal('hide');
-      // eslint-disable-next-line no-use-before-define
+      $('#updateEnvironmentModal').modal('hide');
       printEnvironments();
     })
     .catch((error) => console.error(error));
 };
 
-const environmentModal = (x, id) => {
-  const title = `${x ? 'Update' : 'Add'} Environment`;
-  const body = `<form>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-latitude">Latitude</label>
-        <input value="${x.latitude ? x.latitude : ''}" type="text" class="form-control" id="envi-latitude" placeholder="Enter Latitude">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-longitude">Longitude</label>
-        <input value="${x.longitude ? x.longitude : ''}" type="text" class="form-control" id="envi-longitude" placeholder="Enter Longitude">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-temperature">Temperature</label>
-        <input value="${x.temperature ? x.temperature : ''}" type="text" class="form-control" id="envi-temperature" placeholder="Enter temperature">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-depth">Depth</label>
-        <input value="${x.depth ? x.depth : ''}" type="text" class="form-control" id="envi-depth" placeholder="Enter Depth">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-current">Current</label>
-        <input value="${x.current ? x.current : ''}" type="text" class="form-control" id="envi-current" placeholder="Enter Current">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-pressure">Pressure</label>
-        <input value="${x.pressure ? x.pressure : ''}" type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
-      </div>
-    </div>
-    <button type="button" class="btn btn-danger btn-block save-envi" id="${x ? 'update' : 'add'}-${id}">SAVE</button>
-  </form>`;
-  utilities.printModal(title, body);
-  $('#add-environment').click('.save-envi', addNewEnvironment);
-  $(`#update-${id}`).click('.save-envi', updateEnvironment);
-};
-
-const checkAction = (e) => {
-  const id = e.target.id.split('edit-')[1];
-  if (id) {
-    enviData.editEnvi(id)
-      .then((x) => {
-        environmentModal(x, id);
-      })
-      .catch((error) => console.error(error));
-  } else {
-    environmentModal();
-  }
-};
 
 const printEnvironments = () => {
-  $('#home').addClass('hide');
-  $('#crew').addClass('hide');
-  $('#species').addClass('hide');
-  $('#log').addClass('hide');
-  const uid = firebase.auth().currentUser;
+  const userSignedIn = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
-      let domString = `<div class="container py-5">
+      let domString = '';
+      if (userSignedIn) {
+        domString = `<div class="container py-5">
                         <h1 class="text-center  my-2">Environments</h1>`;
-      if (uid) {
-        domString += '<center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>';
+        domString += `<center><button type="button" id="addEnvironmentButton" class="btn btn-outline-primary" data-toggle="modal" data-target="#addEnvironmentModal">
+        Add Environment
+      </button></center>`;
+      } else {
+        domString = `<div class="container py-5">
+                      <h1 class="text-center  my-2">Environments</h1>`;
       }
-      domString += `<table class="table table-striped rounded-lg">
+      domString += `<table 
+      class="table table-striped rounded-lg">
                       <thead class="header">
                         <tr>
                           <th scope="col">Latitude</th>
@@ -129,31 +100,40 @@ const printEnvironments = () => {
                           <th scope="col">Depth</th>
                           <th scope="col">Current</th>
                           <th scope="col">Pressure</th>`;
-      if (uid) {
-        domString += '<th scope="col">Edit | Delete</th>';
-      }
       domString += `</tr>
                   </thead>
                 <tbody>`;
       environments.forEach((envi) => {
-        domString += `<tr>
+        if (userSignedIn) {
+          domString += `<tr>
                         <td>${envi.latitude}</td>
                         <td>${envi.longitude}</td>
                         <td>${envi.temperature}</td>
                         <td>${envi.depth}</td>
                         <td>${envi.current}</td>
                         <td>${envi.pressure}</td>`;
-        if (uid) {
-          domString += `<td><button class="btn btn-link edit-environment" id="edit-${envi.id}">EDIT</button> |
-        <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
+          domString += `<td><button type="button" class="btn btn-outline-primary updateEnvironment" id="update-${envi.id}" data-toggle="modal" data-target="#updateEnvironmentModal">
+          Update Environment
+        </button> |
+        <button type="link" class="btn btn-outline-danger delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
+          domString += '</tr>';
+        } else {
+          domString += `<tr>
+          <td>${envi.latitude}</td>
+          <td>${envi.longitude}</td>
+          <td>${envi.temperature}</td>
+          <td>${envi.depth}</td>
+          <td>${envi.current}</td>
+          <td>${envi.pressure}</td>`;
+          domString += '</tr>';
         }
-        domString += '</tr>';
       });
       domString += '</tbody></table></div>';
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
-      $('.edit-environment').click(checkAction);
-      $('#addEnvi').click(checkAction);
+      $('#add-new-environment').click(addNewEnvironment);
+      $('.updateEnvironment').click(getPreFilledModal);
+      $('.update-environment').click(updateCurrentEnvironment);
     })
     .catch((error) => console.error(error));
 };

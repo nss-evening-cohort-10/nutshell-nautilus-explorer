@@ -2,11 +2,8 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navBar.scss';
-import envis from '../environments/environments';
 import homeCard from '../homeCard/homeCard';
 import destinations from '../destination/destination';
-import speciesCard from '../speciesBoard/speciesBoard';
-
 
 const logoutEvent = () => {
   $('body').on('click', '#navbar-button-logout', (e) => {
@@ -19,9 +16,8 @@ const logoutEvent = () => {
 };
 
 $('#navBarBrand').on('click', '.crew', homeCard.buildCrew);
-$('#navBarBrand').on('click', '.species', speciesCard.makeSpeciesBoard);
 $('#navBarBrand').on('click', '.destinations', destinations.destinationBuilderAll);
 // $('#navBarBrand').on('click', '.logs', printLogs);
-$('#navBarBrand').on('click', '.environments', envis.printEnvironments);
+// $('#navBarBrand').on('click', '.environments', envis.printEnvironments);
 
 export default { logoutEvent };

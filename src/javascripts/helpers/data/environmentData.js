@@ -17,25 +17,18 @@ const getEnvis = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getEnvironmentById = (environmentId) => axios.get(`${baseUrl}/environments/${environmentId}.json`);
+
 const deleteEnvis = (id) => axios.delete(`${baseUrl}/environments/${id}.json`);
 
 const addEnvi = (newEnvironment) => axios.post(`${baseUrl}/environments.json`, newEnvironment);
 
-const updateEnvi = (enviId, updatedEnvironment) => axios.put(`${baseUrl}/environments/${enviId}.json`, updatedEnvironment);
-
-const editEnvi = (enviId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/environments/${enviId}.json`)
-    .then((result) => {
-      const environment = result.data;
-      resolve(environment);
-    })
-    .catch((error) => reject(error));
-});
+const updateEnvironment = (environmentId, updatedEnvironment) => axios.put(`${baseUrl}/environments/${environmentId}.json`, updatedEnvironment);
 
 export default {
   getEnvis,
   deleteEnvis,
   addEnvi,
-  editEnvi,
-  updateEnvi,
+  updateEnvironment,
+  getEnvironmentById,
 };
