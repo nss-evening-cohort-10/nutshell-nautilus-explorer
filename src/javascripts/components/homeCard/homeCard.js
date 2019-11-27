@@ -56,20 +56,26 @@ const deleteCrewBoard = (e) => {
 };
 
 const buildCrew = () => {
+  const userSignedIn = firebase.auth().currentUser;
   crewData.getCrew()
     .then((crew) => {
-      let domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
-      domString += `<div class="text-center" style="padding:50px"><button id="crewSpace" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#crewModal">
+      let domString = '';
+      if (userSignedIn) {
+        domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
+        domString += `<div class="text-center" style="padding:50px"><button id="crewSpace" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#crewModal">
       Add Crew
     </button>`;
-      domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
+        domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
+      } else {
+        domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
+        domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
+      }
       crew.forEach((board) => {
         domString += crewCard.makeCrewBoards(board);
       });
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#addNewBoardBtn').click(addCrew);
-      checkLoginStatus();
     })
     .catch((error) => console.error(error));
 };
