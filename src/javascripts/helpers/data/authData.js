@@ -23,7 +23,7 @@ const checkLoginStatus = () => {
     getDestinations.destinationBuilderAll();
     homeCard.buildCrew();
     speciesBoard.buildSpecies();
-    log.showLogs();
+    log.printLogs();
     environment.printEnvironments();
   });
 };
