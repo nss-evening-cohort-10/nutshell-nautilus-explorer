@@ -19,92 +19,20 @@ const deleteEnvironment = (e) => {
 const addNewEnvironment = (e) => {
   e.stopImmediatePropagation();
   const newEnvironment = {
-    latitude: $('#envi-latitude').val(),
-    longitude: $('#envi-longitude').val(),
-    temperature: $('#envi-temperature').val(),
-    depth: $('#envi-depth').val(),
-    current: $('#envi-current').val(),
-    pressure: $('#envi-pressure').val(),
+    latitude: $('#environment-latitude').val(),
+    longitude: $('#environment-longitude').val(),
+    temperature: $('#environment-temperature').val(),
+    depth: $('#environment-depth').val(),
+    current: $('#environment-current').val(),
+    pressure: $('#environment-pressure').val(),
   };
   enviData.addEnvi(newEnvironment)
     .then(() => {
-      $('#uniModal').modal('hide');
+      $('#addEnvironmentModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
       printEnvironments();
     })
     .catch((error) => console.error(error));
-};
-
-const updateEnvironment = (e) => {
-  const id = e.target.id.split('update-')[1];
-  const updatedEnvironment = {
-    latitude: $('#envi-latitude').val(),
-    longitude: $('#envi-longitude').val(),
-    temperature: $('#envi-temperature').val(),
-    depth: $('#envi-depth').val(),
-    current: $('#envi-current').val(),
-    pressure: $('#envi-pressure').val(),
-  };
-  enviData.updateEnvi(id, updatedEnvironment)
-    .then(() => {
-      $('#uniModal').modal('hide');
-      // eslint-disable-next-line no-use-before-define
-      printEnvironments();
-    })
-    .catch((error) => console.error(error));
-};
-
-const environmentModal = (x, id) => {
-  const title = `${x ? 'Update' : 'Add'} Environment`;
-  const body = `<form>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-latitude">Latitude</label>
-        <input value="${x.latitude ? x.latitude : ''}" type="text" class="form-control" id="envi-latitude" placeholder="Enter Latitude">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-longitude">Longitude</label>
-        <input value="${x.longitude ? x.longitude : ''}" type="text" class="form-control" id="envi-longitude" placeholder="Enter Longitude">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-temperature">Temperature</label>
-        <input value="${x.temperature ? x.temperature : ''}" type="text" class="form-control" id="envi-temperature" placeholder="Enter temperature">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-depth">Depth</label>
-        <input value="${x.depth ? x.depth : ''}" type="text" class="form-control" id="envi-depth" placeholder="Enter Depth">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="envi-current">Current</label>
-        <input value="${x.current ? x.current : ''}" type="text" class="form-control" id="envi-current" placeholder="Enter Current">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="envi-pressure">Pressure</label>
-        <input value="${x.pressure ? x.pressure : ''}" type="text" class="form-control" id="envi-pressure" placeholder="Enter Pressure">
-      </div>
-    </div>
-    <button type="button" class="btn btn-danger btn-block save-envi" id="${x ? 'update' : 'add'}-${id}">SAVE</button>
-  </form>`;
-  utilities.printModal(title, body);
-  $('#add-environment').click('.save-envi', addNewEnvironment);
-  $(`#update-${id}`).click('.save-envi', updateEnvironment);
-};
-
-const checkAction = (e) => {
-  const id = e.target.id.split('edit-')[1];
-  if (id) {
-    enviData.editEnvi(id)
-      .then((x) => {
-        environmentModal(x, id);
-      })
-      .catch((error) => console.error(error));
-  } else {
-    environmentModal();
-  }
 };
 
 const printEnvironments = () => {
@@ -115,7 +43,9 @@ const printEnvironments = () => {
       if (userSignedIn) {
         domString = `<div class="container py-5">
                         <h1 class="text-center  my-2">Environments</h1>`;
-        domString += '<center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>';
+        domString += `<center><button type="button" id="addEnvironmentButton" class="btn btn-primary" data-toggle="modal" data-target="#addEnvironmentModal">
+        Add Environment
+      </button></center>`;
       } else {
         domString = `<div class="container py-5">
                       <h1 class="text-center  my-2">Environments</h1>`;
@@ -159,8 +89,7 @@ const printEnvironments = () => {
       domString += '</tbody></table></div>';
       utilities.printToDom('environments', domString);
       $('#environments').on('click', '.delete-environment', deleteEnvironment);
-      $('.edit-environment').click(checkAction);
-      $('#addEnvi').click(checkAction);
+      $('#add-new-environment').click(addNewEnvironment);
     })
     .catch((error) => console.error(error));
 };
