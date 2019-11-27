@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
-import makeSpecies from '../species/species';
+import makeSpecies from '../Species/species';
 
 
 const deleteFromBoard = (e) => {
