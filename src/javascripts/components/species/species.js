@@ -29,7 +29,7 @@ const addASpecies = (e) => {
     .then(() => {
       $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
-      buildSpecies(assignToBoard);
+      buildSpecies();
     })
     .catch((error) => console.error(error));
 };
