@@ -13,7 +13,7 @@
     "url": "git+https://github.com/nss-evening-cohort-10/nutshell-nautilus-explorer/.git"
   },
   "keywords": [],
-  "authors": "Charity Bunyon, Alesha Reed, John Key, Evan Grabenstein",
+  "authors": "Charity Bunyon, Alesha Reed, John Key, Evan Grabenstein, Denise Baker, Jamie Phillips, Ivan Phelps",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nss-evening-cohort-10/nutshell-nautilus-explorer/issues"
@@ -24,7 +24,7 @@
     "@babel/preset-env": "^7.7.4",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
-    "eslint": "^6.7.1",
+    "eslint": "^6.7.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-import": "^2.18.2",
