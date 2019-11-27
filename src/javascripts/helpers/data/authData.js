@@ -19,10 +19,8 @@ const checkLoginStatus = () => {
       $('#navbar-button-login').removeClass('hide');
     }
     dashboard.buildTheDashboard(welcomeData.getBoards());
-    homeCard.logoutEvent();
-    getDestinations.destinationLoginStatus();
-    getDestinations.destinationBuilderHome();
-    homeCard.makeABoard();
+    getDestinations.destinationBuilderAll();
+    homeCard.buildCrew();
     speciesBoard.makeSpeciesBoard();
     log.makeLogBoard();
   });
