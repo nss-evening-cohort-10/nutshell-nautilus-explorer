@@ -5,6 +5,7 @@ import './welcome.scss';
 import destination from '../destination/destination';
 import species from '../speciesBoard/speciesBoard';
 import envi from '../environments/environments';
+import log from '../logs/logs';
 
 const buildTheDashboard = (boardArray) => {
   let domString = '<div class="d-flex flex-wrap justify-content-around">';
@@ -39,6 +40,11 @@ const buildTheDashboard = (boardArray) => {
     envi.printEnvironments();
     $('#welcome').addClass('hide');
     $('#environments').removeClass('hide');
+  });
+  $('body').on('click', '#Logs-button', () => {
+    log.printLogs();
+    $('#welcome').addClass('hide');
+    $('#log').removeClass('hide');
   });
 };
 

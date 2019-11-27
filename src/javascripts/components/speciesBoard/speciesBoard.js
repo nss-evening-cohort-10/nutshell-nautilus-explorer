@@ -3,7 +3,7 @@ import 'firebase/auth';
 import $ from 'jquery';
 import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
-import makeSpecies from '../Species/species';
+import makeSpecies from '../species/species';
 
 
 const deleteFromBoard = (e) => {
