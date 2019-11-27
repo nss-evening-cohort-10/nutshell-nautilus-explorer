@@ -21,7 +21,7 @@ const checkLoginStatus = () => {
     dashboard.buildTheDashboard(welcomeData.getBoards());
     getDestinations.destinationBuilderAll();
     homeCard.buildCrew();
-    speciesBoard.makeSpeciesBoard();
+    speciesBoard.buildSpecies();
     log.makeLogBoard();
   });
 };
