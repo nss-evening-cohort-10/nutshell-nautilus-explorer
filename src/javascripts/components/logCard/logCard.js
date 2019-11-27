@@ -1,18 +1,26 @@
-// import $ from 'jquery';
-import utilities from '../../helpers/utilities';
 
-
-const makeLogBoard = () => {
+const makeLogBoard = (logs) => {
   const domString = `
-    <div class="card">
-      <div class="card-title text-center card-title"><h5>View Logs</h5></div>
-      <img id="speciesImg" src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1266&q=80" class="card-img-top" alt="">
-      <div class="card-body text-center">
-      <a href="#" class="btn btn-danger btn-lg logHomeBtn">View</a>
-      </div>
-    </div>
+  <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    View Log
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body log-body">
+  <div class="d-flex flex-wrap>
+    <p>${logs.crewId}</p>
+    <p>${logs.date}</p>
+    <p>${logs.destination}</p>
+  </div>
+  <p>${logs.message}</p>
+  </div>
+</div>
     `;
-  utilities.printToDom('logHome', domString);
+  return domString;
 };
 
 
