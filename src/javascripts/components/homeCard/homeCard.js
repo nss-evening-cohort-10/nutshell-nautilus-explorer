@@ -8,23 +8,23 @@ import crewCard from '../crewCard/crewCard';
 
 let currentId = 0;
 
-const checkLoginStatus = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      $('#crewSpace').removeClass('hide');
-      $('.deleteCrew').removeClass('hide');
-      $('.editCrew').removeClass('hide');
-      // eslint-disable-next-line no-use-before-define
-      $('body').on('click', '.editCrew', updateACrewMember);
-      // eslint-disable-next-line no-use-before-define
-      $('body').on('click', '.deleteCrew', deleteCrewBoard);
-    } else {
-      $('#crewSpace').addClass('hide');
-      $('.deleteCrew').addClass('hide');
-      $('.editCrew').addClass('hide');
-    }
-  });
-};
+// const checkLoginStatus = () => {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       $('#crewSpace').removeClass('hide');
+//       $('.deleteCrew').removeClass('hide');
+//       $('.editCrew').removeClass('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       $('body').on('click', '.editCrew', updateACrewMember);
+//       // eslint-disable-next-line no-use-before-define
+//       $('body').on('click', '.deleteCrew', deleteCrewBoard);
+//     } else {
+//       $('#crewSpace').addClass('hide');
+//       $('.deleteCrew').addClass('hide');
+//       $('.editCrew').addClass('hide');
+//     }
+//   });
+// };
 
 const addCrew = (e) => {
   e.stopImmediatePropagation();
@@ -126,6 +126,8 @@ const makeABoard = () => {
     `;
   utilities.printToDom('crewHome', domString);
   $('#crewHome').on('click', '#crewHomeBtn', buildCrew);
+  $('body').on('click', '.editCrew', updateACrewMember);
+  $('body').on('click', '.deleteCrew', deleteCrewBoard);
 };
 
 
