@@ -1,9 +1,43 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import $ from 'jquery';
 import util from '../../helpers/utilities';
 import speciesData from '../../helpers/data/speciesData';
 import speciesCard from '../Species Card/speciesCard';
 import './species.scss';
 
+const makeASpecies = (species) => {
+  const userSignedIn = firebase.auth().currentUser;
+  let domString = '';
+  if (userSignedIn) {
+    domString += `
+    <div class="card" style="width: 460px">
+    <img id="speciesImg" src="${species.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">${species.name}</h5>
+    <p class="card-text">${species.description}</p>
+    <button class="btn btn-danger delete-species" id="${species.id}">Delete Species</button>
+    <button type="button" class="btn btn-info edit-species" data-toggle="modal" data-target="#edSpecies" id="${species.id}">Edit Species</button>
+    </div>
+    <div class="card-body">
+    </div>
+    </div>
+    `;
+  } else {
+    domString += `
+    <div class="card" style="width: 460px">
+    <img id="speciesImg" src="${species.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">${species.name}</h5>
+    <p class="card-text">${species.description}</p>
+    </div>
+    <div class="card-body">
+    </div>
+    </div>
+    `;
+  }
+  return domString;
+};
 
 const deleteASpecies = (e) => {
   e.preventDefault();
@@ -89,17 +123,17 @@ const buildSpecies = () => {
 // };
 
 
-const makeSpeciesBoard = () => {
-  const domString = `<div class="card">
-  <h5 class="card-title text-center card-title">View Species</h5>
-  <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
-  <div class="card-body text-center">
-    <button type="button" class="btn btn-danger btn-lg view-species">View</button>
-  </div>
-  </div>
-  `;
-  util.printToDom('speciesHome', domString);
-  $('#speciesHome').on('click', '.view-species', buildSpecies);
-};
+// const makeSpeciesBoard = () => {
+//   const domString = `<div class="card">
+//   <h5 class="card-title text-center card-title">View Species</h5>
+//   <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
+//   <div class="card-body text-center">
+//     <button type="button" class="btn btn-danger btn-lg view-species">View</button>
+//   </div>
+//   </div>
+//   `;
+//   util.printToDom('speciesHome', domString);
+//   $('#speciesHome').on('click', '.view-species', buildSpecies);
+// };
 
-export default { makeSpeciesBoard };
+export default { makeASpecies };
