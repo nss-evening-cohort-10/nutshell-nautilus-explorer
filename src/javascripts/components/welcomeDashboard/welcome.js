@@ -7,11 +7,11 @@ import species from '../speciesBoard/speciesBoard';
 import environments from '../environments/environments';
 
 const buildTheDashboard = (boardArray) => {
-  let domString = '<div class="d-flex flex-wrap justify-content-center">';
+  let domString = '<div class="d-flex flex-wrap justify-content-around">';
   for (let i = 0; i < boardArray.length; i += 1) {
     const board = boardArray[i];
     domString += `
-    <div class="card col-4 dashboard-card">
+    <div class="card col-3 dashboard-card">
     <img src="${board.imageUrl}" class="dashboard-image" alt="...">
       <div class="d-flex justify-content-around">
         <button id="${board.id}-button" class="btn btn-outline-light dashboard-button">${board.id}</button>

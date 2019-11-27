@@ -61,13 +61,13 @@ const buildCrew = () => {
     .then((crew) => {
       let domString = '';
       if (userSignedIn) {
-        domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
-        domString += `<div class="text-center" style="padding:50px"><button id="crewSpace" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#crewModal">
+        domString += '<h1 class="text-center">Meet the Crew</h1>';
+        domString += `<div class="text-center"><button id="crewSpace" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#crewModal">
       Add Crew
     </button>`;
         domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
       } else {
-        domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
+        domString += '<h1 id="welcome" class="text-center">Meet the Crew</h1>';
         domString += '<div id="crew-section" class="container-fluid d-flex flex-wrap crewBoard">';
       }
       crew.forEach((board) => {
