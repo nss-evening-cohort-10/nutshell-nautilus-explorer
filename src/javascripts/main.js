@@ -9,7 +9,8 @@ import crewNavbar from './components/navBar/navBar';
 import getDestinations from './components/destination/destination';
 import homeCard from './components/homeCard/homeCard';
 import species from './components/Species/species';
-import log from './components/logCard/logCard';
+import log from './components/logs/logs';
+
 
 
 const init = () => {
@@ -21,7 +22,7 @@ const init = () => {
   getDestinations.destinationBuilderHome();
   homeCard.makeABoard();
   species.makeSpeciesBoard();
-  log.makeLogBoard();
+  log.showLogs();
 };
 
 init();
