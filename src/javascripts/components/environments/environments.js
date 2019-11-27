@@ -108,19 +108,20 @@ const checkAction = (e) => {
 };
 
 const printEnvironments = () => {
-  $('#home').addClass('hide');
-  $('#crew').addClass('hide');
-  $('#species').addClass('hide');
-  $('#log').addClass('hide');
-  const uid = firebase.auth().currentUser;
+  const userSignedIn = firebase.auth().currentUser;
   enviData.getEnvis()
     .then((environments) => {
-      let domString = `<div class="container py-5">
+      let domString = '';
+      if (userSignedIn) {
+        domString = `<div class="container py-5">
                         <h1 class="text-center  my-2">Environments</h1>`;
-      if (uid) {
         domString += '<center><button type="button" class="my-2 btn btn-danger add-envi-modal" data-toggle="modal" data-target="#uniModal" id="addEnvi">ADD ENVIRONMENT</button></center>';
+      } else {
+        domString = `<div class="container py-5">
+                      <h1 class="text-center  my-2">Environments</h1>`;
       }
-      domString += `<table class="table table-striped rounded-lg">
+      domString += `<table 
+      class="table table-striped rounded-lg">
                       <thead class="header">
                         <tr>
                           <th scope="col">Latitude</th>
@@ -129,25 +130,31 @@ const printEnvironments = () => {
                           <th scope="col">Depth</th>
                           <th scope="col">Current</th>
                           <th scope="col">Pressure</th>`;
-      if (uid) {
-        domString += '<th scope="col">Edit | Delete</th>';
-      }
       domString += `</tr>
                   </thead>
                 <tbody>`;
       environments.forEach((envi) => {
-        domString += `<tr>
+        if (userSignedIn) {
+          domString += `<tr>
                         <td>${envi.latitude}</td>
                         <td>${envi.longitude}</td>
                         <td>${envi.temperature}</td>
                         <td>${envi.depth}</td>
                         <td>${envi.current}</td>
                         <td>${envi.pressure}</td>`;
-        if (uid) {
           domString += `<td><button class="btn btn-link edit-environment" id="edit-${envi.id}">EDIT</button> |
         <button type="link" class="btn btn-link delete-environment" id="delete-${envi.id}">DELETE</button></td>`;
+          domString += '</tr>';
+        } else {
+          domString += `<tr>
+          <td>${envi.latitude}</td>
+          <td>${envi.longitude}</td>
+          <td>${envi.temperature}</td>
+          <td>${envi.depth}</td>
+          <td>${envi.current}</td>
+          <td>${envi.pressure}</td>`;
+          domString += '</tr>';
         }
-        domString += '</tr>';
       });
       domString += '</tbody></table></div>';
       utilities.printToDom('environments', domString);

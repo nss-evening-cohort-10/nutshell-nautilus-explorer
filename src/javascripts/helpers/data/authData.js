@@ -7,6 +7,7 @@ import getDestinations from '../../components/destination/destination';
 import homeCard from '../../components/homeCard/homeCard';
 import speciesBoard from '../../components/speciesBoard/speciesBoard';
 import log from '../../components/logCard/logCard';
+import environment from '../../components/environments/environments';
 
 
 const checkLoginStatus = () => {
@@ -23,6 +24,7 @@ const checkLoginStatus = () => {
     homeCard.buildCrew();
     speciesBoard.buildSpecies();
     log.makeLogBoard();
+    environment.printEnvironments();
   });
 };
 
