@@ -1,0 +1,142 @@
+{
+  "log1": {
+    "destinationId": "destination1",
+    "date": "01/05/2019",
+    "message": "Travelled to beautiful Hawaii today.  No major incidents.  Smooth sailing.",
+    "crewId": "crew4",
+    "isShareable": true
+  },
+    "log2": {
+      "destinationId": "destination1",
+      "date": "01/06/2019",
+      "message": "Captain's log, stardate 2492.  Unusual furry creatures have invaded our ship.",
+      "crewId": "crew1",
+      "isShareable": false
+    },
+    "log3": {
+      "destinationId": "destination1",
+      "date": "01/08/2019",
+      "message": "Nothing to see here. Please move along.",
+      "crewId": "crew1",
+      "isShareable": false
+    },
+    "log4": {
+      "destinationId": "destination1",
+      "date": "01/05/2019",
+      "message": "OMG! HI!  Who are you?",
+      "crewId": "crew2",
+      "isShareable": true
+    },
+    "log5": {
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "HI!  I'm Dory.",
+      "crewId": "crew2",
+      "isShareable": true
+    },
+    "log6": {
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "Dude.  You're like whoa!",
+      "crewId": "crew3",
+      "isShareable": true
+    },
+    "log7": {
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "No major deaths today.",
+      "crewId": "crew6",
+      "isShareable": false
+    },
+    "log8": {
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "I am the master of my domain",
+      "crewId": "crew5",
+      "isShareable": true
+    },
+    "log9": {
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "HI! I'm Dory!  22 Wallaby Way, Sydney!",
+      "crewId": "crew2",
+      "isShareable": true
+    },
+    "log10": {
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "So many whales, so little time!",
+      "crewId": "crew4",
+      "isShareable": true
+    },
+    "log11": {
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "Coo coo ka choo my friends.",
+      "crewId": "crew3",
+      "isShareable": true
+    },
+    "log12": {
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "Darla!",
+      "crewId": "crew1",
+      "isShareable": false
+    },
+    "log13": {
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Gooooooood mooooorniiiing!  Myyyyy naaaaaame iiis Dooooory! I speak whale!",
+      "crewId": "crew2",
+      "isShareable": true
+    },
+    "log14": {
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Sharkbait!",
+      "crewId": "crew5",
+      "isShareable": true
+    },
+    "log15": {
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Here fishy fishy!",
+      "crewId": "crew6",
+      "isShareable": true
+    },
+    "log16": {
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "It's just a 3 hour tour",
+      "crewId": "crew1",
+      "isShareable": false
+    },
+    "log17": {
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Hi!  I'm Dory.  What's your name?",
+      "crewId": "crew2",
+      "isShareable": true
+    },
+    "log18": {
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Wake up! Wake up!",
+      "crewId": "crew6",
+      "isShareable": true
+    },
+    "log19": {
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "You'll know when you know my friend.",
+      "crewId": "crew3",
+      "isShareable": true
+    },
+    "log20": {
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Hi!  I'm Dory.  What's your name?",
+      "crewId": "crew2",
+      "isShareable": true
+    }
+}
