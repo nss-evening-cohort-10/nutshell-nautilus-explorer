@@ -56,12 +56,6 @@ const deleteCrewBoard = (e) => {
 };
 
 const buildCrew = () => {
-  $('#crewHome').addClass('hide');
-  $('#welcome').addClass('hide');
-  $('#home').addClass('hide');
-  $('#environments').addClass('hide');
-  $('#species').addClass('hide');
-  $('#log').addClass('hide');
   crewData.getCrew()
     .then((crew) => {
       let domString = '<h1 id="welcome" class="text-center">Meet the Crew</h1>';

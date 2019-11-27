@@ -1,3 +1,5 @@
+import './species.scss';
+
 const makeASpecies = (species) => {
   let domString = '';
   domString += `

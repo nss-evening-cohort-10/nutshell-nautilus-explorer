@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import dashboard from '../../components/welcomeDashboard/welcome';
+import welcomeData from './welcomeData';
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -11,7 +13,18 @@ const checkLoginStatus = () => {
       $('#navbar-button-logout').addClass('hide');
       $('#navbar-button-login').removeClass('hide');
     }
+    dashboard.buildTheDashboard(welcomeData.getBoards());
   });
 };
+
+const onload = () => {
+  $('#destinations').addClass('hide');
+  $('#species').addClass('hide');
+  $('#log').addClass('hide');
+  $('#environments').addClass('hide');
+  $('#crew').addClass('hide');
+};
+
+window.onload = onload;
 
 export default { checkLoginStatus };

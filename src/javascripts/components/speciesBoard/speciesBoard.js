@@ -99,7 +99,6 @@ const makeSpeciesBoard = () => {
   </div>
   `;
   util.printToDom('speciesHome', domString);
-  $('#speciesHome').on('click', '.view-species', buildSpecies);
 };
 
-export default { makeSpeciesBoard };
+export default { makeSpeciesBoard, buildSpecies };

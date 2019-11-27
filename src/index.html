@@ -12,29 +12,7 @@
   <div id="navBarBrand">
     <nav class="navbar navbar-expand-lg navbar-light navbar-container">
       <div class="align-left">
-        <a class="navbar-brand" href="/"><img src="assets//images/BrandLogo.png" height="50" class="d-inline-block align-top"><span class="sr-only">(current)</span></a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link crew" href="#">Crew</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link species" href="#">Species</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link destinations" href="#">Destinations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link logs" href="#">Logs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link environments" href="#">Environments</a>
-          </li>
-        </ul>
+        <a class="navbar-brand" href="index.html"><img src="assets//images/BrandLogo.png" height="50" class="d-inline-block align-top"><span class="sr-only">(current)</span></a>
       </div>
       <div class="mr-lg">
         <button class="btn btn-primary" id="navbar-button-login">Login</button>
@@ -42,6 +20,14 @@
       </div>
     </nav>
   </div>
+
+  <div id="welcome"></div>
+  <div id="auth"></div>
+  <div id="species"></div>
+  <div id="crew"></div>
+  <div id="log"></div>
+  <div id="environments"></div>
+  <div id="destinations" class="w-100"></div>
 
 <!--Enviroments Modal -->
 <div class="modal fade" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true"></div>
@@ -81,10 +67,6 @@
     </div>
   </div>
 </div>
-
-
-<div id="environments"></div>
-<div id="destinations" class="w-100"></div>
 
 <div id="crew"></div>
   <!-- Crew Add Modal -------------------------->
@@ -164,19 +146,5 @@
       </div>
   <!-- Other Divs ---------------------------->
 
-  <h1 id="welcome">Welcome Capt. Nemo!</h1>
-  <div id="auth"></div>
-  <div id="home" class="d-flex flex-wrap container-fluid justify-content-between">
-    <div id="crewHome" class="card"></div>
-    <div id="speciesHome" class="card"></div>
-    <div id="logHome" class="card"></div>
-    <div id="destinationHome" class="w-100">
-
-  </div>
-  <div id="destinations"></div>
-  <div id="environments" class=""></div>
-  <!-- <div id="crew" class=""></div> -->
-  <div id="species" class=""></div>
-  <div id="log" class=""></div>
 </body>
 </html>
