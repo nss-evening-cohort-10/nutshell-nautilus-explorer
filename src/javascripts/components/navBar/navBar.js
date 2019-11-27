@@ -5,7 +5,7 @@ import './navBar.scss';
 import envis from '../environments/environments';
 import homeCard from '../homeCard/homeCard';
 import destinations from '../destination/destination';
-import speciesCard from '../speciesBoard/speciesBoard';
+import species from '../Species/species';
 
 
 const logoutEvent = () => {
@@ -19,7 +19,7 @@ const logoutEvent = () => {
 };
 
 $('#navBarBrand').on('click', '.crew', homeCard.buildCrew);
-$('#navBarBrand').on('click', '.species', speciesCard.makeSpeciesBoard);
+$('#navBarBrand').on('click', '.species', species.makeSpeciesBoard);
 $('#navBarBrand').on('click', '.destinations', destinations.destinationBuilderAll);
 // $('#navBarBrand').on('click', '.logs', printLogs);
 $('#navBarBrand').on('click', '.environments', envis.printEnvironments);

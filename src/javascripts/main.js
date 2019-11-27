@@ -8,7 +8,7 @@ import auth from './components/auth/auth';
 import crewNavbar from './components/navBar/navBar';
 import getDestinations from './components/destination/destination';
 import homeCard from './components/homeCard/homeCard';
-import speciesBoard from './components/speciesBoard/speciesBoard';
+import species from './components/Species/species';
 import log from './components/logCard/logCard';
 
 
@@ -20,7 +20,7 @@ const init = () => {
   getDestinations.destinationLoginStatus();
   getDestinations.destinationBuilderHome();
   homeCard.makeABoard();
-  speciesBoard.makeSpeciesBoard();
+  species.makeSpeciesBoard();
   log.makeLogBoard();
 };
 
