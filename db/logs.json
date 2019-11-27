@@ -1,0 +1,182 @@
+{
+  "log1": {
+    "destName": "Kahului Harbor Maui, Hawaii",
+    "destinationId": "destination1",
+    "date": "01/05/2019",
+    "message": "Travelled to beautiful Hawaii today.  No major incidents.  Smooth sailing.",
+    "crewId": "crew4",
+    "crewName": "Bruce Humphries",
+    "isShareable": true
+  },
+    "log2": {
+      "destName": "Kahului Harbor Maui, Hawaii",
+      "destinationId": "destination1",
+      "date": "01/06/2019",
+      "message": "Captain's log, stardate 2492.  Unusual furry creatures have invaded our ship.",
+      "crewId": "crew1",
+      "crewName": "Captain Nemo",
+      "isShareable": false
+    },
+    "log3": {
+      "destName": "Kahului Harbor Maui, Hawaii",
+      "destinationId": "destination1",
+      "date": "01/08/2019",
+      "message": "Nothing to see here. Please move along.",
+      "crewId": "crew1",
+      "crewName": "Captain Nemo",
+      "isShareable": false
+    },
+    "log4": {
+      "destName": "Kahului Harbor Maui, Hawaii",
+      "destinationId": "destination1",
+      "date": "01/05/2019",
+      "message": "OMG! HI!  Who are you?",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    },
+    "log5": {
+      "destName": "Saint Croix",
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "HI!  I'm Dory.",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    },
+    "log6": {
+      "destName": "Saint Croix",
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "Dude.  You're like whoa!",
+      "crewId": "crew3",
+      "crewName": "Crush Stanton",
+      "isShareable": true
+    },
+    "log7": {
+      "destName": "Saint Croix",
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "No major deaths today.",
+      "crewId": "crew6",
+      "crewName": "Darla Ebeing",
+      "isShareable": false
+    },
+    "log8": {
+      "destName": "Saint Croix",
+      "destinationId": "destination2",
+      "date": "02/15/2019",
+      "message": "I am the master of my domain",
+      "crewId": "crew5",
+      "crewName": "Gill Dafoe",
+      "isShareable": true
+    },
+    "log9": {
+      "destName": "Glacier Bay, Alaska",
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "HI! I'm Dory!  22 Wallaby Way, Sydney!",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    },
+    "log10": {
+      "destName": "Glacier Bay, Alaska",
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "So many whales, so little time!",
+      "crewId": "crew4",
+      "crewName": "Bruce Humphries",
+      "isShareable": true
+    },
+    "log11": {
+      "destName": "Glacier Bay, Alaska",
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "Coo coo ka choo my friends.",
+      "crewId": "crew3",
+      "crewName": "Crush Stanton",
+      "isShareable": true
+    },
+    "log12": {
+      "destName": "Glacier Bay, Alaska",
+      "destinationId": "destination3",
+      "date": "07/25/2019",
+      "message": "Darla!",
+      "crewId": "crew1",
+      "crewName": "Captain Nemo",
+      "isShareable": false
+    },
+    "log13": {
+      "destName": "Cartagena, Spain",
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Gooooooood mooooorniiiing!  Myyyyy naaaaaame iiis Dooooory! I speak whale!",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    },
+    "log14": {
+      "destName": "Cartagena,Spain",
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Sharkbait!",
+      "crewId": "crew5",
+      "crewName": "Gill Dafoe",
+      "isShareable": true
+    },
+    "log15": {
+      "destName": "Cartagena, Spain",
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "Here fishy fishy!",
+      "crewId": "crew6",
+      "crewName": "Darla Ebeing",
+      "isShareable": true
+    },
+    "log16": {
+      "destName": "Cartagena, Spain",
+      "destinationId": "destination4",
+      "date": "04/10/2019",
+      "message": "It's just a 3 hour tour",
+      "crewId": "crew1",
+      "crewName": "Captain Nemo",
+      "isShareable": false
+    },
+    "log17": {
+      "destName": "Venezia, Italy",
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Hi!  I'm Dory.  What's your name?",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    },
+    "log18": {
+      "destName": "Venezia, Italy",
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Wake up! Wake up!",
+      "crewId": "crew6",
+      "crewName": "Darla Ebeing",
+      "isShareable": true
+    },
+    "log19": {
+      "destName": "Venezia, Italy",
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "You'll know when you know my friend.",
+      "crewId": "crew3",
+      "crewName": "Crush Stanton",
+      "isShareable": true
+    },
+    "log20": {
+      "destName": "Venezia, Italy",
+      "destinationId": "destination5",
+      "date": "09/09/2019",
+      "message": "Hi!  I'm Dory.  What's your name?",
+      "crewId": "crew2",
+      "crewName": "Dory DeGeneres",
+      "isShareable": true
+    }
+}
