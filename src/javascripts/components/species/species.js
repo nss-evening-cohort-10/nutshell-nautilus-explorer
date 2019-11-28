@@ -37,13 +37,12 @@ const populateModalRadios = () => {
 
 const addASpecies = (e) => {
   e.stopImmediatePropagation();
-  const assignToBoard = $('.add-a-species')[0].id;
+  const checkedEnvironment = $('input:checked').val();
   const newSpecies = {
-    id: `${assignToBoard}`,
     name: $('#species-name').val(),
     image: $('#species-image').val(),
     description: $('#species-description').val(),
-    environmentId: $('#species-environment').val(),
+    environmentId: `${checkedEnvironment}`,
   };
   speciesData.addNewSpecies(newSpecies)
     .then(() => {
