@@ -75,14 +75,14 @@ const updateASpecies = (e) => {
 const buildSpecies = () => {
   const userSignedIn = firebase.auth().currentUser;
   speciesData.getAllSpecies()
-    .then((speciesBoard) => {
+    .then(() => {
       let domString = '';
       if (userSignedIn) {
-        domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
+        domString = '<h1 class="add-a-species text-center board-header">View Species</h1>';
         domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSpeciesModal">Add Species</button>';
         domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       } else {
-        domString = `<h1 class="add-a-species text-center board-header" id="${speciesBoard.id}">View Species</h1>`;
+        domString = '<h1 class="add-a-species text-center board-header">View Species</h1>';
         domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
       }
       speciesData.getAllSpecies()
