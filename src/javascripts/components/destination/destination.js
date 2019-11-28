@@ -13,7 +13,6 @@ const deleteDestinationbyId = (e) => {
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       destinationBuilderAll();
-      // eslint-disable-next-line no-use-before-define
     })
     .catch((error) => console.error(error));
 };
@@ -95,60 +94,8 @@ const destinationBuilderAll = () => {
       $('#destinations').on('click', '.deletes-destination', deleteDestinationbyId);
       $('#destinationHome').addClass('hide');
       $('body').on('click', '.addDestination', addDestination);
-      // $('.addDestination').click(addDestination);
     })
     .catch((error) => console.error(error));
 };
-
-
-// const destinationBuilderHome = () => {
-//   const userSignedIn = firebase.auth().currentUser;
-//   destinationdata.getDestinations()
-//     .then((destinations) => {
-//       let domString = '';
-//       if (userSignedIn) {
-//         domString = `<h1 class="text-center" id="welcome">Destinations</h1>
-//     <button id="destinationAdd" type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#destinationModal">
-//       Add Destination
-//     </button>
-//     <td>
-//         <table class="table table-striped">
-//         <thead class="header">
-//           <tr>
-//             <th scope="col">Location Name</th>
-//             <th scope="col">Entry Port</th>
-//             <th scope="col">Description</th>
-//             <th scope="col">Additional Information</th>
-//           </tr>
-//         </thead>
-//         <tbody>`;
-//       } else {
-//         domString = `<h1 class="text-center" id="welcome">Destinations</h1>
-//         <td>
-//           <table class="table table-striped">
-//           <thead class="header">
-//             <tr>
-//               <th scope="col">Location Name</th>
-//               <th scope="col">Entry Port</th>
-//               <th scope="col">Description</th>
-//               <th scope="col">Additional Information</th>
-//             </tr>
-//           </thead>
-//           <tbody>`;
-//       }
-//       destinations.forEach((destination) => {
-//         domString += `<tr>
-//       <th scope="row">${destination.name}</th>
-//       <td>${destination.port}</td>
-//       <td>${destination.description}</td>
-//       <td><a href=${destination.destinationLink}">${destination.name} Links</a></td>
-//     </tr>`;
-//       });
-//       domString += '</tbody></table>';
-//       utilities.printToDom('destinationHome', domString);
-//       $('#destinationHome').on('click', '.viewAll-destination', destinationBuilderAll);
-//     })
-//     .catch((error) => console.error(error));
-// };
 
 export default { destinationBuilderAll };

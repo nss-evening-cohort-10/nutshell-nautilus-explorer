@@ -46,18 +46,10 @@ const printLogs = () => {
       logSegments.forEach((logSegment) => {
         domString += makeLogBoard(logSegment);
       });
-      console.error(logSegments);
       utilities.printToDom('log', domString);
     })
     .catch((error) => console.error(error));
 };
-
-// const showLogs = () => {
-//   $('body').on('click', '#Logs-button', () => {
-//     printLogs();
-
-//   });
-// };
 
 
 export default { printLogs };
