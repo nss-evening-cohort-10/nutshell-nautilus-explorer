@@ -5,7 +5,7 @@ import dashboard from '../../components/welcomeDashboard/welcome';
 import welcomeData from './welcomeData';
 import getDestinations from '../../components/destination/destination';
 import homeCard from '../../components/homeCard/homeCard';
-import speciesBoard from '../../components/speciesBoard/speciesBoard';
+import species from '../../components/Species/species';
 import log from '../../components/logs/logs';
 import environment from '../../components/environments/environments';
 
@@ -22,7 +22,7 @@ const checkLoginStatus = () => {
     dashboard.buildTheDashboard(welcomeData.getBoards());
     getDestinations.destinationBuilderAll();
     homeCard.buildCrew();
-    speciesBoard.buildSpecies();
+    species.buildSpecies();
     log.printLogs();
     environment.printEnvironments();
   });

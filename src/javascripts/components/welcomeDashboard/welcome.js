@@ -3,7 +3,7 @@ import utilities from '../../helpers/utilities';
 import crew from '../homeCard/homeCard';
 import './welcome.scss';
 import destination from '../destination/destination';
-import species from '../speciesBoard/speciesBoard';
+import species from '../Species/species';
 import envi from '../environments/environments';
 import log from '../logs/logs';
 
