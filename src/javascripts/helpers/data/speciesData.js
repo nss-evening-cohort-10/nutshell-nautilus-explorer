@@ -18,6 +18,8 @@ const getAllSpecies = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSpeciesById = (speciesId) => axios.get(`${baseUrl}/species/${speciesId}.json`);
+
 const deleteSpecies = (speciesId) => axios.delete(`${baseUrl}/species/${speciesId}.json`);
 
 const addNewSpecies = (newSpecies) => axios.post(`${baseUrl}/species.json`, newSpecies);
@@ -25,6 +27,7 @@ const addNewSpecies = (newSpecies) => axios.post(`${baseUrl}/species.json`, newS
 const updateSpecies = (speciesId, updatedSpecies) => axios.put(`${baseUrl}/species/${speciesId}.json`, updatedSpecies);
 
 export default {
+  getSpeciesById,
   getAllSpecies,
   deleteSpecies,
   addNewSpecies,
