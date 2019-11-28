@@ -129,7 +129,7 @@
 
 
 <!-- Species Modal ------------------------------->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -152,6 +152,10 @@
               <label for="species-image">Species Image</label>
               <input type="text" class="form-control" id="species-image" placeholder="Enter Species Image">
             </div>
+            <div class="form-group">
+                <label for="species-environment">EnvironmentId</label>
+                <input type="text" class="form-control" id="species-environment" placeholder="Type Environment ID">            
+            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -162,6 +166,46 @@
     </div>
   </div>
 </div>
+<!--End Add Species Modal-->
+<!--Species Update Modal-->
+<div class="modal fade" id="updateSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Species</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="update-species-name">Name</label>
+            <input type="text" class="form-control" id="update-species-name" placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="update-species-description">Description</label>
+            <input type="text" class="form-control" id="update-species-description" placeholder="Enter Description">
+          </div>
+          <div class="form-group">
+            <label for="update-species-image">Image URL</label>
+            <input type="text" class="form-control" id="update-species-image" placeholder="Enter Image URL">
+          </div>      
+          <div class="form-group">
+              <label for="update-species-environment">EnvironmentId</label>
+              <input type="text" class="form-control" id="update-species-environment" placeholder="Type New Environment ID">            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary update-species">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Secies Update Modal-->
 
   <!-- Crew Add Modal -------------------------->
   <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="crewModalLabel" aria-hidden="true">
