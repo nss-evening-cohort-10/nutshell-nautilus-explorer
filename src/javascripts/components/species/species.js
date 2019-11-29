@@ -19,7 +19,7 @@ const deleteASpecies = (e) => {
     .catch((error) => console.error(error));
 };
 
-const populateModalRadios = () => {
+const populateAddModalRadios = () => {
   enviData.getEnvis()
     .then((environments) => {
       let domString = '<h5>Select Environment</h5>';
@@ -31,7 +31,7 @@ const populateModalRadios = () => {
           </label>
           </div>`;
       });
-      util.printToDom('species-environment-radio', domString);
+      util.printToDom('species-add-environment-radio', domString);
     });
 };
 
@@ -55,15 +55,26 @@ const addASpecies = (e) => {
 
 const getSpeciesModal = (e) => {
   const speciesId = e.target.id.split('update-')[1];
-  console.log(speciesId);
   speciesData.getSpeciesById(speciesId)
     .then((response) => {
       $('#updateSpeciesModal').modal('show');
       const species = response.data;
+      enviData.getEnvis()
+        .then((environments) => {
+          let domString = '<h5>Select Environment</h5>';
+          environments.forEach((environment) => {
+            domString += `<div class="environment-radios">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="${environment.name}-radio" value="${environment.id}">
+            <label class="form-check-label" for="exampleRadios1">
+              ${environment.name}
+              </label>
+              </div>`;
+          });
+          util.printToDom('species-update-environment-radio', domString);
+        });
       $('#update-species-name').val(species.name);
       $('#update-species-description').val(species.description);
       $('#update-species-image').val(species.image);
-      $('#update-species-environment').val(species.environmentId);
       $('.update-species').attr('id', speciesId);
     })
     .catch((error) => console.error(error));
@@ -72,13 +83,12 @@ const getSpeciesModal = (e) => {
 const updateASpecies = (e) => {
   e.stopImmediatePropagation();
   const speciesId = e.target.id;
-  console.log(speciesId);
+  const checkedEnvironment = $('input:checked').val();
   const updatedSpecies = {
     name: $('#update-species-name').val(),
     description: $('#update-species-description').val(),
     image: $('#update-species-image').val(),
-    environmentId: $('#update-species-environment').val(),
-    id: `${speciesId}`,
+    environmentId: `${checkedEnvironment}`,
   };
   speciesData.updateSpecies(speciesId, updatedSpecies)
     .then(() => {
@@ -113,7 +123,7 @@ const buildSpecies = () => {
           $(document.body).on('click', '#add-new-species', addASpecies);
           $('.update-species-modal').click(getSpeciesModal);
           $('.update-species').click(updateASpecies);
-          $('#add-species-button').click(populateModalRadios);
+          $('#add-species-button').click(populateAddModalRadios);
         });
     })
     .catch((error) => console.error(error));
