@@ -26,6 +26,7 @@ const addNewEnvironment = (e) => {
     depth: $('#environment-depth').val(),
     current: $('#environment-current').val(),
     pressure: $('#environment-pressure').val(),
+    name: $('#environment-name').val(),
   };
   enviData.addEnvi(newEnvironment)
     .then(() => {
@@ -49,6 +50,7 @@ const getPreFilledModal = (event) => {
       $('#update-environment-depth').val(environment.depth);
       $('#update-environment-current').val(environment.current);
       $('#update-environment-pressure').val(environment.pressure);
+      $('#update-environment-name').val(environment.name);
       $('.update-environment').attr('id', environmentId);
     })
     .catch((error) => console.error(error));
@@ -65,6 +67,7 @@ const updateCurrentEnvironment = (event) => {
     depth: $('#update-environment-depth').val(),
     current: $('#update-environment-current').val(),
     pressure: $('#update-environment-pressure').val(),
+    name: $('#update-environment-name').val(),
   };
   enviData.updateEnvironment(environmentId, updatedEnvironment)
     .then(() => {
@@ -94,6 +97,7 @@ const printEnvironments = () => {
       class="table table-striped rounded-lg">
                       <thead class="header">
                         <tr>
+                          <th scope="col">Name</th>
                           <th scope="col">Latitude</th>
                           <th scope="col">Longitude</th>
                           <th scope="col">Temperature</th>
@@ -106,6 +110,7 @@ const printEnvironments = () => {
       environments.forEach((envi) => {
         if (userSignedIn) {
           domString += `<tr>
+                        <td>${envi.name}</td>
                         <td>${envi.latitude}</td>
                         <td>${envi.longitude}</td>
                         <td>${envi.temperature}</td>
@@ -119,6 +124,7 @@ const printEnvironments = () => {
           domString += '</tr>';
         } else {
           domString += `<tr>
+          <td>${envi.name}</td>
           <td>${envi.latitude}</td>
           <td>${envi.longitude}</td>
           <td>${envi.temperature}</td>

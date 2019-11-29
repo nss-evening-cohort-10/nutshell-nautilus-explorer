@@ -5,7 +5,8 @@
     "temperature": 80,
     "depth": 1.5,
     "current": 7,
-    "pressure": 14
+    "pressure": 14,
+    "name": "Tropics"
   },
   "environment2": {
     "latitude": 17.72751,
@@ -13,7 +14,8 @@
     "temperature": 75,
     "depth": 1,
     "current": 12,
-    "pressure": 14
+    "pressure": 14,
+    "name": "Ocean"
   },
   "environment3": {
     "latitude": 58.305801,
@@ -21,7 +23,8 @@
     "temperature": -10,
     "depth": 1,
     "current": 10,
-    "pressure": 16
+    "pressure": 16,
+    "name": "Arctic Tundra"
   },
   "environment4": {
     "latitude": 36.62545,
@@ -29,7 +32,8 @@
     "temperature": 68,
     "depth": 0.5,
     "current": 17,
-    "pressure": 14
+    "pressure": 14,
+    "name": "Grassland"
   },
   "environment5": {
     "latitude": 44.418362,
@@ -37,7 +41,8 @@
     "temperature": 77,
     "depth": 3,
     "current": 26,
-    "pressure": 20
+    "pressure": 20,
+    "name": "Desert"
   },
   "environment6": {
     "latitude": 29.749907,
@@ -45,7 +50,8 @@
     "temperature": 80,
     "depth": -2,
     "current": 45,
-    "pressure": 14
+    "pressure": 14,
+    "name": "Rainforest"
   },
   "environment7": {
     "latitude": 16.6911279,
@@ -53,7 +59,9 @@
     "temperature": 34,
     "depth": -36069.6,
     "current": 0,
-    "pressure": 15750
+    "pressure": 15750,
+    "name": "Plains"
+
   },
   "environment8": {
     "latitude": 43.413029,
@@ -61,7 +69,8 @@
     "temperature": 88,
     "depth": 0,
     "current": 12,
-    "pressure": 18
+    "pressure": 18,
+    "name": "Mountain Tundra"
   },
   "environment9": {
     "latitude":  -64.8167,
@@ -69,7 +78,8 @@
     "temperature": -44,
     "depth": 1,
     "current": 0,
-    "pressure": 44
+    "pressure": 44,
+    "name": "Marsh"
   },
   "environment10": {
     "latitude": -18.156290,
@@ -77,6 +87,7 @@
     "temperature": 90,
     "depth": 35,
     "current": 110,
-    "pressure": 124
+    "pressure": 124,
+    "name": "Wasteland"
   }
 }
