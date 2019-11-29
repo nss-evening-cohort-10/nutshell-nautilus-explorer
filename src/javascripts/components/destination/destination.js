@@ -35,12 +35,14 @@ const populateAddDestinationModalRadios = () => {
 };
 
 const addDestination = (e) => {
+  const checkedEnvironment = $('input:checked').val();
   e.stopImmediatePropagation();
   const newDestination = {
     name: $('#location-name').val(),
     port: $('#entry-port').val(),
     description: $('#destination-description').val(),
     destinationLink: $('#destination-add-info').val(),
+    environmentId: `${checkedEnvironment}`,
   };
   destinationData.addNewDestination(newDestination)
     .then(() => {

@@ -76,6 +76,10 @@ const buildCrew = () => {
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#addNewBoardBtn').click(addCrew);
+      $('#crewHome').on('click', '#crewHomeBtn', buildCrew);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.editCrew', updateACrewMember);
+      $('body').on('click', '.deleteCrew', deleteCrewBoard);
     })
     .catch((error) => console.error(error));
 };
@@ -125,9 +129,6 @@ const makeABoard = () => {
     </div>
     `;
   utilities.printToDom('crewHome', domString);
-  $('#crewHome').on('click', '#crewHomeBtn', buildCrew);
-  $('body').on('click', '.editCrew', updateACrewMember);
-  $('body').on('click', '.deleteCrew', deleteCrewBoard);
 };
 
 
