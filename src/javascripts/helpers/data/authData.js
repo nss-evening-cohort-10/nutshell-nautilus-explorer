@@ -5,7 +5,7 @@ import dashboard from '../../components/welcomeDashboard/welcome';
 import welcomeData from './welcomeData';
 import getDestinations from '../../components/destination/destination';
 import homeCard from '../../components/homeCard/homeCard';
-import species from '../../components/species/species';
+import species from '../../components/Species/species';
 import log from '../../components/logs/logs';
 import environment from '../../components/environments/environments';
 
