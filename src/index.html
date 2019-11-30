@@ -208,7 +208,7 @@
   </div>
 </div>
 </div>
-<!-- End Secies Update Modal-->
+<!-- End Species Update Modal-->
 
   <!-- Crew Add Modal -------------------------->
   <div class="modal fade" id="crewModal" tabindex="-1" role="dialog" aria-labelledby="crewModalLabel" aria-hidden="true">
@@ -292,17 +292,14 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="crewModalLabel">Add New Crew Member</h5>
+              <h5 class="modal-title" id="addDestinationModalLabel">Add Destination</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
               <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="environment-id">Environment Id</label>
-                        <input type="text" class="form-control" id="environment-id" placeholder="Enter Environment ID">
-                      </div>
+   
                   <div class="form-group">
                     <label for="location-name">Location Name</label>
                     <input type="text" class="form-control" id="location-name" placeholder="Enter Location Name">
@@ -319,6 +316,7 @@
                     <label for="destination-add-info">Additional Information</label>
                     <input type="text" class="form-control" id="destination-add-info" placeholder="Enter Destination Link">
                   </div>
+                  <div class="form-group" id="destinations-add-environment-radio"></div>
                 </form>
               </div>
               <div class="modal-footer">
@@ -328,6 +326,50 @@
             </div>
           </div>
         </div>
+
+  <!-- End addDestination Modal -->
+
+  <!-- Update Destination Modal -->
+
+  <div class="modal fade" id="editDestinationModal" tabindex="-1" role="dialog" aria-labelledby="destinationModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editDestinationModalLabel">Edit Destination</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <form>
+ 
+                <div class="form-group">
+                  <label for="edit-location-name">Location Name</label>
+                  <input type="text" class="form-control" id="edit-location-name" placeholder="Enter Location Name">
+                </div>
+                <div class="form-group">
+                  <label for="edit-destination-entry-port">Entry Port</label>
+                  <input type="text" class="form-control" id="edit-entry-port" placeholder="Enter Entry Port">
+                </div>
+                <div class="form-group">
+                  <label for="edit-destination-description">Description</label>
+                  <input type="text" class="form-control" id="edit-destination-description" placeholder="Enter Description">
+                </div>
+                <div class="form-group">
+                  <label for="edit-destination-add-info">Additional Information</label>
+                  <input type="text" class="form-control" id="edit-destination-add-info" placeholder="Enter Destination Link">
+                </div>
+                <div class="form-group" id="destinations-edit-environment-radio"></div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary editDestination" id="editDestinationButton">Edit Destination</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End Update Destination Modal -->
 
   <!-- Other Divs ---------------------------->
 

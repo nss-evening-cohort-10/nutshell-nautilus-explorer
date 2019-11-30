@@ -17,7 +17,15 @@ const getDestinations = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getDestinationById = (destinationId) => axios.get(`${baseUrl}/destinations/${destinationId}.json`);
 const deleteDestination = (destinationId) => axios.delete(`${baseUrl}/destinations/${destinationId}.json`);
 const addNewDestination = (newDestination) => axios.post(`${baseUrl}/destinations.json`, newDestination);
+const updateDestination = (destinationId, updatedDestination) => axios.put(`${baseUrl}/destinations/${destinationId}.json`, updatedDestination);
 
-export default { getDestinations, deleteDestination, addNewDestination };
+export default {
+  getDestinations,
+  deleteDestination,
+  addNewDestination,
+  getDestinationById,
+  updateDestination,
+};
