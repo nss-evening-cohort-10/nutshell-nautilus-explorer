@@ -120,6 +120,7 @@ const destinationBuilderAll = () => {
             <th scope="col">Entry Port</th>
             <th scope="col">Description</th>
             <th scope="col">Additional Information</th>
+            <th scope="col">Edit / Delete</th>
           </tr>
         </thead>
         <tbody>`;
@@ -132,6 +133,7 @@ const destinationBuilderAll = () => {
             <th scope="col">Entry Port</th>
             <th scope="col">Description</th>
             <th scope="col">Additional Information</th>
+           
           </tr>
         </thead>
         <tbody>`;
@@ -143,8 +145,8 @@ const destinationBuilderAll = () => {
       <td>${destination.port}</td>
       <td>${destination.description}</td>
       <td><a href=${destination.destinationLink}">${destination.name} Links</a></td>
-      <td><button type="link" data-toggle="modal" data-target="#editDestinationModal" class="btn btn-outline-warning btn-sm destinations-buttons edit-destination-modal" id="edit-${destination.id}">EDIT</button> 
-        <button type="link" class="btn btn-outline-danger btn-sm destinations-buttons deletes-destination" id="delete-${destination.id}">DELETE</button></td>
+      <td><button type="link" data-toggle="modal" data-target="#editDestinationModal" class="btn btn-link edit-destination-modal" id="edit-${destination.id}">EDIT</button> 
+        <button type="link" class="btn btn-link deletes-destination" id="delete-${destination.id}">DELETE</button></td>
     </tr>`;
         } else {
           domString += `<tr>
