@@ -1,7 +1,8 @@
 import excursionsData from '../../helpers/data/excursionsData';
 // import environmentData from '../../helpers/data/environmentData';
 import destinationData from '../../helpers/data/destinationData';
-// import species from '../../helpers/data/speciesData';
+import speciesData from '../../helpers/data/speciesData';
+import environmentData from '../../helpers/data/environmentData';
 
 
 // const getCompleteExcursion = () => new Promise((resolve, reject) => {
@@ -42,18 +43,34 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
     .then((excursions) => {
       excursions.forEach((excursion) => {
         const mission = { ...excursion };
-        mission.id = excursion.id;
-        mission.name = excursion.name;
-        mission.destinationId = excursion.destinationId;
-        destinationData.getDestinations(excursion.destinationId)
-          .then((destinations) => {
-            destinations.forEach((destination) => {
-              const excursionDest = excursions.find((x) => x.destinationId === destinations.id);
-              if (excursionDest) {
-                mission.destinationName = destination.name;
+        // ssion.destinationId = excursion.destinationId;
+        destinationData.getDestinationById(excursion.destinationId)
+          .then((destination) => {
+            // destinations.forEach((destination) => {
+            //   const excursionDest = excursions.find((x) => x.destinationId === destinations.id);
+            //   if (excursionDest) {
+            //     mission.destinationName = destination.name;
+            //     mission.environmentId = destination.environmentId;
+            //   }
+            // });
+            mission.destinationName = destination.name;
+            environmentData.getEnvironmentById(destination.environmentId)
+              .then((environment) => {
+                mission.environmentName = environment.name;
+                mission.temperature = environment.temperature;
+                mission.latitude = environment.latitude;
+                mission.longitude = environment.longitude;
+                mission.depth = environment.depth;
+                mission.current = environment.current;
+                mission.pressure = environment.pressure;
                 mission.environmentId = destination.environmentId;
-              }
-            });
+                console.log(destination.environmentId);
+                speciesData.getSpeciesByEnvironmentId(destination.environmentId)
+                  .then((species) => {
+                    console.log(species);
+                  });
+              });
+            console.log('This is the mission: ', mission);
           });
         newExcursions.push(mission);
       });

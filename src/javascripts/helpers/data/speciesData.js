@@ -18,6 +18,14 @@ const getAllSpecies = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSpeciesByEnvironmentId = (environmentId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/species.json?orderBy="environmentId"&equalTo="${environmentId}"`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
+
 const getSpeciesById = (speciesId) => axios.get(`${baseUrl}/species/${speciesId}.json`);
 
 const deleteSpecies = (speciesId) => axios.delete(`${baseUrl}/species/${speciesId}.json`);
@@ -32,4 +40,5 @@ export default {
   deleteSpecies,
   addNewSpecies,
   updateSpecies,
+  getSpeciesByEnvironmentId,
 };

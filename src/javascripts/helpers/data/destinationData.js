@@ -17,7 +17,14 @@ const getDestinations = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getDestinationById = (destinationId) => axios.get(`${baseUrl}/destinations/${destinationId}.json`);
+const getDestinationById = (destinationId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/destinations/${destinationId}.json`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
+
 const deleteDestination = (destinationId) => axios.delete(`${baseUrl}/destinations/${destinationId}.json`);
 const addNewDestination = (newDestination) => axios.post(`${baseUrl}/destinations.json`, newDestination);
 const updateDestination = (destinationId, updatedDestination) => axios.put(`${baseUrl}/destinations/${destinationId}.json`, updatedDestination);
