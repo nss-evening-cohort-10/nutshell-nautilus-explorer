@@ -16,6 +16,7 @@ const init = () => {
   logout.logoutEvent();
   excursionSmash.getAllExcursions();
   excursions.excursionButton();
+  excursions.getEachCrew();
 };
 
 init();

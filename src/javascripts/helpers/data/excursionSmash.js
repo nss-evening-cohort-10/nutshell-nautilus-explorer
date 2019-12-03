@@ -18,6 +18,10 @@ const getAllExcursions = () => new Promise((resolve, reject) => {
             mission.destinationName = destination.name;
             environmentData.getEnvironmentById(destination.environmentId)
               .then((environment) => {
+                mission.name = excursion.name;
+                mission.destinationId = excursion.destinationId;
+                mission.id = excursion.id;
+                mission.date = excursion.date;
                 mission.environmentName = environment.name;
                 mission.temperature = environment.temperature;
                 mission.latitude = environment.latitude;
@@ -61,8 +65,10 @@ const getAllExcursions = () => new Promise((resolve, reject) => {
               });
           });
         newExcursions.push(mission);
+        return newExcursions;
       });
       resolve(newExcursions);
+      console.error('newExcursions', newExcursions);
     })
     .catch((error) => reject(error));
 });
