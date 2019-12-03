@@ -1,46 +1,13 @@
-import excursionsData from '../../helpers/data/excursionsData';
+import excursionsData from './excursionsData';
 // import environmentData from '../../helpers/data/environmentData';
-import destinationData from '../../helpers/data/destinationData';
-import speciesData from '../../helpers/data/speciesData';
-import environmentData from '../../helpers/data/environmentData';
-import logData from '../../helpers/data/logsData';
-import excursionsCrewData from '../../helpers/data/excursionsCrewData';
-import crewData from '../../helpers/data/crewData';
+import destinationData from './destinationData';
+import speciesData from './speciesData';
+import environmentData from './environmentData';
+import logData from './logsData';
+import excursionsCrewData from './excursionsCrewData';
+import crewData from './crewData';
 
-
-// const getCompleteExcursion = () => new Promise((resolve, reject) => {
-//   excursionsData.getExcursions()
-//     .then((singleExcursion) => destinationData.getDestinations(singleExcursion.destinationId))
-//     .then((destination) => environmentData.getEnvis(destination.environmentId))
-//     .then((environment) => species.getAllSpecies(environment.environmentId))
-//     .then((excursions) => {
-//       const newExcursions = [];
-//       excursions.forEach((excursion) => {
-//         const mission = { ...excursion };
-//         // const getSpeciesByEnvironmentId = excursion.find((x) => x.environmentId === mission.environmentId);
-//         // if (getSpeciesByEnvironmentId) {
-//         // const envSpecies = excursion.find((x) => x.id === getSpeciesByEnvironmentId.id);
-//         mission.date = excursion.date;
-//         mission.name = excursion.name;
-//         mission.destinationId = excursion.destinationId;
-//         mission.destination = excursion.name;
-//         mission.temp = excursion.temperature;
-//         mission.depth = excursion.depth;
-//         mission.current = excursion.current;
-//         mission.pressure = excursion.pressure;
-//         // mission.speciesName = envSpecies.name;
-//         // } else {
-//         //   mission.envSpecies = {};
-//         // }
-//         newExcursions.push(mission);
-//       });
-//       resolve(newExcursions);
-//       console.error('new excursions', newExcursions);
-//     })
-//     .catch((error) => reject(error));
-// });
-
-const getCompleteExcursion = () => new Promise((resolve, reject) => {
+const getAllExcursions = () => new Promise((resolve, reject) => {
   const newExcursions = [];
   excursionsData.getExcursions()
     .then((excursions) => {
@@ -78,15 +45,12 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                       mission.logs.push(thisLog);
                     });
                   });
-                console.log(mission.id);
                 excursionsCrewData.getExcursionsCrewByExcursionId(mission.id)
                   .then((exCrew) => {
-                    console.log(exCrew);
                     mission.crew = [];
                     exCrew.forEach((crew) => {
                       crewData.getCrewById(crew.crewId)
                         .then((datCrew) => {
-                          console.log(datCrew);
                           const thisCrew = {};
                           thisCrew.name = datCrew.name;
                           thisCrew.position = datCrew.position;
@@ -95,19 +59,12 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                     });
                   });
               });
-            console.log('This is the mission: ', mission);
           });
         newExcursions.push(mission);
       });
       resolve(newExcursions);
-      console.log('new excursions', newExcursions);
     })
     .catch((error) => reject(error));
 });
 
-// const getInfo = () => {
-//   species.getSpeciesById()
-//     .then((speciesArray) => console.error('data', speciesArray));
-// };
-
-export default { getCompleteExcursion };
+export default { getAllExcursions };
