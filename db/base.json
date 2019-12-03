@@ -6,5 +6,6 @@
   "environments": "blah5",
   "speciesEnvironments": "blah6",
   "excursions": "blah7",
-  "excursionCrew": "blah8"
+  "excursionsCrew": "excursionsCrew",
+  "excursionsLogs": "excursionsLogs"
 }
