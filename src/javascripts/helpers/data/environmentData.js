@@ -17,7 +17,13 @@ const getEnvis = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getEnvironmentById = (environmentId) => axios.get(`${baseUrl}/environments/${environmentId}.json`);
+const getEnvironmentById = (environmentId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/environments/${environmentId}.json`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
 
 const deleteEnvis = (id) => axios.delete(`${baseUrl}/environments/${id}.json`);
 

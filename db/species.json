@@ -15,7 +15,7 @@
     "name": "Megalodon",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/Meg.jpg",
     "description": "Megalodon, meaning 'big tooth', is an extinct species of shark that lived approximately 23 to 3.6 million years ago, during the Early Miocene to the Pliocene. It was formerly thought to be a member of the family Lamnidae, and a close relative of the great white shark.",
-    "environmentId": "environment2"
+    "environmentId": "environment4"
   },
   "species4": {
     "name": "Plesiosauria",
@@ -33,6 +33,6 @@
     "name": "Angler Fish",
     "image": "https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/29SCI-ANGLERFISH1-articleLarge.jpg",
     "description": "The anglerfish is a fish of the teleost order Lophiiformes. It is a bony fish named for its characteristic mode of predation, in which, a fleshy growth from the fish's head acts as a lure towards other fish.",
-    "environmentId": "environment1"
+    "environmentId": "environment6"
   }
 }

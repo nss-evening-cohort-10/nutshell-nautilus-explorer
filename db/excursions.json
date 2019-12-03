@@ -1,0 +1,22 @@
+{
+  "excursion1": {
+    "name": "Operation Milktoast",
+    "destinationId": "destination1",
+    "date": "02/05/2019"
+  },
+  "excursion2": {
+    "name": "Three-Hour-Tour",
+    "destinationId": "destination2",
+    "date": "03/15/2019"
+  },
+  "excursion3": {
+    "name": "Trouble With Tribbles",
+    "destinationId": "destination3",
+    "date": "12/05/2019"
+  },
+  "excursion4": {
+    "name": "Where No Man Has Gone Before",
+    "destinationId": "destination4",
+    "date": "06/20/2019"
+  }
+}
