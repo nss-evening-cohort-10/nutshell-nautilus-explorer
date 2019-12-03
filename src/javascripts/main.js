@@ -9,15 +9,12 @@ import logout from './components/navBar/navBar';
 import excursion from './components/Excursions/excursions';
 import excursionsLogs from './helpers/data/excursionsLogsData';
 
-
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   auth.signMeIn();
   authData.checkLoginStatus();
   logout.logoutEvent();
   excursion.getCompleteExcursion();
-  // excursion.getInfo();
-  excursionsLogs.getExcursionsLogs();
 };
 
 init();
