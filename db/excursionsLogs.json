@@ -1,0 +1,34 @@
+{
+  "excursionsLog1": {
+    "excursionId": "excursion1",
+    "logId": "log1"
+  }, 
+  "excursionsLog2": {
+    "excursionId": "excursion2",
+    "logId": "log5"
+  },
+  "excursionsLog3": {
+    "excursionId": "excursion3",
+    "logId": "log9"
+  },
+  "excursionsLog4": {
+    "excursionId": "excursion4",
+    "logId": "log13"
+  },
+  "excursionsLog5": {
+    "excursionId": "excursion1",
+    "logId": "log2"
+  },
+  "excursionsLog6": {
+    "excursionId": "excursion2",
+    "logId": "log6"
+  },
+  "excursionsLog7": {
+    "excursionId": "excursion3",
+    "logId": "log10"
+  },
+  "excursionsLog8": {
+    "excursionId": "excursion4",
+    "logId": "log14"
+  }
+}
