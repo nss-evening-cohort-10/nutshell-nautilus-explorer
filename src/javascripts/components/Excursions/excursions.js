@@ -60,26 +60,32 @@ const getEachCrew = () => {
   excursionSmash.getAllExcursions()
     .then((excursions) => {
       let domString = '';
+      console.error(excursions.length);
       for (let i = 0; i < excursions.length; i += 1) {
-        const excursionCrew = excursions[i].crew;
+        console.error('In the LOOP...');
+        // const excursionCrew = excursions[i].crew;
         const excursion = excursions[i];
+        console.error(excursion);
         domString += `
         <ul class="list-group">
   <li class="list-group-item">${excursion.destinationName}</li>
   <li class="list-group-item">${excursion.environmentId}</li>
   <li class="list-group-item">${excursion.latitude}</li>
   <li class="list-group-item">${excursion.longitude}</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+  <li class="list-group-item">${excursion.name}</li>
+  <li class="list-group-item">${excursion.date}</li>
+  <li class="list-group-item">${excursion.destinationId}</li>
 </ul>
         `;
-        utilities.printToDom('excursions', domString);
-        console.error('excursions', excursions[i], 'excursionCrew', excursionCrew);
+        // console.error('excursions', excursions[i], 'excursionCrew--ignore me', excursionCrew);
       }
-    }).catch((error) => (error));
+      utilities.printToDom('excursions', domString);
+    })
+    .catch((error) => (error));
 };
 
 const excursionButton = () => {
   $('body').on('click', '#Excursions-button', getEachCrew);
 };
 
-export default { excursionButton, getEachCrew };
+export default { excursionButton };

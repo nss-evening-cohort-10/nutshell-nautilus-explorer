@@ -53,22 +53,26 @@ const getAllExcursions = () => new Promise((resolve, reject) => {
                   .then((exCrew) => {
                     mission.crew = [];
                     exCrew.forEach((crew) => {
+                      const thisCrew = {};
                       crewData.getCrewById(crew.crewId)
                         .then((datCrew) => {
-                          const thisCrew = {};
                           thisCrew.name = datCrew.name;
                           thisCrew.position = datCrew.position;
                           mission.crew.push(thisCrew);
                         });
                     });
+                    newExcursions.push(mission);
                   });
+                // resolve here is correct-ish
               });
           });
-        newExcursions.push(mission);
-        return newExcursions;
+        // newExcursions.push(mission);
+        // return newExcursions;
+        // resolve(newExcursions);
       });
+      // resolve(newExcursions);
+      // console.error('newExcursions', newExcursions);
       resolve(newExcursions);
-      console.error('newExcursions', newExcursions);
     })
     .catch((error) => reject(error));
 });
