@@ -7,6 +7,7 @@ import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
 import logout from './components/navBar/navBar';
 import excursion from './components/Excursions/excursions';
+import excursionsLogs from './helpers/data/excursionsLogsData';
 
 
 const init = () => {
@@ -16,6 +17,7 @@ const init = () => {
   logout.logoutEvent();
   excursion.getCompleteExcursion();
   // excursion.getInfo();
+  excursionsLogs.getExcursionsLogs();
 };
 
 init();
