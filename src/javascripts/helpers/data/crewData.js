@@ -18,11 +18,11 @@ const getCrew = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getCrewById = (id) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/crew/${id}.json`)
+const getCrewById = (crewId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/crew/${crewId}.json`)
     .then((response) => {
-      const crewMember = response.data;
-      resolve(crewMember);
+      resolve(response.data);
+      console.log(response.data);
     })
     .catch((error) => reject(error));
 });

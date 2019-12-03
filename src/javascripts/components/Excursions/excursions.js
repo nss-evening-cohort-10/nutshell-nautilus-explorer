@@ -4,6 +4,8 @@ import destinationData from '../../helpers/data/destinationData';
 import speciesData from '../../helpers/data/speciesData';
 import environmentData from '../../helpers/data/environmentData';
 import logData from '../../helpers/data/logsData';
+import excursionsCrewData from '../../helpers/data/excursionsCrewData';
+import crewData from '../../helpers/data/crewData';
 
 
 // const getCompleteExcursion = () => new Promise((resolve, reject) => {
@@ -74,6 +76,22 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                       thisLog.message = log.message;
                       thisLog.crewName = log.crewName;
                       mission.logs.push(thisLog);
+                    });
+                  });
+                console.log(mission.id);
+                excursionsCrewData.getExcursionsCrewByExcursionId(mission.id)
+                  .then((exCrew) => {
+                    console.log(exCrew);
+                    mission.crew = [];
+                    exCrew.forEach((crew) => {
+                      crewData.getCrewById(crew.crewId)
+                        .then((datCrew) => {
+                          console.log(datCrew);
+                          const thisCrew = {};
+                          thisCrew.name = datCrew.name;
+                          thisCrew.position = datCrew.position;
+                          mission.crew.push(thisCrew);
+                        });
                     });
                   });
               });
