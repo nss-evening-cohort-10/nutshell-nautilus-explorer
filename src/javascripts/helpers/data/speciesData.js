@@ -21,7 +21,13 @@ const getAllSpecies = () => new Promise((resolve, reject) => {
 const getSpeciesByEnvironmentId = (environmentId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/species.json?orderBy="environmentId"&equalTo="${environmentId}"`)
     .then((response) => {
-      resolve(response.data);
+      const demSpecies = response.data;
+      const species = [];
+      Object.keys(demSpecies).forEach((fbId) => {
+        demSpecies[fbId].id = fbId;
+        species.push(demSpecies[fbId]);
+      });
+      resolve(species);
     })
     .catch((error) => reject(error));
 });

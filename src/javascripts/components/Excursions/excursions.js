@@ -3,6 +3,7 @@ import excursionsData from '../../helpers/data/excursionsData';
 import destinationData from '../../helpers/data/destinationData';
 import speciesData from '../../helpers/data/speciesData';
 import environmentData from '../../helpers/data/environmentData';
+import logData from '../../helpers/data/logsData';
 
 
 // const getCompleteExcursion = () => new Promise((resolve, reject) => {
@@ -43,16 +44,8 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
     .then((excursions) => {
       excursions.forEach((excursion) => {
         const mission = { ...excursion };
-        // ssion.destinationId = excursion.destinationId;
         destinationData.getDestinationById(excursion.destinationId)
           .then((destination) => {
-            // destinations.forEach((destination) => {
-            //   const excursionDest = excursions.find((x) => x.destinationId === destinations.id);
-            //   if (excursionDest) {
-            //     mission.destinationName = destination.name;
-            //     mission.environmentId = destination.environmentId;
-            //   }
-            // });
             mission.destinationName = destination.name;
             environmentData.getEnvironmentById(destination.environmentId)
               .then((environment) => {
@@ -64,10 +57,24 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                 mission.current = environment.current;
                 mission.pressure = environment.pressure;
                 mission.environmentId = destination.environmentId;
-                console.log(destination.environmentId);
                 speciesData.getSpeciesByEnvironmentId(destination.environmentId)
                   .then((species) => {
-                    console.log(species);
+                    mission.species = [];
+                    species.forEach((s) => {
+                      const speciesName = s.name;
+                      mission.species.push(speciesName);
+                    });
+                  });
+                logData.getLogsByDestinationId(excursion.destinationId)
+                  .then((logs) => {
+                    mission.logs = [];
+                    logs.forEach((log) => {
+                      const thisLog = {};
+                      thisLog.data = log.date;
+                      thisLog.message = log.message;
+                      thisLog.crewName = log.crewName;
+                      mission.logs.push(thisLog);
+                    });
                   });
               });
             console.log('This is the mission: ', mission);
