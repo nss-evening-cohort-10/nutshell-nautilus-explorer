@@ -14,7 +14,7 @@ const buildTheDashboard = (boardArray) => {
     domString += `
     <div class="card col-3 dashboard-card">
     <img src="${board.imageUrl}" class="dashboard-image" alt="...">
-      <div class="d-flex justify-content-around">
+      <div class="d-flex justify-content-around" id="cardButton">
         <button id="${board.id}-button" class="btn btn-outline-light dashboard-button">${board.id}</button>
       </div>
     </div>`;

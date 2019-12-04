@@ -1,113 +1,64 @@
-import excursionsData from '../../helpers/data/excursionsData';
-// import environmentData from '../../helpers/data/environmentData';
-import destinationData from '../../helpers/data/destinationData';
-import speciesData from '../../helpers/data/speciesData';
-import environmentData from '../../helpers/data/environmentData';
-import logData from '../../helpers/data/logsData';
-import excursionsCrewData from '../../helpers/data/excursionsCrewData';
-import crewData from '../../helpers/data/crewData';
+import $ from 'jquery';
+import excursionSmash from '../../helpers/data/excursionSmash';
+import utilities from '../../helpers/utilities';
 
-
-// const getCompleteExcursion = () => new Promise((resolve, reject) => {
-//   excursionsData.getExcursions()
-//     .then((singleExcursion) => destinationData.getDestinations(singleExcursion.destinationId))
-//     .then((destination) => environmentData.getEnvis(destination.environmentId))
-//     .then((environment) => species.getAllSpecies(environment.environmentId))
-//     .then((excursions) => {
-//       const newExcursions = [];
-//       excursions.forEach((excursion) => {
-//         const mission = { ...excursion };
-//         // const getSpeciesByEnvironmentId = excursion.find((x) => x.environmentId === mission.environmentId);
-//         // if (getSpeciesByEnvironmentId) {
-//         // const envSpecies = excursion.find((x) => x.id === getSpeciesByEnvironmentId.id);
-//         mission.date = excursion.date;
-//         mission.name = excursion.name;
-//         mission.destinationId = excursion.destinationId;
-//         mission.destination = excursion.name;
-//         mission.temp = excursion.temperature;
-//         mission.depth = excursion.depth;
-//         mission.current = excursion.current;
-//         mission.pressure = excursion.pressure;
-//         // mission.speciesName = envSpecies.name;
-//         // } else {
-//         //   mission.envSpecies = {};
-//         // }
-//         newExcursions.push(mission);
-//       });
-//       resolve(newExcursions);
-//       console.error('new excursions', newExcursions);
-//     })
-//     .catch((error) => reject(error));
-// });
-
-const getCompleteExcursion = () => new Promise((resolve, reject) => {
-  const newExcursions = [];
-  excursionsData.getExcursions()
+const excursionCard = () => {
+  excursionSmash.getAllExcursions()
     .then((excursions) => {
-      excursions.forEach((excursion) => {
-        const mission = { ...excursion };
-        destinationData.getDestinationById(excursion.destinationId)
-          .then((destination) => {
-            mission.destinationName = destination.name;
-            environmentData.getEnvironmentById(destination.environmentId)
-              .then((environment) => {
-                mission.environmentName = environment.name;
-                mission.temperature = environment.temperature;
-                mission.latitude = environment.latitude;
-                mission.longitude = environment.longitude;
-                mission.depth = environment.depth;
-                mission.current = environment.current;
-                mission.pressure = environment.pressure;
-                mission.environmentId = destination.environmentId;
-                speciesData.getSpeciesByEnvironmentId(destination.environmentId)
-                  .then((species) => {
-                    mission.species = [];
-                    species.forEach((s) => {
-                      const speciesName = s.name;
-                      mission.species.push(speciesName);
-                    });
-                  });
-                logData.getLogsByDestinationId(excursion.destinationId)
-                  .then((logs) => {
-                    mission.logs = [];
-                    logs.forEach((log) => {
-                      const thisLog = {};
-                      thisLog.data = log.date;
-                      thisLog.message = log.message;
-                      thisLog.crewName = log.crewName;
-                      mission.logs.push(thisLog);
-                    });
-                  });
-                console.log(mission.id);
-                excursionsCrewData.getExcursionsCrewByExcursionId(mission.id)
-                  .then((exCrew) => {
-                    console.log(exCrew);
-                    mission.crew = [];
-                    exCrew.forEach((crew) => {
-                      crewData.getCrewById(crew.crewId)
-                        .then((datCrew) => {
-                          console.log(datCrew);
-                          const thisCrew = {};
-                          thisCrew.name = datCrew.name;
-                          thisCrew.position = datCrew.position;
-                          mission.crew.push(thisCrew);
-                        });
-                    });
-                  });
-              });
-            console.log('This is the mission: ', mission);
-          });
-        newExcursions.push(mission);
-      });
-      resolve(newExcursions);
-      console.log('new excursions', newExcursions);
+      console.log('helloexcursions', excursions);
+      let domString = '';
+      for (let i = 0; i < excursions.length; i += 1) {
+        domString += `
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${excursions[i].id}" aria-expanded="true" aria-controls="${excursions[i].id}">
+                ${excursions[i].name}, ${excursions[i].date}
+              </button>
+            </h2>
+          </div>
+          <div id="${excursions[i].id}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <h1>Destination: ${excursions[1].destinationName}</h1>
+              <div id="excursionCrew">
+                <h2>${excursions[i].name}</h2>
+                <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+                  <p>Crew Name</p>
+                <p>Crew position</p></li>
+      </ul>
+              </div>
+              <div id="excursionEnvironment">
+                <h2>Environment: environmentName</h2>
+                <p>Latitude: 34536.3453</p>
+                <p>Longitude: 234234.2342</p>
+              </div>
+              <div id ="excursionSpecies">
+                <h2>Species Discovered:</h2>
+                <ul>
+                <li>Species1</li>
+                <li>Species2</li>
+                </ul>
+              </div>
+              <div id="excursionLogs">
+                <h2>Logs:</h2>
+                <p>Author: crewName</p>
+                <p>Date: logDate</p>
+                <p>Message: logMessage</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+      }
+      utilities.printToDom('excursions', domString);
     })
-    .catch((error) => reject(error));
-});
+    .catch((error) => console.error(error));
+};
 
-// const getInfo = () => {
-//   species.getSpeciesById()
-//     .then((speciesArray) => console.error('data', speciesArray));
-// };
+const excursionButton = () => {
+  $('body').on('click', '#Excursions-button', excursionCard);
+};
 
-export default { getCompleteExcursion };
+export default { excursionButton };

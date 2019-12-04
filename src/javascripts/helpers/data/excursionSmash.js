@@ -63,6 +63,7 @@ const getAllExcursions = () => new Promise((resolve, reject) => {
         newExcursions.push(mission);
       });
       resolve(newExcursions);
+      console.log(newExcursions);
     })
     .catch((error) => reject(error));
 });
