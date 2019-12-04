@@ -105,12 +105,12 @@ const buildSpecies = () => {
     .then(() => {
       let domString = '';
       if (userSignedIn) {
-        domString = '<h1 class="add-a-species text-center board-header">View Species</h1>';
-        domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSpeciesModal" id="add-species-button">Add Species</button>';
-        domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
+        domString = '<h1 class="add-a-species text-center board-header">Discovered Species</h1>';
+        domString += '<center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSpeciesModal" id="add-species-button">Add Species</button></center>';
+        domString += '<div id="species-section">';
       } else {
         domString = '<h1 class="add-a-species text-center board-header">View Species</h1>';
-        domString += '<div id="species-section" class="d-flex flex-wrap justify-content-center">';
+        domString += '<div id="species-section">';
       }
       speciesData.getAllSpecies()
         .then((species) => {
@@ -129,16 +129,4 @@ const buildSpecies = () => {
     .catch((error) => console.error(error));
 };
 
-const makeSpeciesBoard = () => {
-  const domString = `<div class="card">
-  <h5 class="card-title text-center card-title">View Species</h5>
-  <img id="speciesImg" src="https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-nautilus-explorer/master/src/assets/images/underwater-species.jpg" class="card-img-top" alt="...">
-  <div class="card-body text-center">
-    <button type="button" class="btn btn-danger btn-lg view-species">View</button>
-  </div>
-  </div>
-  `;
-  util.printToDom('speciesHome', domString);
-};
-
-export default { makeSpeciesBoard, buildSpecies };
+export default { buildSpecies };
