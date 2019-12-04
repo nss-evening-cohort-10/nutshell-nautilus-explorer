@@ -110,7 +110,7 @@ import utilities from '../../helpers/utilities';
 
 const getExcursionsAndDestinations = () => Promise.all([excursionsData.getExcursions(), destinationData.getDestinations()]);
 
-const getEachCrew = () => {
+const getCompleteExcursions = () => {
   getExcursionsAndDestinations()
     .then((excursionsAndDestinations) => {
       const excursions = excursionsAndDestinations[0];
@@ -118,8 +118,10 @@ const getEachCrew = () => {
       console.log(excursions);
       console.log(destinations);
       excursions.forEach((excursion) => {
-        const exDest = destinations.filter((x) => x.id === excursion.destinationId);
-        console.log(exDest);
+        const exDest = destinations.find((x) => x.id === excursion.destinationId);
+        const mission = {};
+        mission.destinationId = exDest.id;
+        console.log(mission);
       });
       let domString = '';
       // console.log(excursions);
@@ -151,4 +153,4 @@ const getEachCrew = () => {
 //     .then((speciesArray) => console.error('data', speciesArray));
 // };
 
-export default { getEachCrew };
+export default { getCompleteExcursions };

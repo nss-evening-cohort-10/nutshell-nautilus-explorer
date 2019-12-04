@@ -14,8 +14,7 @@ const init = () => {
   auth.signMeIn();
   authData.checkLoginStatus();
   logout.logoutEvent();
-  // excursion.getCompleteExcursion();
-  excursion.getEachCrew();
+  excursion.getCompleteExcursions();
 };
 
 init();
