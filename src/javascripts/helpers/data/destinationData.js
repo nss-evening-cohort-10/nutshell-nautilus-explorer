@@ -13,9 +13,25 @@ const getDestinations = () => new Promise((resolve, reject) => {
         destinations.push(demDestinations[fbId]);
       });
       resolve(destinations);
+      console.log('hiii', destinations);
     })
     .catch((error) => reject(error));
 });
+
+// const getDestinationByEnvironment = (environmentId) => new Promise((resolve, reject) => {
+//   axios.get(`${baseUrl}/destinations.json?orderBy="environmentId"&equalTo="${environmentId}"`)
+//     .then((response) => {
+//       const demEnviDestinations = response.data;
+//       const destinationsByEnvironment = [];
+//       Object.keys(demEnviDestinations).forEach((fbId) => {
+//         demEnviDestinations[fbId].id = fbId;
+//         destinationsByEnvironment.push(demEnviDestinations[fbId]);
+//       });
+//       resolve(destinationsByEnvironment);
+//       console.log('newest Data', destinationsByEnvironment);
+//     })
+//     .catch((error) => reject(error));
+// });
 
 const getDestinationById = (destinationId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/destinations/${destinationId}.json`)
@@ -35,4 +51,5 @@ export default {
   addNewDestination,
   getDestinationById,
   updateDestination,
+  // getDestinationByEnvironment,
 };

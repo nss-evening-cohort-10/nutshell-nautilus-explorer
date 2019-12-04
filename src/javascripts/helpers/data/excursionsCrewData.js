@@ -3,8 +3,8 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getExcursionsCrewByExcursionId = (excursionId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/excursionsCrew.json?orderBy="excursionId"&equalTo="${excursionId}"`)
+const getExcursionsCrews = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/excursionsCrew.json`)
     .then((response) => {
       const demExcursionsCrews = response.data;
       const excursionCrew = [];
@@ -13,8 +13,9 @@ const getExcursionsCrewByExcursionId = (excursionId) => new Promise((resolve, re
         excursionCrew.push(demExcursionsCrews[fbId]);
       });
       resolve(excursionCrew);
+      console.log('loggggg', excursionCrew);
     })
     .catch((error) => reject(error));
 });
 
-export default { getExcursionsCrewByExcursionId };
+export default { getExcursionsCrews };
