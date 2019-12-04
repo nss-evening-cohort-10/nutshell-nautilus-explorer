@@ -2,7 +2,7 @@ import axios from 'axios';
 import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
-// got this from apiKeys and stuck it in axios.get below
+
 
 const getCrew = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/crew.json`)
@@ -13,7 +13,7 @@ const getCrew = () => new Promise((resolve, reject) => {
         theCrew[fbId].id = fbId;
         crew.push(theCrew[fbId]);
       });
-      resolve(crew); // hard code to only return first machine that comes back
+      resolve(crew);
     })
     .catch((error) => reject(error));
 });
@@ -22,7 +22,6 @@ const getCrewById = (crewId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/crew/${crewId}.json`)
     .then((response) => {
       resolve(response.data);
-      console.log(response.data);
     })
     .catch((error) => reject(error));
 });
