@@ -13,7 +13,6 @@ const getExcursionsLogs = () => new Promise((resolve, reject) => {
         excursionsLogs.push(demExcursionsLogs[fbId]);
       });
       resolve(excursionsLogs);
-      console.error('excursionsLogs', excursionsLogs);
     })
     .catch((error) => reject(error));
 });

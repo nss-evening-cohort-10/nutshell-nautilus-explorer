@@ -4,8 +4,8 @@
     "speciesId": "species1"
   },
   "speciesEnvironment2": {
-    "environmentId": "environment2",
-    "speciesId": "species1"
+    "environmentId": "environment1",
+    "speciesId": "species2"
   },
   "speciesEnvironment3": {
     "environmentId": "environment3",
@@ -16,11 +16,11 @@
     "speciesId": "species3"
   },
   "speciesEnvironment5": {
-    "environmentId": "environment5",
+    "environmentId": "environment3",
     "speciesId": "species2"
   },
   "speciesEnvironment6": {
-    "environmentId": "environment6",
+    "environmentId": "environment2",
     "speciesId": "species6"
   },
   "speciesEnvironment7": {
@@ -32,11 +32,11 @@
     "speciesId": "species4"
   },
   "speciesEnvironment9": {
-    "environmentId": "environment9",
+    "environmentId": "environment2",
     "speciesId": "species3"
   },
   "speciesEnvironment10": {
-    "environmentId": "environment10",
+    "environmentId": "environment4",
     "speciesId": "species2"
   }
 }
