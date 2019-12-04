@@ -78,15 +78,15 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                       mission.logs.push(thisLog);
                     });
                   });
-                console.log(mission.id);
+                // console.log(mission.id);
                 excursionsCrewData.getExcursionsCrewByExcursionId(mission.id)
                   .then((exCrew) => {
-                    console.log(exCrew);
+                    // console.log(exCrew);
                     mission.crew = [];
                     exCrew.forEach((crew) => {
                       crewData.getCrewById(crew.crewId)
                         .then((datCrew) => {
-                          console.log(datCrew);
+                          // console.log(datCrew);
                           const thisCrew = {};
                           thisCrew.name = datCrew.name;
                           thisCrew.position = datCrew.position;
@@ -100,7 +100,7 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
         newExcursions.push(mission);
       });
       resolve(newExcursions);
-      console.log('new excursions', newExcursions);
+      // console.log('new excursions', newExcursions);
     })
     .catch((error) => reject(error));
 });

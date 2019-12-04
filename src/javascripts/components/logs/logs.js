@@ -8,17 +8,28 @@ const makeLogBoard = (logs) => {
   const userSignedIn = firebase.auth().currentUser;
   let domString = '';
   if (userSignedIn) {
-    domString += `<ul class="list-group list-group-horizontal">
-  <li class="list-group-item">${logs.date}</li>
-  <li class="list-group-item">${logs.id}</li>
-  <li class="list-group-item">${logs.destName}</li>
-  <li class="list-group-item">${logs.crewName}</li>
-  <li class="list-group-item">${logs.message}</li>
-  <button id="update-${logs.id}" type="button" class="btn btn-warning staff-edit" data-toggle="modal" data-target="#updateLogsModal">
-      Edit
-    </button>
-    <button id="${logs.id}" type="button" class="btn btn-danger staff-delete-button">Delete</button>
-</ul>`;
+    domString += `<div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${logs.id}" aria-expanded="true" aria-controls="${logs.id}">
+                    ${logs.destName} ${logs.date}
+                  </button>
+                </h2>
+              </div>
+              <div id="${logs.id}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                <div class="card">
+                <div class="card-header">
+                 Log Number: ${logs.id}
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Crew Member: ${logs.crewName}</h5>
+                  <p class="card-text">Message: ${logs.message}</p>
+                </div>
+              </div>
+            </div>
+          </div>`;
   } else {
     domString += `<ul class="list-group list-group-horizontal">
   <li class="list-group-item">${logs.date}</li>
