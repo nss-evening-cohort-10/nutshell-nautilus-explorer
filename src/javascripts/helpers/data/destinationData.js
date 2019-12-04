@@ -13,7 +13,6 @@ const getDestinations = () => new Promise((resolve, reject) => {
         destinations.push(demDestinations[fbId]);
       });
       resolve(destinations);
-      console.log('hiii', destinations);
     })
     .catch((error) => reject(error));
 });

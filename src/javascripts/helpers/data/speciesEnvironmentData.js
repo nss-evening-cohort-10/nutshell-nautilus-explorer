@@ -13,7 +13,6 @@ const getAllSpeciesByEnvironment = () => new Promise((resolve, reject) => {
         speciesEnvironment.push(demSpeciesByEnvironment[fbId]);
       });
       resolve(speciesEnvironment);
-      console.log('lol', speciesEnvironment);
     })
     .catch((error) => reject(error));
 });

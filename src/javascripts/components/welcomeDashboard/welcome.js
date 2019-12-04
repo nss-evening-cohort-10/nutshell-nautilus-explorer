@@ -6,6 +6,7 @@ import destination from '../destination/destination';
 import species from '../Species/species';
 import envi from '../environments/environments';
 import log from '../logs/logs';
+import excursionSmash from '../../helpers/data/excursionSmash';
 
 const buildTheDashboard = (boardArray) => {
   let domString = '<div class="d-flex flex-wrap justify-content-around">';
@@ -45,6 +46,11 @@ const buildTheDashboard = (boardArray) => {
     log.printLogs();
     $('#welcome').addClass('hide');
     $('#log').removeClass('hide');
+  });
+  $('body').on('click', '#Excursions-button', () => {
+    excursionSmash.getCompleteExcursions();
+    $('#welcome').addClass('hide');
+    $('#excursions').removeClass('hide');
   });
 };
 
