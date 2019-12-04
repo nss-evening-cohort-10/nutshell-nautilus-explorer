@@ -1,8 +1,15 @@
-#speciesImg{
-  width: 200px;
-  height: 200px;
-}
 
 .environment-radios {
 margin-left: 2em;
+}
+
+#species-section {
+  display: flex;
+  flex-direction: wrap;
+  justify-content: space-between;
+  align-content: space-between
+}
+
+#add-species-button {
+  margin-bottom: 1em;
 }

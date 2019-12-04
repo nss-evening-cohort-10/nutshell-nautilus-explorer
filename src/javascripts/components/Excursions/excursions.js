@@ -72,7 +72,7 @@ const getCompleteExcursion = () => new Promise((resolve, reject) => {
                     mission.logs = [];
                     logs.forEach((log) => {
                       const thisLog = {};
-                      thisLog.data = log.date;
+                      thisLog.date = log.date;
                       thisLog.message = log.message;
                       thisLog.crewName = log.crewName;
                       mission.logs.push(thisLog);
