@@ -68,12 +68,13 @@ const getCompleteExcursions = () => {
       let domString = '';
       for (let i = 0; i < excursionList.length; i += 1) {
         const excursionsList = excursionList[i];
+        console.log('eList', excursionsList);
         domString += `<div class="accordion" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${excursionsList.id}" aria-expanded="true" aria-controls="${excursionsList.id}">
-                ${excursionsList.destinationName} ${excursionsList.date}
+                ${excursionsList.excursionName} ${excursionsList.excursionDate}
               </button>
             </h2>
           </div>
@@ -81,25 +82,29 @@ const getCompleteExcursions = () => {
             <div class="card-body">
             <div class="card">
             <div class="card-header">
-             Log Number: ${excursionsList.id}
-            </div>`;
+            <h5 class="card-title">Crew Members</h5>
+             </div>`;
         console.log('excursinCrew', excursionsList.crew);
         for (let m = 0; m < excursionsList.crew.length; m += 1) {
           const crewMembers = excursionsList.crew[m];
           domString += `
-              <h5>${crewMembers.name}</h5>
+              <p>${crewMembers.name}, ${crewMembers.position}</p>
               `;
         }
         domString += `
-            <div class="card-body">
-              <h5 class="card-title">Port: ${excursionsList.destinationPort}</h5>
-              <p class="card-text">Destination Name: ${excursionsList.destinationName}</p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Description: ${excursionsList.description}</li>
-                <li class="list-group-item">Current: ${excursionsList.current}</li>
-                <li class="list-group-item">longitude: ${excursionsList.longitude}</li>
-              </ul>
-              <button type="button" id="delete-${excursionsList.id}" class="btn btn-danger delete-log">Delete Excursion</button>
+              <div class="card-header">
+              <h5>Port: ${excursionsList.destinationName}</h5>
+              </div>
+              <p class="card-text">Destination Name: ${excursionsList.destinationPort}</p>
+              <div class="card-header">
+              <h5>Environments Encountered:</h5>
+              </div>
+              <p class="card-text">Name of Environment: ${excursionsList.environmentName}</p>
+              <p class="card-text">Latitude: ${excursionsList.latitude}, Longitude: ${excursionsList.longitude}</p>
+              <p class="card-text">Pressure: ${excursionsList.pressure}</p>
+              <p class="card-text">Temperature: ${excursionsList.temperature}</p>
+              <p class="card-text">Current: ${excursionsList.current}</p>
+              <p class="card-text">Depth: ${excursionsList.depth}</p>
             </div>
           </div>
         </div>
