@@ -34,6 +34,7 @@ const onload = () => {
   $('#log').addClass('hide');
   $('#environments').addClass('hide');
   $('#crew').addClass('hide');
+  $('#excursions').addClass('hide');
 };
 
 window.onload = onload;
