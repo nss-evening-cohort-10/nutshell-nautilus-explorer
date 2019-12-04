@@ -26,6 +26,7 @@ const makeLogBoard = (logs) => {
                 <div class="card-body">
                   <h5 class="card-title">Crew Member: ${logs.crewName}</h5>
                   <p class="card-text">Message: ${logs.message}</p>
+                  <button type="button" class="btn btn-danger delete-log">Delete Log</button>
                 </div>
               </div>
             </div>
