@@ -18,4 +18,26 @@ const getExcursionsLogs = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// const getLogsByExcursions = (excursions) => new Promise((resolve, reject) => {
+//   axios.get(`${baseUrl}/excursionLogs.json`)
+//     .then((response) => {
+//       const demLogs = response.data;
+//       const logs = [];
+//       const newExcursions = [];
+//       Object.keys(demLogs).forEach((fbId) => {
+//         demLogs[fbId].id = fbId;
+//         logs.push(demLogs[fbId]);
+//       });
+//       excursions.forEach((excursion) => {
+//         const newE = { ...excursion };
+//         const excursionLog = logs.find((x) => x.excursionId === excursion.id);
+//         newE.excursionLog = excursionLog;
+//         newExcursions.push(newE);
+//       });
+//       resolve(newExcursions);
+//       console.error('excursionsLogs', newExcursions);
+//     })
+//     .catch((error) => reject(error));
+// });
+
 export default { getExcursionsLogs };

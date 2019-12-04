@@ -28,9 +28,11 @@ const getSpeciesByEnvironmentId = (environmentId) => new Promise((resolve, rejec
         species.push(demSpecies[fbId]);
       });
       resolve(species);
+      console.error('species', species);
     })
     .catch((error) => reject(error));
 });
+
 
 const getSpeciesById = (speciesId) => axios.get(`${baseUrl}/species/${speciesId}.json`);
 

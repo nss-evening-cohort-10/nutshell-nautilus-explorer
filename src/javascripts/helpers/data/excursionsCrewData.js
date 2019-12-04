@@ -13,6 +13,7 @@ const getExcursionsCrewByExcursionId = (excursionId) => new Promise((resolve, re
         excursionCrew.push(demExcursionsCrews[fbId]);
       });
       resolve(excursionCrew);
+      console.error('exCrew', excursionCrew);
     })
     .catch((error) => reject(error));
 });
