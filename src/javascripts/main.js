@@ -8,6 +8,7 @@ import auth from './components/auth/auth';
 import logout from './components/navBar/navBar';
 import excursion from './components/Excursions/excursions';
 
+
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   auth.signMeIn();

@@ -7,7 +7,7 @@ const makeASpecies = (species) => {
   if (userSignedIn) {
     domString += `
     <div class="card" style="width: 460px">
-    <img id="speciesImg" src="${species.image}" class="card-img-top" alt="...">
+    <img src="${species.image}" class="card-img-top species-image" alt="...">
     <div class="card-body">
     <h5 class="card-title">${species.name}</h5>
     <p class="card-text">${species.description}</p>
@@ -21,7 +21,7 @@ const makeASpecies = (species) => {
   } else {
     domString += `
     <div class="card" style="width: 460px">
-    <img id="speciesImg" src="${species.image}" class="card-img-top" alt="...">
+    <img src="${species.image}" class="card-img-top species-image" alt="...">
     <div class="card-body">
     <h5 class="card-title">${species.name}</h5>
     <p class="card-text">${species.description}</p>
