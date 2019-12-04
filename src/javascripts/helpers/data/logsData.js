@@ -31,5 +31,6 @@ const getLogsByDestinationId = (destinationId) => new Promise((resolve, reject) 
     .catch((error) => reject(error));
 });
 
+const deleteLog = (logId) => axios.delete(`${baseUrl}/logs/${logId}.json`);
 
-export default { getLogs, getLogsByDestinationId };
+export default { getLogs, getLogsByDestinationId, deleteLog };
