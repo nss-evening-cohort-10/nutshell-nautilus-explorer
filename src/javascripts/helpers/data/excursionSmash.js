@@ -2,14 +2,15 @@
 import excursionsData from './excursionsData';
 // import environmentData from '../../helpers/data/environmentData';
 import destinationData from './destinationData';
-import speciesData from './speciesData';
+import speciesEnvironmentsData from './speciesEnvironmentData';
 import environmentData from './environmentData';
 import excursionCrewData from './excursionsCrewData';
 import logsData from './logsData';
 import crewData from './crewData';
+import speciesData from './speciesData';
 import utilities from '../utilities';
 
-const getExcursionsAndDestinations = () => Promise.all([excursionsData.getExcursions(), destinationData.getDestinations(), environmentData.getEnvis(), speciesData.getAllSpecies(), excursionCrewData.getExcursionsCrews(), crewData.getCrew(), logsData.getLogs()]);
+const getExcursionsAndDestinations = () => Promise.all([excursionsData.getExcursions(), destinationData.getDestinations(), environmentData.getEnvis(), speciesEnvironmentsData.getAllSpeciesByEnvironment(), excursionCrewData.getExcursionsCrews(), crewData.getCrew(), logsData.getLogs(), speciesData.getAllSpecies()]);
 
 const getCompleteExcursions = () => {
   getExcursionsAndDestinations()
@@ -17,11 +18,12 @@ const getCompleteExcursions = () => {
       const excursions = excursionsAndDestinations[0];
       const destinations = excursionsAndDestinations[1];
       const environments = excursionsAndDestinations[2];
-      const species = excursionsAndDestinations[3];
+      const speciesEnvi = excursionsAndDestinations[3];
       const excursionCrew = excursionsAndDestinations[4];
       console.log('excursionCrew', excursionCrew);
       const crew = excursionsAndDestinations[5];
       const logs = excursionsAndDestinations[6];
+      const species = excursionsAndDestinations[7];
       const excursionList = [];
       excursions.forEach((excursion) => {
         const theExcursionList = {};
@@ -44,9 +46,9 @@ const getCompleteExcursions = () => {
         theExcursionList.current = enviDest.current;
         theExcursionList.depth = enviDest.depth;
         // console.log('new idea', enviDest);
-        const newSpecies = species.find((x) => x.environmentId === theExcursionList.environmentId);
-        // console.log('newSpecies', newSpecies);
-        theExcursionList.speciesName = newSpecies.name;
+        const newSpecies = speciesEnvi.filter((x) => x.environmentId === theExcursionList.environmentId);
+        console.log('new', newSpecies);
+        theExcursionList.species = newSpecies.map((speciesRecord) => species.find((s) => s.id === speciesRecord.speciesId));
         const crewPerson = excursionCrew.filter((x) => x.excursionId === theExcursionList.id);
         console.log('crewPerson', crewPerson);
         theExcursionList.crew = crewPerson.map((crewRecord) => crew.find((x) => x.id === crewRecord.crewId));
@@ -93,9 +95,9 @@ const getCompleteExcursions = () => {
         }
         domString += `
               <div class="card-header">
-              <h5>Port: ${excursionsList.destinationName}</h5>
+              <h5>Destination: ${excursionsList.destinationName}</h5>
               </div>
-              <p class="card-text">Destination Name: ${excursionsList.destinationPort}</p>
+              <p class="card-text">Destination Port: ${excursionsList.destinationPort}</p>
               <div class="card-header">
               <h5>Environments Encountered:</h5>
               </div>
@@ -105,7 +107,16 @@ const getCompleteExcursions = () => {
               <p class="card-text">Temperature: ${excursionsList.temperature}</p>
               <p class="card-text">Current: ${excursionsList.current}</p>
               <p class="card-text">Depth: ${excursionsList.depth}</p>
-            </div>
+              <div class="card-header">
+            <h5 class="card-title">Species Encountered:</h5>
+             </div>`;
+        for (let s = 0; s < excursionsList.species.length; s += 1) {
+          const specieMembers = excursionsList.species[s];
+          domString += `
+                    <p>${specieMembers.name}</p>
+                    `;
+        }
+        domString += `</div>
           </div>
         </div>
       </div>`;
