@@ -1,5 +1,5 @@
 const boards = [{
-  imageUrl: 'https://www.workingonaship.com/wp-content/uploads/2018/02/Blog-2-Starting-your-career-on-a-cruise-ship-678x381.jpg',
+  imageUrl: 'http://aqualibra131.com/data/sites/1/GalleryImages/80/FullSizeImages/aqua-libra-crew-may-2019.jpg',
   id: 'Crew',
 },
 {
@@ -7,7 +7,7 @@ const boards = [{
   id: 'Destinations',
 },
 {
-  imageUrl: 'https://scx1.b-cdn.net/csz/news/800/2019/lakemalawiis.jpg',
+  imageUrl: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/66efb737010269.5731c94231f18.png',
   id: 'Species',
 },
 {
