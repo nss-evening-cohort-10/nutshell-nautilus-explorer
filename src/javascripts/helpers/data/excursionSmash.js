@@ -19,14 +19,15 @@ const getCompleteExcursions = () => {
       const environments = excursionsAndDestinations[2];
       const species = excursionsAndDestinations[3];
       const excursionCrew = excursionsAndDestinations[4];
+      console.log('excursionCrew', excursionCrew);
       const crew = excursionsAndDestinations[5];
       const logs = excursionsAndDestinations[6];
       const excursionList = [];
       excursions.forEach((excursion) => {
         const theExcursionList = {};
-        console.log('excurssss', theExcursionList);
+        // console.log('excurssss', theExcursionList);
         const exDest = destinations.find((x) => x.id === excursion.destinationId);
-        console.log(exDest, 'hahahaha');
+        // console.log(exDest, 'hahahaha');
         theExcursionList.destinationId = exDest.id;
         theExcursionList.destinationName = exDest.name;
         theExcursionList.destinationPort = exDest.port;
@@ -42,56 +43,69 @@ const getCompleteExcursions = () => {
         theExcursionList.environmentName = enviDest.name;
         theExcursionList.current = enviDest.current;
         theExcursionList.depth = enviDest.depth;
-        console.log('new idea', enviDest);
+        // console.log('new idea', enviDest);
         const newSpecies = species.find((x) => x.environmentId === theExcursionList.environmentId);
-        console.log('newSpecies', newSpecies);
+        // console.log('newSpecies', newSpecies);
         theExcursionList.speciesName = newSpecies.name;
-        const crewPerson = excursionCrew.find((x) => x.excursionId === theExcursionList.id);
-        theExcursionList.crewId = crewPerson.crewId;
-        const newCrew = crew.find((x) => x.id === theExcursionList.crewId);
-        theExcursionList.crewName = newCrew.name;
-        theExcursionList.crewPosition = newCrew.position;
+        const crewPerson = excursionCrew.filter((x) => x.excursionId === theExcursionList.id);
+        console.log('crewPerson', crewPerson);
+        theExcursionList.crew = crewPerson.map((crewRecord) => crew.find((x) => x.id === crewRecord.crewId));
+        // theExcursionList.crew = crewPerson;
+        // const newCrew = crew.find((x) => x.id === theExcursionList.crewId);
+        // theExcursionList.crewName = newCrew.name;
+        // theExcursionList.crewPosition = newCrew.position;
         const logsByD = logs.find((x) => x.destinationId === theExcursionList.destinationId);
         theExcursionList.logId = logsByD.id;
-        console.log('logsdest', logsByD);
+        // console.log('logsdest', logsByD);
         const newLog = logs.find((x) => x.id === theExcursionList.logId);
         theExcursionList.logName = newLog.crewName;
-        console.log('logsName', newLog);
+        // console.log('logsName', newLog);
+        // console.log('exList', excursionList);
+        // console.log('please', excursionList);
         excursionList.push(theExcursionList);
-        console.log('exList', excursionList);
       });
-      console.log('please', excursionList);
-      excursionList.forEach((finalExcursion) => {
-        console.log('final', finalExcursion);
-        let domString = '';
-        domString += `
-          <div class="accordion" id="accordionExample">
+      console.log('final', excursionList);
+      let domString = '';
+      for (let i = 0; i < excursionList.length; i += 1) {
+        const excursionsList = excursionList[i];
+        domString += `<div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${excursionsList.id}" aria-expanded="true" aria-controls="${excursionsList.id}">
+                ${excursionsList.destinationName} ${excursionsList.date}
+              </button>
+            </h2>
+          </div>
+          <div id="${excursionsList.id}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
             <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${finalExcursion.id}" aria-expanded="true" aria-controls="${finalExcursion.id}">
-                    ${finalExcursion.destinationName} ${finalExcursion.date}
-                  </button>
-                </h2>
-              </div>
-              <div id="${finalExcursion.id}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                  <h1>Destination: ${finalExcursion.destinationName}</h1>`;
-        domString += `<div id="excursionCrew">
-                      <h2>Crew Members</h2>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                      <p>${finalExcursion.crewName}</p>
-                      <p>${finalExcursion.crewPosition}</p></li>
-                  </ul>
-                  </div>
-                  <div id="excursionEnvironment">
-                    <h2>Environment: ${finalExcursion.environmentId}</h2>
-                    <p>Latitude: ${finalExcursion.latitude}</p>
-                    <p>Longitude: ${finalExcursion.longitude}</p>
-                  </div>`;
+            <div class="card-header">
+             Log Number: ${excursionsList.id}
+            </div>`;
+        console.log('excursinCrew', excursionsList.crew);
+        for (let m = 0; m < excursionsList.crew.length; m += 1) {
+          const crewMembers = excursionsList.crew[m];
+          domString += `
+              <h5>${crewMembers.name}</h5>
+              `;
+        }
+        domString += `
+            <div class="card-body">
+              <h5 class="card-title">Port: ${excursionsList.destinationPort}</h5>
+              <p class="card-text">Destination Name: ${excursionsList.destinationName}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Description: ${excursionsList.description}</li>
+                <li class="list-group-item">Current: ${excursionsList.current}</li>
+                <li class="list-group-item">longitude: ${excursionsList.longitude}</li>
+              </ul>
+              <button type="button" id="delete-${excursionsList.id}" class="btn btn-danger delete-log">Delete Excursion</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
         utilities.printToDom('excursions', domString);
-      });
+      }
     });
 };
 
