@@ -114,7 +114,7 @@ const getCompleteExcursions = () => {
           </div>
         </div>
       </div>`;
-        utilities.printToDom('excursions', domString);
+        utilities.printToDom('excursionAccordion', domString);
       }
     });
 };

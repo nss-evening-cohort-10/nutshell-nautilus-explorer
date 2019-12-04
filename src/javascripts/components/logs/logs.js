@@ -87,7 +87,7 @@ const printLogs = () => {
       logSegments.forEach((logSegment) => {
         domString += makeLogBoard(logSegment);
       });
-      utilities.printToDom('log', domString);
+      utilities.printToDom('logsAccordion', domString);
       $('body').on('click', '.delete-log', deleteLogsById);
     })
     .catch((error) => console.error(error));
