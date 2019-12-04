@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import utilities from '../../helpers/utilities';
@@ -26,19 +27,48 @@ const makeLogBoard = (logs) => {
                 <div class="card-body">
                   <h5 class="card-title">Crew Member: ${logs.crewName}</h5>
                   <p class="card-text">Message: ${logs.message}</p>
+                  <button type="button" id="delete-${logs.id}" class="btn btn-danger delete-log">Delete Log</button>
                 </div>
               </div>
             </div>
           </div>`;
   } else {
-    domString += `<ul class="list-group list-group-horizontal">
-  <li class="list-group-item">${logs.date}</li>
-  <li class="list-group-item">${logs.id}</li>
-  <li class="list-group-item">${logs.destName}</li>
-  <li class="list-group-item">${logs.crewName}</li>
-  <li class="list-group-item">${logs.message}</li>`;
+    domString += `<div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${logs.id}" aria-expanded="true" aria-controls="${logs.id}">
+            ${logs.destName} ${logs.date}
+          </button>
+        </h2>
+      </div>
+      <div id="${logs.id}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+        <div class="card">
+        <div class="card-header">
+         Log Number: ${logs.id}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Crew Member: ${logs.crewName}</h5>
+          <p class="card-text">Message: ${logs.message}</p>
+        </div>
+      </div>
+    </div>
+  </div>`;
   }
   return domString;
+};
+
+const deleteLogsById = (e) => {
+  e.preventDefault();
+  const id = e.target.id.split('delete-')[1];
+  console.error('logId', id);
+  logData.deleteLog(id)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printLogs();
+    })
+    .catch((error) => console.error(error));
 };
 
 const printLogs = () => {
@@ -58,6 +88,7 @@ const printLogs = () => {
         domString += makeLogBoard(logSegment);
       });
       utilities.printToDom('log', domString);
+      $('body').on('click', '.delete-log', deleteLogsById);
     })
     .catch((error) => console.error(error));
 };
