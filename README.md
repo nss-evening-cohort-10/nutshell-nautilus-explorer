@@ -9,4 +9,4 @@
 ## How To Run
 * follow this link to the deployed firebase project:
 
-link goes here
+https://nautilus-explorer-part2.firebaseapp.com
